@@ -35,9 +35,9 @@ export default function createRoutes(store) {
       },
     }, {
       path: '*',
-      name: 'notfound',
+      name: 'about',
       getComponent(nextState, cb) {
-        import('containers/NotFoundPage')
+        import('containers/AboutPage')
           .then(loadModule(cb))
           .catch(errorLoading);
       },

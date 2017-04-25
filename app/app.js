@@ -35,11 +35,7 @@ import 'file-loader?name=[name].[ext]!./.htaccess';
 
 import configureStore from './store';
 
-// Import i18n messages
 import { translationMessages } from './i18n';
-
-// Import CSS reset and Global Styles
-import './global-styles';
 
 // Import root routes
 import createRoutes from './routes';
@@ -91,7 +87,6 @@ if (module.hot) {
     render(translationMessages);
   });
 }
-
 // Chunked polyfill for browsers without Intl support
 if (!window.Intl) {
   (new Promise((resolve) => {
