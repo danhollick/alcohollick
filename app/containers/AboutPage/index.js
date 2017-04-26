@@ -21,8 +21,7 @@ import Header from 'components/Header'
 export default class NotFound extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div bg_dark_red >
-        <Header/>
+      <div >
         <h1> About </h1>
       </div>
     );

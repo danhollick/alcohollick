@@ -36,8 +36,7 @@ const Wrapper = styled.section`
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div bg_dark_red >
-        <Header/>
+      <div>
         <h1> Home </h1>
       </div>
     );
