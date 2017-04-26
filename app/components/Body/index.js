@@ -10,21 +10,12 @@
  */
 
 import React from 'react';
-import tachyons from 'styled-components-tachyons';
-import styled from 'styled-components';
-import 'variables.css'
-import { Link } from 'react-router';
-
-import Header from 'components/Header'
 
 
-export default class NotFound extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class Body extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div bg_dark_red >
-        <Header/>
-        <h1> About </h1>
-      </div>
+
     );
   }
 }
