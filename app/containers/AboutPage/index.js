@@ -15,15 +15,17 @@ import styled from 'styled-components';
 import 'variables.css'
 import { Link } from 'react-router';
 
-import Header from 'components/Header'
+import FullHeightSection from 'components/Shared/FullHeightSection.js';
+import Nav from 'components/Nav'
 
 
 export default class NotFound extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div >
+      <FullHeightSection bg_dark_green >
+        <Nav/>
         <h1> About </h1>
-      </div>
+      </FullHeightSection>
     );
   }
 }

@@ -23,17 +23,14 @@ const LinkGroup = styled.div`
 ${tachyons}
 `;
 
-// Create a <Wrapper> react component that renders a <section> with
-// some padding and a papayawhip background
 const NavLink = styled(Link)`
   ${tachyons}
 `;
 
-
-export default class Header extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class Nav extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <NavBar bg_dark_red >
+      <NavBar>
         <LinkGroup db dt-l pa3 w-100 w-75-l tr>
           <NavLink f6 link dib white dim mr3 mr4-ns to="/"> about this site </NavLink>
           <NavLink f6 link dib white dim mr3 mr4-ns to="about"> about me </NavLink>
