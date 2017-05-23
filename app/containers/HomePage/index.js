@@ -40,7 +40,10 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         <svg width="100%" height="50" preserveAspectRatio="none" viewBox="0 0 100 100">
           <polygon points="0,0 100,0 100,20 0,100" color="#DE7C7C" />
         </svg>
-        <FullHeightSection dt>
+        <FullHeightSection dt relative>
+          <Wrapper right_0 mr4 top__1 absolute>
+              <BodyCopy fw2 measure black_70>Look at this angled line!<br/>It's a fucking SVG! The web is a magical place.</BodyCopy>
+          </Wrapper>
           <Wrapper dtc v_mid vh_75 w_100 pa6>
               <H1 f3 black_70> Wouldn’t it have been easier to just use HTML and CSS? </H1>
               <BodyCopy  mt4 measure fw2 black_70>Yup. Like a lot easier.<br/> I don’t really have a witty response here. I should have done that</BodyCopy>
