@@ -25,7 +25,7 @@ export default class App extends React.PureComponent { // eslint-disable-line re
 
   render() {
     return (
-      <Wrapper overflow_x_hidden relative>
+      <Wrapper >
         {React.Children.toArray(this.props.children)}
       </Wrapper>
     );
