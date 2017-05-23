@@ -30,12 +30,11 @@ export default class AboutPage extends React.PureComponent { // eslint-disable-l
     return (
       <FullHeightSection bg_green dt >
           <Nav />
-          <Wrapper bg_green vh_100 w_100 ph5 pv5>
-            <Wrapper >
-              <img src={logo} height="160" />
+          <Wrapper bg_green vh_75 w_100 ph5 pt6>
+            <Wrapper mt4 >
+              <img src={logo} height="140" />
               <H1 f3 white> I am a designer. </H1>
-              <BodyCopy  mt4 measure_wide fw2 white> Currently working for Fusetools.com in Oslo, Norway. We do some cool shit. </BodyCopy>
-              <BodyCopy mt2 fw2 measure white> Previously at Barclays Africa, Maven Agency, Levergy. </BodyCopy>
+              <BodyCopy mt4 measure_wide fw2 white> Currently working for Fusetools.com in Oslo, Norway. We do some cool shit.<br/>Previously at Barclays Africa, Maven Agency, Levergy. </BodyCopy>
               <Wrapper mt6 dt w_100 >
                 <H1 f3 white mr6> Hit Me Up Online </H1>
                 <Wrapper pl6 dtc v_mid >

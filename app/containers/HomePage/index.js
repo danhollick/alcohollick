@@ -20,6 +20,7 @@ import Wrapper from 'components/Body/Wrapper';
 import SVGBorderBottom from 'components/Body/SVGBorderBottom';
 import H1 from 'components/Shared/H1.js';
 import BodyCopy from 'components/Shared/BodyCopy.js';
+import ListText from 'components/Shared/ListText.js';
 
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -28,8 +29,8 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
       <div>
         <FullHeightSection bg_red dt >
           <Nav />
-          <Wrapper dt bg_red vh_100 w_100 pa6>
-            <Wrapper dtc v_mid pb6>
+          <Wrapper dt bg_red vh_75 w_100 ph6 pv7>
+            <Wrapper dtc v_mid>
               <H1 f3 white> Hey, welcome to my site. </H1>
               <BodyCopy  mt4 measure fw2 white> Can you believe I learnt React to build this single page, static site? <br/> I know right. It’s kind of like using a tank to go to the grocery store </BodyCopy>
               <BodyCopy mt2 fw2 measure white> You can do it but it doesn’t mean it’s a good idea. </BodyCopy>
@@ -40,7 +41,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           <polygon points="0,0 100,0 100,20 0,100" color="#DE7C7C" />
         </svg>
         <FullHeightSection dt>
-          <Wrapper dtc v_mid vh_100 w_100 pa6>
+          <Wrapper dtc v_mid vh_75 w_100 pa6>
               <H1 f3 black_70> Wouldn’t it have been easier to just use HTML and CSS? </H1>
               <BodyCopy  mt4 measure fw2 black_70>Yup. Like a lot easier.<br/> I don’t really have a witty response here. I should have done that</BodyCopy>
               <BodyCopy mt2 fw2 measure black_70> But I wanted to be a cool tech bro… </BodyCopy>
@@ -50,20 +51,40 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           <polygon points="0,100 100,100 0,0 0,100" color="#73BCBF" />
         </svg>
         <FullHeightSection dt>
-          <Wrapper dtc v_mid vh_100 w_100 pa6 bg_green>
+          <Wrapper vh_100 w_100 ph6 pv5 bg_green>
               <H1 f3 white> I know buzzwords. I have the best buzzwords: </H1>
-              <BodyCopy  mt4 measure fw2 white >Yup. Like a lot easier.<br/> I don’t really have a witty response here. I should have done that</BodyCopy>
-              <BodyCopy mt2 fw2 measure white > But I wanted to be a cool tech bro… </BodyCopy>
+              <BodyCopy mb0 mt4 measure fw2 white b >React </BodyCopy>
+              <ListText fw2 measure white >Imagine if someone said, how can we write more JavaScript?</ListText>
+              <BodyCopy mb0 mt4 measure fw2 white b >Webpack </BodyCopy>
+              <ListText fw2 measure white >This bundles things. Allows you to keep track of the hundreds of dependencies you now have.</ListText>
+              <BodyCopy mb0 mt4 measure fw2 white b >Redux </BodyCopy>
+              <ListText fw2 measure white >“Manages state.” I know what those words mean individually but…</ListText>
+              <BodyCopy mb0 mt4 measure fw2 white b >Styled Components </BodyCopy>
+              <ListText fw2 measure white >Allows you to write CSS inside Javascript components. Oh the irony.</ListText>
+              <BodyCopy mb0 mt4 measure fw2 white b >Tachyons </BodyCopy>
+              <ListText fw2 measure white >Genuinely dope CSS library.</ListText>
+              <BodyCopy mb0 mt4 measure fw2 white b >Tachyons JS </BodyCopy>
+              <ListText fw2 measure white >Maps Tachyons to JavaScript functions. </ListText>
+              <BodyCopy mb0 mt4 measure fw2 white b >Tachyons for Styled Components </BodyCopy>
+              <ListText fw2 measure white >Uses Tachyons JS to let you write Tachyons with Styled Components. *Screams internally*</ListText>
             </Wrapper>
         </FullHeightSection>
         <svg width="100%" height="50" preserveAspectRatio="none" viewBox="0 0 100 100">
           <polygon points="0,0 100,0 100,0 0,100" color="#73BCBF" />
         </svg>
         <FullHeightSection dt>
-          <Wrapper dtc v_mid vh_100 w_100 pa6>
+          <Wrapper dtc v_mid vh_100 w_100 pl6 relative>
+            <Wrapper right_0 top_1 absolute>
+                <svg height="400" width="400">
+                  <circle cx="200" cy="200" r="160" fill="#FFF7CE" />
+                  <circle cx="140" cy="140" r="120" fill="#DCD6FF" opacity="0.7" />
+                  <ListText purple b x="10%" y="32%" text-anchor="middle" opacity="0.7" > Random shapes are totally</ListText>
+                  <ListText purple b x="10%" y="37%" text-anchor="middle" opacity="0.7"> on trend </ListText>  
+                </svg>
+              </Wrapper>
               <H1 f3 black_70> Don’t sugar coat it. What are the downsides? </H1>
-              <BodyCopy  mt4 measure fw2 black_70>Like 1mb of JS g-zipped.<br/> Also, JavaScript in general.<br/> Only having a vague idea how anything works. </BodyCopy>
-              <BodyCopy mt2 fw2 measure black_70>Look, I ‘m not hating on React. But I think it only solves problems at scale. </BodyCopy>
+              <BodyCopy  mt4 measure fw2 black_70>JavaScript, JavaScript everywhere.<br/>Only having a vague idea how anything works.<br/>There are like 1000 things in my node_modules folder. </BodyCopy>
+              <BodyCopy mt2 fw2 measure_wide black_70>Look, I ‘m not hating on React. But I think it only solves problems at scale. </BodyCopy>
             </Wrapper>
         </FullHeightSection>
         <svg width="100%" height="50" preserveAspectRatio="none" viewBox="0 0 100 100">
