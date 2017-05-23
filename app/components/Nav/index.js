@@ -30,10 +30,10 @@ const NavLink = styled(Link)`
 export default class Nav extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <NavBar>
+      <NavBar mt3>
         <LinkGroup db dt-l pa3 w-100 w-75-l tr>
-          <NavLink f6 link dib white dim mr3 mr4-ns to="/"> about this site </NavLink>
-          <NavLink f6 link dib white dim mr3 mr4-ns to="about"> about me </NavLink>
+          <NavLink f6 fw2 link dib white dim mr4 mr4-ns to="/"> about this site </NavLink>
+          <NavLink f6 fw2 link dib white dim mr4 mr4-ns to="about"> about me </NavLink>
         </LinkGroup>
       </NavBar>
     )

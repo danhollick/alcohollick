@@ -19,6 +19,7 @@ import Nav from 'components/Nav';
 import Wrapper from 'components/Body/Wrapper';
 import SVGBorderBottom from 'components/Body/SVGBorderBottom';
 import H1 from 'components/Shared/H1.js';
+import H1Link from 'components/Shared/H1Link.js';
 import BodyCopy from 'components/Shared/BodyCopy.js';
 import ListText from 'components/Shared/ListText.js';
 
@@ -77,29 +78,29 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         </svg>
         <FullHeightSection dt>
           <Wrapper dtc v_mid vh_100 w_100 pl6 relative>
-            <Wrapper right_0 top_1 absolute>
+              <H1  f3 black_70> Don’t sugar coat it. What are the downsides? </H1>
+              <BodyCopy  mt4 measure fw2 black_70>JavaScript, JavaScript everywhere.<br/>Only having a vague idea how anything works.<br/>There are like 1000 things in my node_modules folder. </BodyCopy>
+              <BodyCopy mt2 fw2 measure_wide black_70>Look, I ‘m not hating on React. But I think it only solves problems at scale. </BodyCopy>
+              <Wrapper right_0 top_1 absolute >
                 <svg height="400" width="400">
                   <circle cx="200" cy="200" r="160" fill="#FFF7CE" />
                   <circle cx="140" cy="140" r="120" fill="#DCD6FF" opacity="0.7" />
-                  <ListText purple b x="10%" y="32%" text-anchor="middle" opacity="0.7" > Random shapes are totally</ListText>
-                  <ListText purple b x="10%" y="37%" text-anchor="middle" opacity="0.7"> on trend </ListText>  
+                  <ListText light_purple b x="10%" y="32%" text-anchor="middle" > Random shapes are totally</ListText>
+                  <ListText light_purple b x="10%" y="37%" text-anchor="middle"> on trend </ListText>  
                 </svg>
               </Wrapper>
-              <H1 f3 black_70> Don’t sugar coat it. What are the downsides? </H1>
-              <BodyCopy  mt4 measure fw2 black_70>JavaScript, JavaScript everywhere.<br/>Only having a vague idea how anything works.<br/>There are like 1000 things in my node_modules folder. </BodyCopy>
-              <BodyCopy mt2 fw2 measure_wide black_70>Look, I ‘m not hating on React. But I think it only solves problems at scale. </BodyCopy>
             </Wrapper>
         </FullHeightSection>
         <svg width="100%" height="50" preserveAspectRatio="none" viewBox="0 0 100 100">
           <polygon points="0,100 100,100 0,0 0,100" color="#E6FCFD" />
         </svg>
-        <Wrapper bg_light_blue w_100 pa6>
+        <Wrapper bg_light_blue w_100 pl6 pt5 pb4>
           <H1 f3 light_purple> Hit me up online </H1>
           <BodyCopy  mt4 measure_wide fw2 light_purple>Please don’t @ me about React.<br/> Can you believe I chose these colours? Jesus. Hope you’re not colour-blind. </BodyCopy>
-            <Wrapper flex>
-              <H1 mr4 f3 flex_column light_purple> Twitter </H1>
-              <H1 mh4 f3 flex_column light_purple> Medium </H1>
-              <H1 mh4 f3 flex_column light_purple> Instagram </H1>
+            <Wrapper flex mt4>
+              <H1Link link mr4 f3 b light_purple href="https://twitter.com/DanHollick" target="_blank"> Twitter </H1Link>
+              <H1Link link mh4 f3 b light_purple href="https://medium.com/@danhollick" target="_blank"> Medium </H1Link>
+              <H1Link link mh4 f3 b light_purple href="https://www.instagram.com/squirrelabuser/" target="_blank"> Instagram </H1Link>
             </Wrapper>
         </Wrapper>
         </div>
