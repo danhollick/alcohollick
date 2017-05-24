@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import 'variables.css';
 
 
-
 const FullHeightSection = styled.div`
   ${tachyons}
   height: 100vh;

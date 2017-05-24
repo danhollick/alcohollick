@@ -29,11 +29,11 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
     return (
       <div>
         <FullHeightSection bg_red dt >
-          <Nav />
+          <Nav/>
           <Wrapper dt bg_red vh_75 w_100 ph6 pv7>
             <Wrapper dtc v_mid>
-              <H1 f3 f6_ns white> Hey, welcome to my site. </H1>
-              <BodyCopy  mt4 measure fw2 white> Can you believe I learnt React to build this single page, static site? <br/> I know right. It’s kind of like using a tank to go to the grocery store </BodyCopy>
+              <H1 f3 white> Hey, welcome to my site. </H1>
+              <BodyCopy mt4 measure fw2 white> Can you believe I learnt React to build this single page, static site? <br/> I know right. It’s kind of like using a tank to go to the grocery store </BodyCopy>
               <BodyCopy mt2 fw2 measure white> You can do it but it doesn’t mean it’s a good idea. </BodyCopy>
             </Wrapper>
           </Wrapper>
@@ -47,7 +47,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           </Wrapper>
           <Wrapper dtc v_mid vh_75 w_100 pa6>
               <H1 f3 black_70> Wouldn’t it have been easier to just use HTML and CSS? </H1>
-              <BodyCopy  mt4 measure fw2 black_70>Yup. Like a lot easier.<br/> I don’t really have a witty response here. I should have done that</BodyCopy>
+              <BodyCopy mt4 measure fw2 black_70>Yup. Like a lot easier.<br/> I don’t really have a witty response here. I should have done that</BodyCopy>
               <BodyCopy mt2 fw2 measure black_70> But I wanted to be a cool tech bro… </BodyCopy>
             </Wrapper>
         </FullHeightSection>
@@ -83,9 +83,9 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
               <BodyCopy mt2 fw2 measure_wide black_70>Look, I ‘m not hating on React. But I think it only solves problems at scale. </BodyCopy>
               <Wrapper right_0 top_1 absolute >
                 <svg height="400" width="400">
-                  <circle cx="200" cy="200" r="160" fill="#FFF7CE" />
-                  <circle cx="140" cy="140" r="120" fill="#DCD6FF" opacity="0.7" />
-                  <ListText light_purple b x="10%" y="32%" text-anchor="middle" > Random shapes are totally</ListText>
+                  <circle cx="200" cy="200" r="160" fill="#FFF7CE"/>
+                  <circle cx="140" cy="140" r="120" fill="#DCD6FF" opacity="0.7"/>
+                  <ListText light_purple b x="10%" y="32%" text-anchor="middle"> Random shapes are totally</ListText>
                   <ListText light_purple b x="10%" y="37%" text-anchor="middle"> on trend </ListText>  
                 </svg>
               </Wrapper>
