@@ -25,15 +25,30 @@ ${tachyons}
 
 const NavLink = styled(Link)`
   ${tachyons}
+    &:hover {
+      opacity: 1;
+      transition: opacity .15s ease-in;
+    }
+    &:focus {
+      opacity: 1;
+      transition: opacity .15s ease-in;
+    }
+    &:active {
+      opacity: 1;
+      transition: opacity .15s ease-in;
+    }
+    text-decoration: none;
+    color: white;
+    opacity: 0.5;
 `;
 
 export default class Nav extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <NavBar mt3>
-        <LinkGroup db dt-l pa3 w-100 w-75-l tr>
-          <NavLink f6 fw2 link dib white dim mr4 mr4-ns to="/"> about this site </NavLink>
-          <NavLink f6 fw2 link dib white dim mr4 mr4-ns to="about"> about me </NavLink>
+        <LinkGroup db pa3 w-100 tr>
+          <NavLink f6 fw2 dib mr4 to="/"> about this site </NavLink>
+          <NavLink f6 fw2 dib mr4 to="about"> about me </NavLink>
         </LinkGroup>
       </NavBar>
     )

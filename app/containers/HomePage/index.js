@@ -32,7 +32,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           <Nav />
           <Wrapper dt bg_red vh_75 w_100 ph6 pv7>
             <Wrapper dtc v_mid>
-              <H1 f3 white> Hey, welcome to my site. </H1>
+              <H1 f3 f6_ns white> Hey, welcome to my site. </H1>
               <BodyCopy  mt4 measure fw2 white> Can you believe I learnt React to build this single page, static site? <br/> I know right. It’s kind of like using a tank to go to the grocery store </BodyCopy>
               <BodyCopy mt2 fw2 measure white> You can do it but it doesn’t mean it’s a good idea. </BodyCopy>
             </Wrapper>

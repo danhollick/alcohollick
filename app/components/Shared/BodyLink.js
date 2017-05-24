@@ -5,6 +5,10 @@ import 'variables.css';
 
 const BodyLink = styled.a`
   ${tachyons}
+  &:hover {
+      opacity: .5;
+      transition: opacity .15s ease-in;
+    }
 `;
 
 export default BodyLink;
