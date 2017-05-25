@@ -9,6 +9,7 @@ const H1Link = styled.a`
       opacity: .5;
       transition: opacity .15s ease-in;
     }
+  color: ${props => props.primary ? 'white' : 'var(--light-purple)'};
 `;
 
 export default H1Link;

@@ -25,28 +25,28 @@ import BodyCopy from 'components/Shared/BodyCopy.js';
 import BodyLink from 'components/Shared/BodyLink.js';
 import Logo from 'components/Shared/Logo.js';
 import logo from '/Users/DanHollick/dev/alcohollick/app/assets/simplePortrait@2x.png';
+import SocialLinks from 'components/Shared/SocialLinks.js';
 
 
 
 export default class AboutPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <FullHeightSection bg_green dt >
+      <FullHeightSection bg_green dt relative pl6 >
           <Nav />
-          <Wrapper bg_green vh_75 w_100 pa6 dt>
+          <Wrapper bg_green vh_75 w_100 dt>
             <Wrapper dtc v_mid w_50 >
               <H1 f3 white> I am a designer. </H1>
               <BodyCopy mt4 measure_wide fw2 white> Currently working for <BodyLink link washed_green href="https://www.fusetools.com/"> Fuse </BodyLink> in Oslo, Norway (I didn't do that site).<br/> We do some cool shit.<br/>Previously at <BodyLink link washed_green href="https://www.barclaysafrica.com/barclaysafrica/"> Barclays Africa </BodyLink>, <BodyLink link washed_green href="http://www.mavenagency.co.za/"> Maven Agency,</BodyLink> <BodyLink link washed_green href="http://www.levergy.co.za/"> Levergy </BodyLink> </BodyCopy>
-              <Wrapper w_75 absolute bottom_0 mb5>
-                  <H1Link link mr4 f3 b white href="https://twitter.com/DanHollick" target="_blank"> Twitter </H1Link>
-                  <H1Link link mh4 f3 b white href="https://medium.com/@danhollick" target="_blank"> Medium </H1Link>
-                  <H1Link link mh4 f3 b white href="https://www.instagram.com/squirrelabuser/" target="_blank"> Instagram </H1Link>
-              </Wrapper>
+              
             </Wrapper>
+            
             <Wrapper dtc v_mid w_50 >
-                <Logo src={logo} height="200" fr />
-              </Wrapper>
+                <Logo src={logo} height="200" fr mr6 />
+            </Wrapper>
+            
           </Wrapper>
+          <SocialLinks primary absolute bottom_0 ma5 />
         </FullHeightSection>
     );
   }
