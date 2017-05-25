@@ -6,7 +6,7 @@ import 'variables.css';
 const Logo = styled.img`
   ${tachyons}
 
-  transform: scale(1.2) rotate(0deg);
+  transform: scale(1) rotate(0deg);
   transition: transform .25s ease-in-out;
 
   &:hover {

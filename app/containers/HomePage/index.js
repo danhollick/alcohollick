@@ -22,7 +22,7 @@ import H1 from 'components/Shared/H1.js';
 import H1Link from 'components/Shared/H1Link.js';
 import BodyCopy from 'components/Shared/BodyCopy.js';
 import ListText from 'components/Shared/ListText.js';
-
+import TextBlock from 'components/Shared/TextBlock.js';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -31,11 +31,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         <FullHeightSection bg_red dt >
           <Nav/>
           <Wrapper dt bg_red vh_75 w_100 ph6 pv7>
-            <Wrapper dtc v_mid>
-              <H1 f3 white> Hey, welcome to my site. </H1>
-              <BodyCopy mt4 measure fw2 white> Can you believe I learnt React to build this single page, static site? <br/> I know right. It’s kind of like using a tank to go to the grocery store </BodyCopy>
-              <BodyCopy mt2 fw2 measure white> You can do it but it doesn’t mean it’s a good idea. </BodyCopy>
-            </Wrapper>
+              <TextBlock primary title="Hey, welcome to my site." description="Can you believe I learnt React to build this single page, static site?" description1="I know right. It’s kind of like using a tank to go to the grocery store" description2="You can do it but it doesn’t mean it’s a good idea."/>
           </Wrapper>
         </FullHeightSection>
         <svg width="100%" height="50" preserveAspectRatio="none" viewBox="0 0 100 100">
