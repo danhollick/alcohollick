@@ -17,11 +17,13 @@ import tachyons from 'styled-components-tachyons';
 import styled from 'styled-components';
 import Wrapper from 'components/Body/Wrapper';
 
+
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     children: React.PropTypes.node,
   };
+
 
   render() {
     return (

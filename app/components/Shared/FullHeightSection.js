@@ -9,6 +9,7 @@ const FullHeightSection = styled.div`
   height: 100vh;
   width: 100%;
   display: table;
+
 `;
 
 export default FullHeightSection;

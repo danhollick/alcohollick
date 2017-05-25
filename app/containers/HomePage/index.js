@@ -19,6 +19,8 @@ import Nav from 'components/Nav';
 import Wrapper from 'components/Body/Wrapper';
 import SVGBorderBottom from 'components/Body/SVGBorderBottom';
 import SVGBorderTop from 'components/Body/SVGBorderTop';
+import BodyCopy from 'components/Shared/BodyCopy.js';
+import TextBlock from 'components/Shared/TextBlock.js';
 import Footer from 'components/Shared/Footer.js';
 import FeatureSection from 'components/Shared/FeatureSection.js';
 import RandomCircles from 'components/Shared/RandomCircles.js';
@@ -28,7 +30,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
     return (
         <div>
           <FullHeightSection bg_red dt relative>
-            <Nav/>
+            <Nav />
             <Wrapper dt bg_red vh_75 w_100 >
                 <TextBlock primary title="Hey, welcome to my site." description="Can you believe I learnt React to build this single page, static site?" description1="I know right. It’s kind of like using a tank to go to the grocery store" description2="You can do it but it doesn’t mean it’s a good idea."/>
             </Wrapper>
