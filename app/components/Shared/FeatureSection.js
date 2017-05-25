@@ -9,7 +9,7 @@ import H1 from 'components/Shared/H1.js';
 export default class FeatureSection extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Wrapper vh_100 w_100 ph6 pv5>
+      <Wrapper vh_100 w_100 ph6 pt6 pb4>
           <H1 f3 white> I know buzzwords. I have the best buzzwords: </H1>
           <ListItem listHeader="React" listDescription="Imagine if someone said, how can we write more JavaScript?"/>
           <ListItem listHeader="Webpack" listDescription="This bundles things. Allows you to keep track of the hundreds of dependencies you now have."/>
