@@ -9,12 +9,10 @@ const CircleText = styled.text`
   ${tachyons}
 `;
 
-
-
 export default class RandomCircles extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Wrapper  >
+      <Wrapper right_0 top_1 absolute>
         <svg height="400" width="400">
           <circle cx="200" cy="200" r="160" fill="#FFF7CE"/>
           <circle cx="140" cy="140" r="120" fill="#DCD6FF" opacity="0.7"/>
