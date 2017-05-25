@@ -30,7 +30,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
     return (
         <div>
           <FullHeightSection bg_red dt relative>
-            <Nav />
+            <Nav pa6_m pa4_l />
             <Wrapper dt bg_red vh_75 w_100 >
                 <TextBlock primary title="Hey, welcome to my site." description="Can you believe I learnt React to build this single page, static site?" description1="I know right. It’s kind of like using a tank to go to the grocery store" description2="You can do it but it doesn’t mean it’s a good idea."/>
             </Wrapper>
