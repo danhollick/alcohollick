@@ -21,9 +21,10 @@ import SVGBorderBottom from 'components/Body/SVGBorderBottom';
 import H1 from 'components/Shared/H1.js';
 import H1Link from 'components/Shared/H1Link.js';
 import BodyCopy from 'components/Shared/BodyCopy.js';
-import ListText from 'components/Shared/ListText.js';
 import TextBlock from 'components/Shared/TextBlock.js';
 import Footer from 'components/Shared/Footer.js';
+import FeatureSection from 'components/Shared/FeatureSection.js';
+import RandomCircles from 'components/Shared/RandomCircles.js';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -48,44 +49,19 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           <polygon points="0,100 100,100 0,0 0,100" color="#73BCBF" />
         </svg>
         <FullHeightSection dt>
-          <Wrapper vh_100 w_100 ph6 pv5 bg_green>
-              <H1 f3 white> I know buzzwords. I have the best buzzwords: </H1>
-              <BodyCopy mb0 mt4 measure fw2 white b >React </BodyCopy>
-              <ListText fw2 measure white >Imagine if someone said, how can we write more JavaScript?</ListText>
-              <BodyCopy mb0 mt4 measure fw2 white b >Webpack </BodyCopy>
-              <ListText fw2 measure white >This bundles things. Allows you to keep track of the hundreds of dependencies you now have.</ListText>
-              <BodyCopy mb0 mt4 measure fw2 white b >Redux </BodyCopy>
-              <ListText fw2 measure white >“Manages state.” I know what those words mean individually but…</ListText>
-              <BodyCopy mb0 mt4 measure fw2 white b >Styled Components </BodyCopy>
-              <ListText fw2 measure white >Allows you to write CSS inside Javascript components. Oh the irony.</ListText>
-              <BodyCopy mb0 mt4 measure fw2 white b >Tachyons </BodyCopy>
-              <ListText fw2 measure white >Genuinely dope CSS library.</ListText>
-              <BodyCopy mb0 mt4 measure fw2 white b >Tachyons JS </BodyCopy>
-              <ListText fw2 measure white >Maps Tachyons to JavaScript functions. </ListText>
-              <BodyCopy mb0 mt4 measure fw2 white b >Tachyons for Styled Components </BodyCopy>
-              <ListText fw2 measure white >Uses Tachyons JS to let you write Tachyons with Styled Components. *Screams internally*</ListText>
-            </Wrapper>
+          <FeatureSection/>
         </FullHeightSection>
         <svg width="100%" height="50" preserveAspectRatio="none" viewBox="0 0 100 100">
           <polygon points="0,0 100,0 100,0 0,100" color="#73BCBF" />
         </svg>
         <FullHeightSection dt relative>
           <TextBlock title="Don’t sugar coat it. What are the downsides?" description="JavaScript, JavaScript everywhere." description1="Only having a vague idea how anything works." descriptionExtra="There are like 1000 things in my node_modules folder." description2="Look, I ‘m not hating on React. But I think it only solves problems at scale."/>
-            <Wrapper right_0 top_1 absolute >
-              <svg height="400" width="400">
-                <circle cx="200" cy="200" r="160" fill="#FFF7CE"/>
-                <circle cx="140" cy="140" r="120" fill="#DCD6FF" opacity="0.7"/>
-                <ListText light_purple b x="10%" y="32%" text-anchor="middle"> Random shapes are totally</ListText>
-                <ListText light_purple b x="10%" y="37%" text-anchor="middle"> on trend </ListText>  
-              </svg>
-            </Wrapper>
+          <RandomCircles right_0 top_1 absolute/>
         </FullHeightSection>
         <svg width="100%" height="50" preserveAspectRatio="none" viewBox="0 0 100 100">
           <polygon points="0,100 100,100 0,0 0,100" color="#E6FCFD" />
         </svg>
-        
           <Footer title="Hit me up online" description="Please don’t @ me about React." description1="Can you believe I chose these colours? Jesus. Hope you’re not colour-blind." />
-          
         </div>
     );
   }

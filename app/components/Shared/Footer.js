@@ -7,7 +7,6 @@ import SVGBorderBottom from 'components/Body/SVGBorderBottom';
 import H1 from 'components/Shared/H1.js';
 import H1Link from 'components/Shared/H1Link.js';
 import BodyCopy from 'components/Shared/BodyCopy.js';
-import ListText from 'components/Shared/ListText.js';
 import SocialLinks from 'components/Shared/SocialLinks.js';
 
 
