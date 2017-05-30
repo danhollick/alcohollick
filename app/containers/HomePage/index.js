@@ -24,16 +24,24 @@ import TextBlock from 'components/Shared/TextBlock.js';
 import Footer from 'components/Shared/Footer.js';
 import FeatureSection from 'components/Shared/FeatureSection.js';
 import RandomCircles from 'components/Shared/RandomCircles.js';
+import Hand from 'components/Shared/Hand.js';
+import hand from '/Users/DanHollick/dev/alcohollick/app/assets/WavingEmoji.png';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
         <div>
-          <FullHeightSection bg_red dt relative>
+          <FullHeightSection bg_red>
             <Nav pa6_m pa4_l />
-            <Wrapper dt bg_red vh_75 w_100 >
-                <TextBlock primary title="Hey, welcome to my site." description="Can you believe I learnt React to build this single page, static site?" description1="I know right. It’s kind of like using a tank to go to the grocery store" description2="You can do it but it doesn’t mean it’s a good idea."/>
+            <Wrapper dt vh_75 w_100>
+              <Wrapper dtc v_mid w_75>
+                  <TextBlock primary title="Hey, welcome to my site." description="Can you believe I learnt React to build this single page, static site?" description1="I know right. It’s kind of like using a tank to go to the grocery store" description2="You can do it but it doesn’t mean it’s a good idea."/>
+              </Wrapper>
+              <Wrapper dtc v_mid w_25>
+                <Hand src={hand} height="80" fr mr7 />
+              </Wrapper>
             </Wrapper>
+            
           </FullHeightSection>
           <SVGBorderBottom primary/>
           <FullHeightSection dt relative>
