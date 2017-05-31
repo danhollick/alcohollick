@@ -16,6 +16,9 @@ import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
 import 'sanitize.css/sanitize.css';
+import tachyons from 'styled-components-tachyons';
+import styled from 'styled-components';
+import 'variables.css';
 
 // Import root app
 import App from 'containers/App';

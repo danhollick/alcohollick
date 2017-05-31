@@ -30,9 +30,12 @@ import hand from '/Users/DanHollick/dev/alcohollick/app/assets/WavingEmoji.png';
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-        <div>
+        <Wrapper>
           <FullHeightSection bg_red>
-            <Nav pa6_m pa4_l />
+            <Wrapper bg_green pa4 >
+              <Wrapper h4 bg_yellow/>
+            </Wrapper>
+            <Nav pa4 pa6_ns/>
             <Wrapper dt vh_75 w_100>
               <Wrapper dtc v_mid w_75>
                   <TextBlock primary title="Hey, welcome to my site." description="Can you believe I learnt React to build this single page, static site?" description1="I know right. It’s kind of like using a tank to go to the grocery store" description2="You can do it but it doesn’t mean it’s a good idea."/>
@@ -41,7 +44,6 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
                 <Hand src={hand} height="80" fr mr7 />
               </Wrapper>
             </Wrapper>
-            
           </FullHeightSection>
           <SVGBorderBottom primary/>
           <FullHeightSection dt relative>
@@ -61,7 +63,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           </FullHeightSection>
           <SVGBorderTop primary/>
           <Footer title="Hit me up online" description="Please don’t @ me about React." description1="Can you believe I chose these colours? Jesus. Hope you’re not colour-blind." />
-        </div>
+        </Wrapper>
     );
   }
 }
