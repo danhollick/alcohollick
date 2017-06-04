@@ -8,12 +8,10 @@
  * reloading is not a necessity for you then you can refactor it and remove
  * the linting exception.
  */
-
+import 'variables.css'
 import React from 'react';
 import tachyons from 'styled-components-tachyons';
 import styled from 'styled-components';
-import 'variables.css';
-
 import FullHeightSection from 'components/Shared/FullHeightSection.js';
 import Nav from 'components/Nav';
 import Wrapper from 'components/Body/Wrapper';
@@ -30,24 +28,19 @@ import hand from '/Users/DanHollick/dev/alcohollick/app/assets/WavingEmoji.png';
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-        <Wrapper>
-          <FullHeightSection bg_red>
-            <Wrapper bg_green pa4 >
-              <Wrapper h4 bg_yellow/>
-            </Wrapper>
-            <Nav pa4 pa6_ns/>
-            <Wrapper dt vh_75 w_100>
-              <Wrapper dtc v_mid w_75>
-                  <TextBlock primary title="Hey, welcome to my site." description="Can you believe I learnt React to build this single page, static site?" description1="I know right. It’s kind of like using a tank to go to the grocery store" description2="You can do it but it doesn’t mean it’s a good idea."/>
-              </Wrapper>
-              <Wrapper dtc v_mid w_25>
-                <Hand src={hand} height="80" fr mr7 />
+        <div>
+          <FullHeightSection bg_red >
+            <Nav  />
+            <Wrapper dt vh_100 w_100 pb5 >
+              <TextBlock primary title="Hey, welcome to my site." description="Can you believe I learnt React to build this single page, static site?" description1="I know right. It’s kind of like using a tank to go to the grocery store" description2="You can do it but it doesn’t mean it’s a good idea."/>
+              <Wrapper dtc_ns v_mid dn w_25_ns>
+                <Hand src={hand} h3 mr7_l mr4_m />
               </Wrapper>
             </Wrapper>
           </FullHeightSection>
           <SVGBorderBottom primary/>
           <FullHeightSection dt relative>
-            <Wrapper right_0 mr4 top__1 absolute>
+            <Wrapper right_0 mr4 top__1_ns absolute_ns dn>
                 <BodyCopy fw2 measure black_70>Look at this angled line!<br/>It's a fucking SVG! The web is a magical place.</BodyCopy>
             </Wrapper>
             <TextBlock title="Wouldn’t it have been easier to just use HTML and CSS?" description="Yup. Like a lot easier." description1="I don’t really have a witty response here. I should have done that" description2="But I wanted to be a cool tech bro…"/>
@@ -63,7 +56,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           </FullHeightSection>
           <SVGBorderTop primary/>
           <Footer title="Hit me up online" description="Please don’t @ me about React." description1="Can you believe I chose these colours? Jesus. Hope you’re not colour-blind." />
-        </Wrapper>
+        </div>
     );
   }
 }

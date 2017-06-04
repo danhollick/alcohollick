@@ -101,6 +101,15 @@ var VisitState = function () {
             extractURL(node.trailingComments);
         }
 
+        // for these expressions the statement counter needs to be hoisted, so
+        // function name inference can be preserved
+
+    }, {
+        key: 'counterNeedsHoisting',
+        value: function counterNeedsHoisting(path) {
+            return path.isFunctionExpression() || path.isArrowFunctionExpression() || path.isClassExpression();
+        }
+
         // all the generic stuff that needs to be done on enter for every node
 
     }, {
@@ -184,7 +193,7 @@ var VisitState = function () {
                 path.node.body.unshift(T.expressionStatement(increment));
             } else if (path.isStatement()) {
                 path.insertBefore(T.expressionStatement(increment));
-            } else if ((path.isFunctionExpression() || path.isArrowFunctionExpression()) && T.isVariableDeclarator(path.parentPath)) {
+            } else if (this.counterNeedsHoisting(path) && T.isVariableDeclarator(path.parentPath)) {
                 // make an attempt to hoist the statement counter, so that
                 // function names are maintained.
                 var parent = path.parentPath.parentPath;
@@ -482,6 +491,14 @@ var codeVisitor = {
 };
 // the template to insert at the top of the program.
 var coverageTemplate = (0, _babelTemplate2.default)('\n    var COVERAGE_VAR = (function () {\n        var path = PATH,\n            hash = HASH,\n            global = (new Function(\'return this\'))(),\n            gcv = GLOBAL_COVERAGE_VAR,\n            coverageData = INITIAL,\n            coverage = global[gcv] || (global[gcv] = {});\n        if (coverage[path] && coverage[path].hash === hash) {\n            return coverage[path];\n        }\n        coverageData.hash = hash;\n        return coverage[path] = coverageData;\n    })();\n');
+// the rewire plugin (and potentially other babel middleware)
+// may cause files to be instrumented twice, see:
+// https://github.com/istanbuljs/babel-plugin-istanbul/issues/94
+// we should only instrument code for coverage the first time
+// it's run through istanbul-lib-instrument.
+function alreadyInstrumented(path, visitState) {
+    return path.scope.hasBinding(visitState.varName);
+}
 /**
  * programVisitor is a `babel` adaptor for instrumentation.
  * It returns an object with two methods `enter` and `exit`.
@@ -510,9 +527,15 @@ function programVisitor(types) {
     var visitState = new VisitState(types, sourceFilePath, opts.inputSourceMap);
     return {
         enter: function enter(path) {
+            if (alreadyInstrumented(path, visitState)) {
+                return;
+            }
             path.traverse(codeVisitor, visitState);
         },
         exit: function exit(path) {
+            if (alreadyInstrumented(path, visitState)) {
+                return;
+            }
             visitState.cov.freeze();
             var coverageData = visitState.cov.toJSON();
             coverageData[_constants.MAGIC_KEY] = _constants.MAGIC_VALUE;

@@ -12,9 +12,6 @@
  */
 
 import React from 'react';
-import tachyons from 'styled-components-tachyons';
-import styled from 'styled-components';
-import 'variables.css';
 
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
