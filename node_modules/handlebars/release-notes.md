@@ -2,7 +2,51 @@
 
 ## Development
 
-[Commits](https://github.com/lawnsea/handlebars.js/compare/v4.0.6...master)
+[Commits](https://github.com/nknapp/handlebars.js/compare/v4.0.10...master)
+
+## v4.0.10 - May 21st, 2017
+- Fix regression in 4.0.9: Replace "Object.assign" (not support in IE) by "util/extend" - 0e953d1
+
+
+
+[Commits](https://github.com/nknapp/handlebars.js/compare/v4.0.9...v4.0.10)
+
+## v4.0.9 - May 21st, 2017
+
+- [#1327](https://github.com/wycats/handlebars.js/issues/1327) Handlebars.compile() does not modify "options" anymore
+- pending [#1331](https://github.com/wycats/handlebars.js/issues/1331) Attempts to build Handlebars in a Windows environment
+  - Fix build in windows - cc554a5
+  - Ensure LF line-edings in handlebars-template fixtures (*.hbs) - ed879a6
+  - Run integration test with `node handlebars -a ...` on Windows - 2e21e2b
+  - Ensure LF line-edings in lexer-files (*.l) - bdfdbea
+  - Force LF line-endings for spec/artifacts - b50ef03
+  - Use istanbul/lib/cli.js instead of node_modules/.bin/istanbul - 6e6269f
+- TravisCI: Publish valid semver tags independently of the branch - 7378f85
+
+Compatibility notes:
+- No compatibility issues are expected.
+
+[Commits](https://github.com/nknapp/handlebars.js/compare/v4.0.8...v4.0.9)
+
+## v4.0.8 - May 2nd, 2017
+- [#1341](https://github.com/wycats/handlebars.js/issues/1341) [#1342](https://github.com/wycats/handlebars.js/issues/1342) Allow partial-blocks to be executed without "options" ([@nknapp](https://github.com/nknapp)) - a00c598
+
+Compatibility notes:
+- No breaking changes
+
+[Commits](https://github.com/nknapp/handlebars.js/compare/v4.0.7...v4.0.8)
+
+## v4.0.7 - April 29th, 2017
+- [#1319](https://github.com/wycats/handlebars.js/issues/1319): Fix context-stack when calling block-helpers on null values ([@nknapp](https://github.com/nknapp)) - c8f4b57
+- [#1315](https://github.com/wycats/handlebars.js/pull/1315) Parser: Change suffix to use ES6 default module export ([@Turbo87](https://github.com/Turbo87))- b617375
+- [#1290](https://github.com/wycats/handlebars.js/pull/1290) [#1252](https://github.com/wycats/handlebars.js/issue/1290) Add more tests for partial-blocks and inline partials ([@nknapp](https://github.com/nknapp)) -  63a8e0c
+- [#1252](https://github.com/wycats/handlebars.js/issue/1290) Using @partial-block twice in a template not possible ([@nknapp](https://github.com/nknapp)) - 5a164d0
+- [#1310](https://github.com/wycats/handlebars.js/pull/1310) Avoid duplicate "sourceMappingURL=" lines. ([@joonas-lahtinen](https://github.com/joonas-lahtinen)) - 01b0f65
+- [#1275](https://github.com/wycats/handlebars.js/pull/1275) require('sys') is deprecated, using 'util' instead ([@travnels](https://github.com/travnels)) - 406f2ee
+- [#1285](https://github.com/wycats/handlebars.js/pull/1285) [#1284](https://github.com/wycats/handlebars.js/issues/1284) Make "column"-property of Errors enumerable ([@nknapp](https://github.com/nknapp)) - a023cb4
+- [#1285](https://github.com/wycats/handlebars.js/pull/1285) Testcase to verify that compile-errors have a column-property ([@nknapp](https://github.com/nknapp)) - c7dc353
+
+[Commits](https://github.com/lawnsea/handlebars.js/compare/v4.0.6...v4.0.7)
 
 ## v4.0.6 - November 12th, 2016
 - [#1243](https://github.com/wycats/handlebars.js/pull/1243) - Walk up data frames for nested @partial-block ([@lawnsea](https://github.com/lawnsea))

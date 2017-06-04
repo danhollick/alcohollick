@@ -12,10 +12,6 @@
  */
 
 import React from 'react';
-import Nav from 'components/Nav'
-import tachyons from 'styled-components-tachyons';
-import styled from 'styled-components';
-import Wrapper from 'components/Body/Wrapper';
 
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

@@ -1,7 +1,7 @@
 /* eslint-disable new-cap */
 
 import Exception from '../exception';
-import {isArray, indexOf} from '../utils';
+import {isArray, indexOf, extend} from '../utils';
 import AST from './ast';
 
 const slice = [].slice;
@@ -70,7 +70,7 @@ Compiler.prototype = {
       for (let name in knownHelpers) {
         /* istanbul ignore else */
         if (name in knownHelpers) {
-          options.knownHelpers[name] = knownHelpers[name];
+          this.options.knownHelpers[name] = knownHelpers[name];
         }
       }
     }
@@ -488,6 +488,7 @@ export function compile(input, options = {}, env) {
     throw new Exception('You must pass a string or Handlebars AST to Handlebars.compile. You passed ' + input);
   }
 
+  options = extend({}, options);
   if (!('data' in options)) {
     options.data = true;
   }
