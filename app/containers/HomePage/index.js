@@ -29,15 +29,16 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
   render() {
     return (
         <div>
-          <FullHeightSection bg_red>
+            
+            <FullHeightSection bg_red>
             <Nav/>
-            <Wrapper dt vh_100 w_100 pb5>
+            <Wrapper  dt h_100 w_100 pb5>
               <TextBlock primary title="Hey, welcome to my site." description="Can you believe I learnt React to build this single page, static site?" description1="I know right. It’s kind of like using a tank to go to the grocery store" description2="You can do it but it doesn’t mean it’s a good idea."/>
               <Wrapper dtc_ns v_mid dn w_25_ns>
-                <Hand src={hand} h3 mr7_l mr4_m/>
+                <Hand src={hand} h3 mr7_l mr4_m />
               </Wrapper>
             </Wrapper>
-          </FullHeightSection>
+            </FullHeightSection>
           <SVGBorderBottom primary/>
           <FullHeightSection dt relative>
             <Wrapper right_0 mr4 top__1_ns absolute_ns db_ns dn>
