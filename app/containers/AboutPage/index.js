@@ -31,17 +31,19 @@ export default class AboutPage extends React.PureComponent { // eslint-disable-l
     return (
       <FullHeightSection bg_green vh_100 > 
         <Nav />
-        <Wrapper ml6_l ml5_m ml4 mt4 mt0_ns mb2 mb0_ns dt h_75 w_75 >
-          <Wrapper dtc_ns v_mid  w_75 m4 >
-            <H1 f3 white> I am a designer. </H1>
-            <BodyCopy measure_wide_ns measure fw2 white> Currently working for <BodyLink link washed_green href="https://www.fusetools.com/"> Fuse </BodyLink> in Oslo, Norway (I didn't do that site).<br/> We do some cool shit.<br/>Previously at <BodyLink link washed_green href="https://www.barclaysafrica.com/barclaysafrica/"> Barclays Africa </BodyLink>, <BodyLink link washed_green href="http://www.mavenagency.co.za/"> Maven Agency,</BodyLink> <BodyLink link washed_green href="http://www.levergy.co.za/"> Levergy </BodyLink> </BodyCopy>
+        <Wrapper flex items_center w_100 h_75>
+          <Wrapper ml6_l ml5_m ml4 mt4 mt0_ns mb2 mb0_ns flex_row_ns flex  >
+            <Wrapper w_75 mr6 mr4_m >
+              <H1 f3 white> I am a designer. </H1>
+              <BodyCopy measure_wide_ns measure fw2 white> Currently working for <BodyLink link washed_green href="https://www.fusetools.com/"> Fuse </BodyLink> in Oslo, Norway (I didn't do that site).<br/> We do some cool shit.<br/>Previously at <BodyLink link washed_green href="https://www.barclaysafrica.com/barclaysafrica/"> Barclays Africa </BodyLink>, <BodyLink link washed_green href="http://www.mavenagency.co.za/"> Maven Agency,</BodyLink> <BodyLink link washed_green href="http://www.levergy.co.za/"> Levergy </BodyLink> </BodyCopy>
+              <Wrapper mt4>
+                <SocialLinks primary/>   
+              </Wrapper>       
+            </Wrapper>
+            <Wrapper dt_ns w_25 dn>
+                <Logo src={logo} height="200"  mr0 mr6_l mr4_m />
+            </Wrapper>
           </Wrapper>
-          <Wrapper dtc_ns v_mid w_25 dn>
-              <Logo src={logo} height="200"  mr0 mr6_l mr4_m />
-          </Wrapper>
-        </Wrapper>
-        <Wrapper mh6_l mh5_m mh4 mb4>
-         <SocialLinks  primary />
         </Wrapper>
       </FullHeightSection>
     );

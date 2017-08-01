@@ -47,7 +47,7 @@
   "lint-staged": {
     "*.js": "lint:eslint"
   },
-  //"pre-commit": "lint:staged",  Undo for pre-commit linting
+  //"pre-commit": "lint:staged",  
   "babel": {
     "presets": [
       [
