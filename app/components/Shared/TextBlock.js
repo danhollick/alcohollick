@@ -20,8 +20,8 @@ export default class TextBlock extends React.PureComponent { // eslint-disable-l
     return (
       <Wrapper dtc v_mid ph6_l ph5_m ph4 >
       <H1 f3 primary={this.props.primary}>{this.props.title} </H1>
-        <BodyCopy primary={this.props.primary} mt4 fw2 measure >{this.props.description}<br/>{this.props.description1}<br/>{this.props.descriptionExtra}</BodyCopy>
-        <BodyCopy primary={this.props.primary} mt2 fw2 measure >{this.props.description2}</BodyCopy>
+        <BodyCopy primary={this.props.primary} mt4 fw2_ns fw4 measure >{this.props.description}<br/>{this.props.description1}<br/>{this.props.descriptionExtra}</BodyCopy>
+        <BodyCopy primary={this.props.primary} mt2 fw2_ns fw4 measure >{this.props.description2}</BodyCopy>
       </Wrapper>
     )
   }

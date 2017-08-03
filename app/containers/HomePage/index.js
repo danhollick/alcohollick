@@ -42,7 +42,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           <SVGBorderBottom primary/>
           <FullHeightSection dt relative>
             <Wrapper right_0 mr4 top__1_ns absolute_ns db_ns dn>
-                <BodyCopy fw2 measure black_70>Look at this angled line!<br/>It's a fucking SVG! The web is a magical place.</BodyCopy>
+                <BodyCopy fw2_ns fw4 measure black_70>Look at this angled line!<br/>It's a fucking SVG! The web is a magical place.</BodyCopy>
             </Wrapper>
             <TextBlock title="Wouldn’t it have been easier to just use HTML and CSS?" description="Yup. Like a lot easier." description1="I don’t really have a witty response here. I should have done that" description2="But I wanted to be a cool tech bro…"/>
           </FullHeightSection>

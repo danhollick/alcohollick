@@ -48,8 +48,8 @@ export default class Nav extends React.PureComponent { // eslint-disable-line re
 
       <NavBar mt3_ns mt2>
         <LinkGroup db pa3_ns pa2 w_100 tr>
-          <NavLink f6 fw2 dib mr4 activeStyle={{opacity: 1}} to="/"> about this site </NavLink>
-          <NavLink f6 fw2 dib mr4_ns mr2 activeStyle={{opacity: 1}} to="about"> about me </NavLink>
+          <NavLink f6 fw2_ns fw4 dib mr4 activeStyle={{opacity: 1}} to="/"> about this site </NavLink>
+          <NavLink f6 fw2_ns fw4 dib mr4_ns mr2 activeStyle={{opacity: 1}} to="about"> about me </NavLink>
         </LinkGroup>
       </NavBar>
     )

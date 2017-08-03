@@ -13,8 +13,8 @@ export default class ListItem extends React.PureComponent { // eslint-disable-li
   render() {
     return (
       <Wrapper>
-        <BodyCopy mb0 mt4 measure fw2 white b > {this.props.listHeader} </BodyCopy>
-        <ListText fw2 measure white_80 >{this.props.listDescription}</ListText>
+        <BodyCopy mb0 mt4 measure  white b > {this.props.listHeader} </BodyCopy>
+        <ListText fw2_ns fw4 measure white_80 >{this.props.listDescription}</ListText>
       </Wrapper>
     )
   }

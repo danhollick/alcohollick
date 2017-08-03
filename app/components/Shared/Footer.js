@@ -15,7 +15,7 @@ export default class Footer extends React.PureComponent { // eslint-disable-line
     return (
       <Wrapper bg_light_blue w_100 ph6_l ph5_m ph4 pt5_ns pt4 pb4>
         <H1 f3 light_purple> {this.props.title} </H1>
-        <BodyCopy  mt4 measure_wide_ns measure fw2 light_purple>{this.props.description}<br/>{this.props.description1}</BodyCopy>
+        <BodyCopy  mt4 measure_wide_ns measure fw2_ns fw4 light_purple>{this.props.description}<br/>{this.props.description1}</BodyCopy>
         <Wrapper mt4>
          <SocialLinks/>
         </Wrapper>
