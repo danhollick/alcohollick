@@ -10,6 +10,7 @@ const H1Link = styled.a`
       transition: opacity .15s ease-in;
     }
   color: ${props => props.primary ? 'white' : 'var(--light-purple)'};
+  -webkit-font-smoothing: antialiased;
 `;
 
 export default H1Link;

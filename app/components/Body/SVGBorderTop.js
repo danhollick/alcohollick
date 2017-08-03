@@ -8,12 +8,17 @@ const Shape = styled.polygon`
   color: ${props => props.primary ? 'var(--light-blue)' : 'var(--green)'};
 `;
 
+const SVGContainer =styled.svg`
+  ${tachyons}  
+  fill: ${props => props.primary ? 'var(--light-blue)' : 'var(--green)'};
+`;
+
 export default class SVGBorderTop extends React.PureComponent {
   render() {
     return (
-        <svg width="100%" height="50" preserveAspectRatio="none" viewBox="0 0 100 100">
+        <SVGContainer width="100%" height="50" preserveAspectRatio="none" viewBox="0 0 100 100" primary={this.props.primary}>
             <Shape points="0,100 100,100 0,0 0,100" primary={this.props.primary} />
-        </svg>
+        </SVGContainer>
     );
   }
 }

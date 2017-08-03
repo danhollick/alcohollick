@@ -5,6 +5,7 @@ import 'variables.css';
 
 const BodyCopy = styled.p`
   ${tachyons}
+  -webkit-font-smoothing: antialiased;
 `;
 
 export default BodyCopy;

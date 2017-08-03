@@ -9,6 +9,7 @@ const BodyLink = styled.a`
       opacity: .5;
       transition: opacity .15s ease-in;
     }
+    -webkit-font-smoothing: antialiased;
 `;
 
 export default BodyLink;
