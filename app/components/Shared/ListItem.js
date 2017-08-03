@@ -14,7 +14,7 @@ export default class ListItem extends React.PureComponent { // eslint-disable-li
     return (
       <Wrapper>
         <BodyCopy mb0 mt4 measure fw2 white b > {this.props.listHeader} </BodyCopy>
-        <ListText fw2 measure white >{this.props.listDescription}</ListText>
+        <ListText fw2 measure white_80 >{this.props.listDescription}</ListText>
       </Wrapper>
     )
   }

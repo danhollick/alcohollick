@@ -33,7 +33,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
             <FullHeightSection bg_red>
             <Nav/>
             <Wrapper dt h_100 w_100 pb5>
-              <TextBlock primary title="Hey, welcome to my site." description="Can you believe I learnt React to build this single page, static site?" description1="I know right. It’s kind of like using a tank to go to the grocery store" description2="You can do it but it doesn’t mean it’s a good idea."/>
+              <TextBlock primary title="Hey, welcome to my site." description="Can you believe I learnt React to build this single tiny static site?" description1="I know right. It’s kind of like using a tank to go to the grocery store." description2="You can do it but it doesn’t mean it’s a good idea."/>
               <Wrapper dtc_ns v_mid dn w_25_ns>
                 <Hand src={hand} h3 mr7_l mr4_m />
               </Wrapper>
@@ -52,7 +52,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           </FullHeightSection>
           <SVGBorderBottom />
           <FullHeightSection dt relative>
-            <TextBlock title="Don’t sugar coat it. What are the downsides?" description="JavaScript, JavaScript everywhere." description1="Only having a vague idea how anything works." descriptionExtra="There are like 1000 things in my node_modules folder." description2="Look, I ‘m not hating on React. But I think it only solves problems at scale."/>
+            <TextBlock title="Don’t sugar coat it. What are the downsides?" description="JavaScript, JavaScript everywhere." description1="Only having a vague idea how anything works." descriptionExtra="There are like 1000 things in my node_modules folder." description2="Look, I‘m not hating on React. But I think it only solves problems at scale."/>
             <RandomCircles/>
           </FullHeightSection>
           <SVGBorderTop primary/>
