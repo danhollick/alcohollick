@@ -47,7 +47,7 @@
   "lint-staged": {
     "*.js": "lint:eslint"
   },
-  "pre-commit": "lint:staged",
+  // "pre-commit": "lint:staged",
   "babel": {
     "plugins": [
       "styled-components"
@@ -241,6 +241,7 @@
     "reselect": "3.0.1",
     "sanitize.css": "4.1.0",
     "styled-components": "2.0.0",
+    "tachyons-components": "^1.0.0-1",
     "warning": "3.0.0",
     "whatwg-fetch": "2.0.3"
   },

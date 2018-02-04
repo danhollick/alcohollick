@@ -12,13 +12,23 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
+import styled from 'tachyons-components';
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+const Button = styled('button')`
+  f6 f5-ns fw6 dib ba
+  b--black-20 bg-blue white
+  ph3 ph4-ns pv2 pv3-ns br2
+  grow no-underline
+`
+
+export default class HomePage { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
-    );
+      <Button mr2>
+        Hello
+      </Button>
+    )
   }
 }
+
+
