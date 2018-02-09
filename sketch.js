@@ -1,12 +1,24 @@
 
+var img;
+function preload() {
+  img = loadImage('assets/Rocket.png')
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight)
   rectMode(CENTER)
+  imageMode(CENTER)
+  colorMode(HSB)
   reset()
+
 }
 
 function draw() {
-  background(59,49,56)
+  background(229,59,22,100)
+
+  for (var h = 0; h < numStars; h++) {
+    stars[h].display()
+  }
   // holes funcs
   for (var h = 0; h < numHoles; h++) {
     holes[h].place(holes)
@@ -29,7 +41,9 @@ function draw() {
   var c = -0.1
   friction.mult(c)
   //mover funcs
-  mover.applyForce(friction)
+  if ((mover.velocity.mag()) > 0.1){
+   mover.applyForce(friction)
+  }
   mover.update()
   mover.bump(planets)
   mover.display()
@@ -48,10 +62,17 @@ function reset() {
     "In today’s net-savvy world it has become common for any business to have a website which they use mostly for advertising their products and services.",
     "In today’s net-savvy world it has become common for any business to have a website which they use mostly for advertising their products and services.",
     "In today’s net-savvy world it has become common for any business to have a website which they use mostly for advertising their products and services."]
-  link = ["http://www.levergy.co.za/", "http://www.mavenagency.co.za/", "https://www.barclaysafrica.com/barclaysafrica/", "https://www.fusetools.com/", ""]
+  link = ["http://www.levergy.co.za/", "http://www.mavenagency.co.za/", "https://www.barclaysafrica.com/barclaysafrica/", "https://www.fusetools.com/", "./tfw.html"]
   numPlanets = 100
   planets = []
-  mover = new Mover(windowWidth/2,windowHeight/2,28,8)
+  mover = new Mover(windowWidth/2,windowHeight/2,28,8,img)
+  numStars= 200
+  stars = []
+
+  for (var l = 0; l < numStars; l++) {
+    s = new Stars(random(1,2),random(10,40)) 
+    stars.push(s)
+  }
 
   for (var l = 0; l < numHoles; l++) {
     h = new Hole(150, l, company[l], year[l],pos[l],blurb[l],link[l]) // generate a random sized circObj and store it's ID for later
@@ -59,7 +80,7 @@ function reset() {
   }
 
   for (var k = 0; k < numPlanets; k++) {
-    p = new Planet(random(8,40), k+5) // generate a random sized circObj and store it's ID for later
+    p = new Planet(random(8,40), k+5, random(169,217),random(80,100)) // generate a random sized circObj and store it's ID for later
     planets.push(p)
   }
 }
@@ -82,8 +103,8 @@ function popUp(company, year, pos, blurb,link) {
   var pos = createElement('h2', pos).addClass('f2 fw6 gray mt0')
   var blurb = createP(blurb).addClass('f6 lh-copy word-wrap gray')
   var btnCnt = createA('javascript:resetDiv()',"",'_blank').addClass('link ml3')
-  var btnBG = createDiv().addClass('br2 w-25 flex items-center justify-center bg-blue pointer grow')
-  var btnTxt = createP("Done").addClass('mh3 f7 fw6 white o-80 glow')
+  var btnBG = createDiv().addClass('br2 w-25 flex items-center justify-center pointer grow o-80 glow').style('background-color: #F0484C;')
+  var btnTxt = createP("Done").addClass('mh3 f7 fw6 white')
 
   //organise tree
   container.child(mainDiv)
@@ -122,13 +143,27 @@ function Steer() {
   }
 }
 
-function Planet(d,id){
+function Stars(d,opacity) {
+  this.x = random(width)
+  this.y = random(height)
+  this.d = d
+  this.opacity
+}
+Stars.prototype.display = function() {
+  noStroke()
+  fill(0,0,100,this.opacity)
+  ellipse(this.x, this.y,this.d,this.d)
+}
+
+function Planet(d,id,hue,opacity){
   this.d = d
   this.x = random(width)
   this.y = random(height)
   this.id = id
   this.hit = true
   this.bumping = false
+  this.hue = hue
+  this.opacity = opacity
 }
 
 Planet.prototype.place =function(objArray) {
@@ -144,11 +179,9 @@ Planet.prototype.place =function(objArray) {
       }
 }
 
-Planet.prototype.display = function() {
-  fill(0);
-  ellipse(this.x, this.y,this.d,this.d)
-  stroke(255,255,255,80)
-  fill(255,255,255,70)
+Planet.prototype.display = function(d,opacity) {
+  noStroke()
+  fill(this.hue,100,this.opacity)
   ellipse(this.x, this.y,this.d,this.d)
 }
 
@@ -180,10 +213,10 @@ Hole.prototype.place = function(objArray) {
 }
 
 Hole.prototype.display = function() {
-  fill(0);
+  fill(0,0,0,10)
   ellipse(this.x, this.y,this.d/3, this.d/3)
-  stroke(255,255,255,20)
-  fill(255,255,255,10)
+  stroke(0,0,100,20)
+  fill(0,0,0,10)
   ellipse(this.x, this.y,this.d, this.d)
   labelWidth = textWidth(this.company)
   fill(255)
@@ -217,7 +250,7 @@ Hole.prototype.attract = function(m) {
     }
 }
 
-function Mover(x,y, w, h) {
+function Mover(x,y, w, h,img) {
   this.mass = 4
   this.position = createVector(x,y)
   this.velocity = createVector(0,0)
@@ -228,6 +261,7 @@ function Mover(x,y, w, h) {
   this.x = x
   this.y = y 
   this.bumping = false
+  this.img = img
 }
 
 // Newton's 2nd law: F = M * A
@@ -250,10 +284,12 @@ Mover.prototype.display = function() {
   push()
   translate(this.position.x, this.position.y)
   this.angle = atan2((this.velocity.y),(this.velocity.x))
-  rotate(this.angle)
-  strokeWeight(2)
-  stroke(255,100)
-  rect(0, 0,this.width,this.height)
+   rotate(this.angle)
+  // fill(359,70,96)
+  noStroke()
+  rect(0, 0,this.height,this.height)
+  rotate(PI/2)
+  image(this.img,0,0,28,36)
   pop()
 };
 
