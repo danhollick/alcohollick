@@ -9,13 +9,25 @@
     <script src="../js/p5.sound.min.js"></script>
     <script src="../js/p5.collide2d.min.js"></script>
     <script src="sketch.js"></script>
+    <script src="Mover.js"></script>
+    <script src="Hole.js"></script>
+    <script src="Planet.js"></script>
+    <script src="Data.js"></script>
+    <script src="popup.js"></script>
   </head>
   <body class="sans-serif" style="-webkit-font-smoothing: antialiased">
-    <a class="link absolute" href="./index.html">
-      <div class="br--bottom br2 flex h2 items-center pointer grow o-80 glow" style="background-color: #F0484C;">
-        <p class="mh3 f7 fw6 white"> Exit </p>
-      </div>
-    </a>
+    <div class="flex absolute">
+      <a class="link " href="./index.html">
+        <div class="br--bottom br2 flex h2 items-center pointer grow o-80 glow" style="background-color: #F0484C;">
+          <p class="mh3 f7 fw6 white"> Exit </p>
+        </div>
+      </a>
+      <a class="ml3 link" href="javascript:reset()">
+        <div class="br--bottom br2 flex h2 items-center pointer bg-gold grow o-80 glow">
+          <p class="mh3 f7 fw6 white"> Reset </p>
+        </div>
+      </a>
+    </div>
     <div id="container"></div>
   </body>
 </html>
