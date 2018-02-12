@@ -83,12 +83,12 @@ function reset() {
   }
 
   for (var l = 0; l < numHoles; l++) {
-    h = new Hole(150, l, data.company[l], data.year[l], data.pos[l],data.blurb[l], data.link[l],blackhole) // generate a random sized circObj and store it's ID for later
+    h = new Hole(150, l, data.company[l], data.year[l], data.pos[l],data.blurb[l], data.link[l], data.img[l],blackhole) // generate a random sized circObj and store it's ID for later
     holes.push(h)
   }
 
   for (var k = 0; k < numPlanets; k++) {
-    p = new Planet(floor(random(8,40)), k+5, floor(random(0,360)),random(0.6,1)) // generate a random sized circObj and store it's ID for later
+    p = new Planet(floor(random(8,40)), k+ holes.length, floor(random(0,360)),random(0.6,1)) // generate a random sized circObj and store it's ID for later
     planets.push(p)
   }
 }

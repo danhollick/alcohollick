@@ -3,11 +3,12 @@ class Data {
   this.company = ["Levergy", "Maven Agency", "Barclays Africa", "Fuse", "The Fucking Weather"]
   this.year = ["2014", "2015", "2015 - 2016", "2016 - Present", "2018"]
   this.pos = ["Art Director", "UI Designer", "Product Designer", "Lead Product Designer", "Designer, Developer"]
-  this.blurb = ["In today’s net-savvy world it has become common for any business to have a website which they use mostly for advertising their products and services.",
-   "In today’s net-savvy world it has become common for any business to have a website which they use mostly for advertising their products and services.",
-    "In today’s net-savvy world it has become common for any business to have a website which they use mostly for advertising their products and services.",
-    "In today’s net-savvy world it has become common for any business to have a website which they use mostly for advertising their products and services.",
-    "In today’s net-savvy world it has become common for any business to have a website which they use mostly for advertising their products and services."]
+  this.blurb = ["At Levergy I worked as an Art Director on the SuperSport Social Media account. SuperSport is Africa's largest sports broadcaster and their social media reach is in the millions. I was responsible for all graphics produced across all their social media platforms. (Screencap from 2018, ie: not my work)",
+   "At Maven I cut my teeeth as a UI designer after making the jump from graphic design. I worked on several large web projects in my time there and learnt a great deal about designing for web. I discovered Sketch while working there! (Yes, we were using Photoshop back then :P)",
+    "Barclays Africa/Absa is Africa's biggest bank, serving millions of customers throughout the continent. I worked on numerous projects here, most of which are still under NDA. My main responsibility was leading product design on what was then called Switch FX, which allowed customers to handle foreign payments without visiting a branch",
+    "In 2016 I moved to Oslo, Norway to take on an enormous challenge at Fuse. I currently lead product design on Fuse Studio, a Windows/macOS application for building iOS and Android apps.",
+    "A weather app for people who hate weather apps. I built The F*cking Weather as a bit of fun, to teach myself more about building applications that handle live data."]
   this.link = ['http://www.levergy.co.za/', "http://www.mavenagency.co.za/", "https://www.barclaysafrica.com/barclaysafrica/", "https://www.fusetools.com/", "./tfw.html"]
+  this.img = ['./assets/levergy.png', './assets/trinity.png', './assets/barclays.png', './assets/fuse.png', './assets/tfw.png']
 }
 }
