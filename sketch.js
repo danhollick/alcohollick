@@ -25,29 +25,31 @@ function setup() {
   rectMode(CENTER)
   imageMode(CENTER)
   colorMode(HSB)
+
   angleMode(DEGREES)
   reset()
   }
 }
 
 function draw() {
-  background(229,59,22,100)
+  background(206,39,14)
   for (var h = 0; h < numStars; h++) {
     stars[h].display()
   }
   
   //planet funcs
-  for (var j = 0; j < numPlanets; j++) {
-    planets[j].place(holes)
-    planets[j].place(planets)
-    planets[j].display()
-  }
+  
   // holes funcs
   for (var h = 0; h < numHoles; h++) {
     holes[h].place(holes)
     holes[h].contain(mover)
     holes[h].attract(mover)
     holes[h].display()
+  }
+  for (var j = 0; j < numPlanets; j++) {
+    planets[j].place(holes)
+    planets[j].place(planets)
+    planets[j].display()
   }
 
   Steer()
@@ -68,7 +70,7 @@ function draw() {
 }
 
 function reset() {
-  numHoles = 5
+  numHoles = 6
   holes = []
   numPlanets = 100
   planets = []
@@ -88,22 +90,29 @@ function reset() {
   }
 
   for (var k = 0; k < numPlanets; k++) {
-    p = new Planet(floor(random(8,40)), k+ holes.length, floor(random(0,360)),random(0.6,1)) // generate a random sized circObj and store it's ID for later
+    var d = map(noise(k),0,1,8,32)
+    var s = map(noise(k),0,1,0,60)
+    var b = map(noise(k),0,1,40,100)
+    var h = map(noise(k),0,1,150,220)
+    p = new Planet(d, k+ holes.length, h,s,b) // generate a random sized circObj and store it's ID for later
     planets.push(p)
+  }
+}
+function drawGradient(x, y) {
+  var radius = dim/2;
+  var h = random(0, 360);
+  var s = random(0, 360);
+  var b = random(0, 360);
+  for (var r = radius; r > 0; --r) {
+    fill(h, s, 90);
+    ellipse(x, y, r, r);
+    h = (h + 1) % 360;
   }
 }
 
 function resetDiv() {
   removeElements()
 }
-// function playBooster() {
-//   boosters.setVolume(0.1)
-//   boosters.play()
-//   boosters.loop()
-// }
-// function stopBooster() {
-//   boosters.stop()
-// }
 
 function Steer() {
   if (keyIsDown(LEFT_ARROW)) {

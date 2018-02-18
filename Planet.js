@@ -1,18 +1,27 @@
 class Planet { 
-  constructor(d,id,hue,opacity, asteroid){
+  constructor(d,id,hue,sat,bright){
   this.d = d
+  // this.x = map(noise(id)0,1,-width,width)
+  // this.y = map(noise(id)0,1,-height,height)
   this.x = floor(random(width))
   this.y = floor(random(height))
   this.id = id
   this.hit = true
   this.bumping = false
   this.hue = hue
-  this.opacity = opacity
+  this.sat = sat
+  this.bright = bright
+  this.dot1x = random(0-this.d/3, 0-this.d/3)
+  this.dot1y = random(0-this.d/3, 0+this.d/3)
+  this.dot2x = random(0-this.d/4, 0-this.d/4)
+  this.dot2y = random(0+this.d/4, 0-this.d/4)
+  this.dot3x = random(0-this.d/6, 0+this.d/6)
+  this.dot3y = random(0-this.d/6, 0-this.d/6)
 }
 
 place(objArray) {
   for(var i=0;i<objArray.length;i++){
-        if(this.id != i+5){ //dont do the check if it is looking at itself
+        if(this.id != i+6){ //dont do the check if it is looking at itself
           this.hit = collideCircleCircle(this.x, this.y, this.d, objArray[i].x, objArray[i].y, objArray[i].d);
           this.isCenter = collideCircleCircle(this.x,this.y,this.d,windowWidth/2,windowHeight/2,40)//make sure we never spawn an asteroid under the ship
           if(this.hit == true ||  this.isCenter == true){ // if we ever get a true we have to try again, this works since we iterate down through the objects one by one.
@@ -24,15 +33,19 @@ place(objArray) {
       }
 }
 
-display(d,opacity) {
+display() {
   push()
   translate(this.x, this.y)
   noStroke()
-  // fill(this.hue,70,100,this.opacity)
-  // ellipse(this.x, this.y,this.d,this.d)
-  rotate(this.hue)
+  fill(this.hue,this.sat,this.bright)
+  ellipse(0, 0,this.d,this.d)
+  fill(0,0,0,0.2)
+  ellipse(this.dot1x, this.dot1y,this.d/3,this.d/3)
+  ellipse(this.dot2x, this.dot2y,this.d/4,this.d/4)
+  ellipse(this.dot3x, this.dot3y,this.d/6,this.d/6)
+  // rotate(this.hue)
   // tint(this.hue,70,100)
-  image(asteroid,0,0,this.d,this.d)
+  //image(asteroid,0,0,this.d,this.d)
   pop()
 }
 }

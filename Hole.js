@@ -4,6 +4,7 @@ class Hole {
   this.x = random(0 + this.d/2, width - this.d/2)
   this.y = random(0 + this.d/2, height - this.d/2)
   this.hit = true
+  this.isCenter = true
   this.isIn = false
   this.id = id
   this.company = company
@@ -18,8 +19,9 @@ class Hole {
 place(objArray) {
   for(var i=0;i<objArray.length;i++){
         if(this.id != i){ //dont do the check if it is looking at itself
-          this.hit = collideCircleCircle(this.x, this.y, this.d, objArray[i].x, objArray[i].y, objArray[i].d*3); //colliding with anything?
-          if(this.hit === true){ // if we ever get a true we have to try again, this works since we iterate down through the objects one by one.
+          this.hit = collideCircleCircle(this.x, this.y, this.d, objArray[i].x, objArray[i].y, objArray[i].d*3)
+          this.isCenter = collideCircleCircle(this.x,this.y,this.d,windowWidth/2,windowHeight/2,150) //colliding with anything?
+          if(this.hit == true ||  this.isCenter == true){ // if we ever get a true we have to try again, this works since we iterate down through the objects one by one.
             //try again:
             this.x = random(0 + this.d/2, width - this.d/2)
             this.y = random(0 + this.d/2, height - this.d/2)

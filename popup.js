@@ -22,7 +22,7 @@ class popUp {
   var comp = createA(this.link, this.company,'_blank').addClass('f1 link fw8 dark-gray ma0 dim') 
   var pos = createElement('h2', this.pos).addClass('f2 fw6 gray mt0')
   var blurb = createP(this.blurb).addClass('f6 lh-copy word-wrap gray')
-  var btnCnt = createA('javascript:resetDiv()',"",'_blank').addClass('link ml3')
+  var btnCnt = createA('javascript:resetDiv()',"").addClass('link ml3')
   var btnBG = createDiv().addClass('br2 w-25 flex items-center justify-center pointer grow o-80 glow').style('background-color: #F0484C;')
   var btnTxt = createP("Done").addClass('mh3 f7 fw6 white')
 
