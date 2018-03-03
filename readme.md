@@ -1,4 +1,4 @@
 ## My personal website.
 
-Uses Tachyons for styling and p5.js for motion stuff. 
-And this smooth scroll library for, well, smooth scrolling.
+Uses [Tachyons link](http://tachyons.io/) for styling and [p5.js link](https://p5js.org/) for motion stuff. 
+And this [easy-ease link](https://github.com/davidgilbertson/easy-ease) library for some smooth scroll stuff
