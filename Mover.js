@@ -23,10 +23,20 @@ applyForce(force) {
 update() {
   // Velocity changes according to acceleration
   this.velocity.add(this.acceleration);
+  this.velocity.limit(10)
   // position changes by velocity
   this.position.add(this.velocity);
   // We must clear acceleration each frame
   this.acceleration.mult(0);
+  var friction = mover.velocity.copy()
+  friction.normalize()
+  var c = -0.1
+  friction.mult(c)
+
+  //mover funcs
+  if ((mover.velocity.mag()) > 0.2){
+   mover.applyForce(friction)
+  }
 };
 
 display() {
@@ -42,19 +52,23 @@ display() {
   pop()
 }
 
-bump(objArray) {
-      var l = this.position;
+gravity(objArray){
        for(var i=0;i<objArray.length;i++){
-        var poly = []
-        poly[0] = createVector(this.position.x-this.width/2, this.position.y-this.height/2)
-        poly[1] = createVector(this.position.x+this.width/2, this.position.y-this.height/2)
-        poly[2] = createVector(this.position.x+this.width/2, this.position.y+this.height/2)
-        poly[3] = createVector(this.position.x-this.width/2, this.position.y+this.height/2)
-        this.bumping = collideCirclePoly(objArray[i].x, objArray[i].y, objArray[i].d,poly)
-
-        //this.bumping = collideRectCircle(l.x,l.y,this.w,this.h,objArray[i].x, objArray[i].y, objArray[i].d)
+        this.bumping = collideCircleCircle(objArray[i].x, objArray[i].y, objArray[i].d, this.position.x, this.position.y, 34)
         if (this.bumping){
-          this.velocity.mult(-0.9)
+          this.velocity.mult(-1.1)
+        }
+      }
+}
+
+bump(objArray) {
+       for(var i=0;i<objArray.length;i++){
+        this.bumping = collideCircleCircle(objArray[i].x, objArray[i].y, objArray[i].d, this.position.x, this.position.y, 34)
+        if (this.bumping){
+          this.velocity.mult(-1.1)
+          var rate = map(this.velocity.mag(),0,10,0.5,2.0) 
+          ping.play(0,rate,0.6,0,0.4)
+          ping.playMode('untilDone')
         }
       }
 }

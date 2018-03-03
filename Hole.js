@@ -25,6 +25,7 @@ place(objArray) {
             //try again:
             this.x = random(0 + this.d/2, width - this.d/2)
             this.y = random(0 + this.d/2, height - this.d/2)
+            this.place(objArray)
           }
         }
     }
@@ -39,28 +40,18 @@ display() {
 }
 
 contain(m){
-  var popup = new popUp(this.company,this.year,this.pos,this.blurb,this.link, this.img)
-  var poly = []
-  poly[0] = createVector(m.position.x-m.width/2, m.position.y-m.height/2)
-  poly[1] = createVector(m.position.x+m.width/2, m.position.y-m.height/2)
-  poly[2] = createVector(m.position.x+m.width/2, m.position.y+m.height/2)
-  poly[3] = createVector(m.position.x-m.width/2, m.position.y+m.height/2)
-  poly[0] = createVector(m.position.x, m.position.y)
-    this.isIn = collideCirclePoly(this.x,this.y,this.d/3,poly)
+    var popup = new popUp(this.company,this.year,this.pos,this.blurb,this.link, this.img)
+    this.isIn = collideCircleCircle(this.x,this.y,this.d/3,m.position.x,m.position.y,16)
       if (this.isIn){
        popup.create()
+       suck.play(0,2,1.2)
       }
 }
 
 attract(m) {
-  var poly = []
-  poly[0] = createVector(m.position.x-m.width/2, m.position.y-m.height/2)
-  poly[1] = createVector(m.position.x+m.width/2, m.position.y-m.height/2)
-  poly[2] = createVector(m.position.x+m.width/2, m.position.y+m.height/2)
-  poly[3] = createVector(m.position.x-m.width/2, m.position.y+m.height/2)
-  var l = m.position;
+  var l = m.position
   var h = createVector(this.x,this.y)
-  if (collideCirclePoly(this.x,this.y,this.d,poly))
+  if (collideCircleCircle(this.x,this.y,this.d+20,m.position.x,m.position.y,40))
     {
       var force = p5.Vector.sub(h,l)
       var distance = force.magSq()
@@ -68,6 +59,7 @@ attract(m) {
       force.normalize()
       var strength = 10/distance
       force.mult(strength)
-      m.applyForce(force)
+      m.applyForce(force) 
+      
     }
 }}

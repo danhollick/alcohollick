@@ -1,5 +1,5 @@
 class Data { 
-  constructor(levergy,trinity,barclays,fuse,tfw,rhodes){
+  constructor(){
   this.company = ["Levergy", "Maven Agency", "Barclays Africa", "Fuse", "The Fucking Weather","Rhodes University"]
   this.year = ["2014", "2015", "2015 - 2016", "2016 - Present", "2018","2009 - 2012"]
   this.pos = ["Art Director", "UI Designer", "Product Designer", "Lead Product Designer", "Designer, Developer","Bachelor of Journalism & Media Studies"]

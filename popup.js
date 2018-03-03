@@ -14,7 +14,7 @@ class popUp {
   var container = select('#container')
   var mainDiv = createDiv().addClass('fixed z-2 bg-black-40 w-100 vh-100 flex items-center justify-center')
   var card = createDiv().addClass('w-70 br2 vh-75 bg-white flex')
-  var imgBG = createDiv().addClass('w-50 h-100 br2 bg-near-white flex items-center justify-center ph4')
+  var imgBG = createDiv().addClass('w-50 h-100 br2 bg-near-white flex items-center justify-center ph4').style("background-image: url('assets/loading.png');background-repeat: no-repeat; background-position: center;background-size: 100px;")
   var imgCont = createImg(this.img,"portfolio item").style("max-height: 450px")
   var textCont = createDiv().addClass('pa4 w-50 flex items-center justify-center')
   var textBound = createDiv()
