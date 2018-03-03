@@ -1,0 +1,43 @@
+.logo {
+	position: relative;
+	transform: scale(1) rotate(0deg);
+	transition: transform .25s ease-in-out;
+}
+.logo:hover {
+	 transition: opacity .15s ease-in;
+	 transform: scale(1.2) rotate(180deg);
+	 transition: transform .5s ease-in-out;
+}
+.TFW {
+    -webkit-animation: color-change 2s infinite;
+    -moz-animation: color-change 2s infinite;
+    -o-animation: color-change 2s infinite;
+    -ms-animation: color-change 2s infinite;
+    animation: color-change 2s infinite;
+}
+
+@-webkit-keyframes color-change {
+    0% { color: teal; }
+    50% { color: aquamarine; }
+    100% { color: teal; }
+}
+@-moz-keyframes color-change {
+    0% { color: teal; }
+    50% { color: aquamarine; }
+    100% { color: teal; }
+}
+@-ms-keyframes color-change {
+    0% { color: teal; }
+    50% { color: aquamarine; }
+    100% { color: teal; }
+}
+@-o-keyframes color-change {
+    0% { color: teal; }
+    50% { color: aquamarine; }
+    100% { color: teal; }
+}
+@keyframes color-change {
+    0% { color: teal; }
+    50% { color: aquamarine; }
+    100% { color: teal; }
+}
