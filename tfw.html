@@ -28,10 +28,10 @@
 	  			</div>
 		  	</div>
   		</div>
-	  	<div class="w-100 ph7-l ph5-ns ph4 flex-ns justify-between-ns" style="background-image:linear-gradient(0deg, #e68a8a 0%, #d17f8d 16%, #bc758f 33%, #a76b91 50%, #906193 66%, #795795 83%, #5f4e96 100%)" >
+	  	<div class="gradient w-100 ph7-l ph5-ns ph4 flex-ns justify-between-ns" >
 		  		<div class="vh-100 w-50-ns flex items-center">
 		  			<div class="dib w5 ">
-			  			<h1 class="f1 fw8 white"> The F*cking Weather. </h1>
+			  			<h1 class=" fw8 white" style="font-size: 4rem;"> The F*cking Weather. </h1>
 			  			<p class="f4 fw4 lh-copy white">A weather app for people<br/> who hate weather apps. </p>
 			  		</div>
 			  	</div>
@@ -39,19 +39,6 @@
 			  		<img class="relative" style="margin-bottom: -100px;max-height: 600px" src="./assets/div1.png"/>
 			  	</div>
 		  	</div>
-	  	<!-- <svg width="100%" height="100%" id="testSvg" class="z-1">
-		  		<defs>
-		  			<linearGradient id="darkGradient" x1="30%" y1="70%">
-		  			    <stop offset="0%" stop-color="#0b2d13">
-		  			      <animate attributeName="stop-color" values="#0b2d13; #79c98c" dur="3s" fill="freeze" />
-		  			    </stop>
-		  			    <stop offset="100%" stop-color="#79c98c">
-		  			    	<animate attributeName="stop-color" values="#79c98c; #0b2d13" dur="3s" fill="freeze" />
-		  			    </stop>
-		  			  </linearGradient>
-		  		</defs>
-		  		<rect  width="100%" height="100%" style="fill: url(#darkGradient);"/>
-		  	</svg>-->
 	  <div class="ph7-l pt7 pb0 pb6-m pb7-ns ph5-m w-100 flex-ns items-center-ns ">
 	  	<div class="w-100 flex flex-column-reverse flex-row-ns">
 	  		<div class="flex items-center justify-center pb6 pb0-ns">
@@ -66,9 +53,8 @@
 		  	</div>
 	  	</div>
 	  </div>
-	  <div id="_how" class="w-100 ph7-l ph5-m ph4 flex-ns justify-between-ns" style="background-color: #8BC6EC;
-background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%)" >
-	  		<div class="pv6 w-50-ns w-100 flex items-center">
+	  <div id="_how" class=" w-100 ph7-l ph5-m ph4 flex-ns justify-between-ns"  >
+	  		<div class="pv7 w-50-ns w-100 flex items-center">
 	  			<div class="dib">
 		  			<a  class="link f1 fw8 white"> AI?<br/>Machine learning? </a>
 		  			<p class="f5 white">Nope, this machine is as dumb as can be. <br/> And it will stay that way. Forever. </p>
@@ -81,11 +67,11 @@ background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%)" >
 		  		</div>
 		  	</div>
 		  	<div class="flex self-start-ns items-center justify-center pb4 pb0-ns">
-	  		<video style="margin-top: -100px;max-height: 600px" playsinline autoplay muted loop>
+	  		<!-- <video style="margin-top: -100px;max-height: 600px" playsinline autoplay muted loop>
 		  			<source src="assets/NewTest.webm" type="video/webm" >
-		  		</video>
+		  		</video> -->
 
-		  		<!-- <img class="" style="margin-top: -100px;max-height: 600px" src="./assets/div3.png"/> -->
+		  		<img class="" style="margin-top: -100px;max-height: 600px" src="./assets/div3.png"/>
 		  	</div>
 	  	</div>
 	  	<div class="mh7-l mh5-m mh4 pv5 bb b--near-white">
@@ -109,26 +95,22 @@ background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%)" >
 		  </div>
 		  <div class="flex justify-center items-center flex-column mv6">
 		  	<a id="_download" class="f1 fw8 dark-gray mb5"> Download </a>
-		  	<div class="flex justify-around">
-		  		<div class="w-33-ns w-40 bw1 shadow bg-white br2 b--solid b--near-white flex flex-column items-center justify-center">
-		  			<p class="f6 fw6 tc dark-gray">Android:</p> 
-		  			<a target="_blank" href="https://play.google.com/store/apps/details?id=com.twf.prod"><img class="grow shadow pointer" style="max-width: 100px" src="./assets/Play-logo.png"></a>
-		  		</div>
-		  		<div class="w-33-ns w-40 bw1 bg-white shadow br2 b--solid b--near-white flex justify-center items-center flex-column">
-		  			<p class="f6 fw7 tc dark-gray mb1">iOS:</p> 
-		  			<p class="f7 tc dark-gray mh2">There is an iOS version, but I don’t feel like paying the Apple developer license just for them to reject the app.</p> 
-		  			<p class="f7 tc dark-gray mh2">If you know how to side-load iOS apps, you can <a class="link fw7 dim pointer blue" href="https://twitter.com/DanHollick" target="_blank"> nag me on twitter</a> for an .apk</p>
-		  		</div>
-		  	</div>
+		  	<div class="flex justify-around w-40-l w-75-m w-100">
+				<a target="_blank" class="grow pointer subtle-shadow br2" href="https://play.google.com/store/apps/details?id=com.twf.prod">
+					<img  style="max-width: 150px" src="./assets/play-store.png">
+				</a>
+				<a target="_blank" class="grow pointer subtle-shadow br2" href="https://itunes.apple.com/us/app/tfw/id1359091947?ls=1&mt=8">
+					<img class="" style="max-width: 150px" src="./assets/app-store.png">
+				</a>
+				</div>
 		  </div>
-		  <div style="background-color: #FAACA8;
-background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
-" class="flex justify-center items-center flex-column pv2 bg-near-white">
+		  <div  class="gradient flex justify-center items-center flex-column pv5 o-50">
 		  	<h2 class="f1 fw8 white mb1"> Contact </h2>
 		  	<div class="flex justify-around">
-		  		<p class="f6 fw5 white">No.</p> 
+		  		<p class="f6 fw5 black">No.</p> 
 		  	</div>
 		  </div>
   </body>
   <script src="smooth.js"></script>
+  <script src="tfw.js"></script>
 </html>
