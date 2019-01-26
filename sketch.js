@@ -3,12 +3,14 @@ var rocket
 var blackhole
 var carrier
 var modulator
-var isMuted 
+var isMuted
 var someNoise
+var data
 
 function preload() {
   rocket = loadImage('assets/Rocket.png')
   blackhole = loadImage('assets/Blackhole.png')
+  data = loadJSON('./data.json')
   soundFormats('mp3', 'ogg')
   ping = loadSound('assets/ping.mp3')
   suck = loadSound('assets/suck.mp3')
@@ -26,14 +28,10 @@ function setup() {
     cntDiv.parent(bgDiv)
     heading.parent(cntDiv)
     info.parent(cntDiv)
-    console.log("display: "+ displayWidth)
-    console.log("window: "+ windowWidth)
-    console.log("p-density: "+ pixelDensity())
-    console.log("window/p-density: "+ windowWidth/pixelDensity())
     noLoop()
   }
   else {
-  createCanvas(windowWidth, windowHeight) 
+  createCanvas(windowWidth, windowHeight)
   rectMode(CENTER)
   imageMode(CENTER)
   colorMode(HSB)
@@ -79,7 +77,7 @@ function draw() {
   mover.update()
   mover.bump(planets)
   mover.display()
-  mover.checkEdges() 
+  mover.checkEdges()
 
   speed = mover.velocity.mag()
   var panning = map(mover.position.x, 0., width,-1.0, 1.0)
@@ -93,24 +91,15 @@ function draw() {
 }
 
 function reset() {
-  numHoles = 6
+  numHoles = 7
   holes = []
-  numPlanets = windowWidth/15
+  numPlanets = windowWidth/20
   planets = []
-  // numStars = 200
-  // stars = []
   mover = new Mover(windowWidth/2,windowHeight/2,28,8,rocket)
-  data = new Data()
 
-  // for (var z = 0; z < numStars; z++) {
-  //   var sx = map(noise(z),0,1,0,width)
-  //   var sy = map(noise(z+200),0,1,0,height)
-  //   s = new Stars(sx,sy)
-  //   stars.push(s)
-  // }
 
   for (var l = 0; l < numHoles; l++) {
-    h = new Hole(150, l, data.company[l], data.year[l], data.pos[l],data.blurb[l], data.link[l], data.img[l],blackhole) // generate a random sized circObj and store it's ID for later
+    h = new Hole(150, l, data[l].company, data[l].year, data[l].position,data[l].blurb, data[l].link, data[l].img,blackhole)
     holes.push(h)
     holes[l].place(holes)
   }
@@ -164,14 +153,3 @@ function Steer() {
   }
 }
 
-// function Stars(opacity,sx,sy) {
-//   this.x = sx
-//   this.y = sy
-// }
-
-// Stars.prototype.display = function() {
-//   push()
-//   stroke(0,0,100)
-//   point(this.x, this.y)
-//   pop()
-// }

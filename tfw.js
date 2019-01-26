@@ -7,21 +7,21 @@ var colors = new Array(
     [226,181,92],
     [112,175,186],
     [176,226,227]);
-  
+
   var step = 0;
-  //color table indices for: 
+  //color table indices for:
   // current color left
   // next color left
   // current color right
   // next color right
   var colorIndices = [0,1,2,3,4,5,6,7];
-  
+
   //transition speed
   var gradientSpeed = 0.002;
-  
+
   function updateGradient()
   {
-    
+
   var c0_0 = colors[colorIndices[0]];
   var c0_1 = colors[colorIndices[1]];
   var c1_0 = colors[colorIndices[2]];
@@ -30,15 +30,15 @@ var colors = new Array(
   var c2_1 = colors[colorIndices[5]];
   var c3_0 = colors[colorIndices[6]];
   var c3_1 = colors[colorIndices[7]];
-  
-  
-  
+
+
+
   var istep = 1 - step;
   var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
   var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
   var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
   var color1 = "rgb("+r1+","+g1+","+b1+")";
-  
+
   var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
   var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
   var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
@@ -54,7 +54,7 @@ var colors = new Array(
   var b4 = Math.round(istep * c3_0[2] + step * c3_1[2]);
   var color4 = "rgb("+r4+","+g4+","+b4+")";
 
-  var m = document.getElementsByClassName('gradient') 
+  var m = document.getElementsByClassName('gradient')
   for (let i= 0; i < m.length; i++) {
       c = m[i].style;
       c.background = "-webkit-gradient(linear, left top, left bottom, from("+color1+"), to("+color2+"))";
@@ -66,7 +66,7 @@ var colors = new Array(
         d.background =  "-moz-linear-gradient(bottom, "+color4+" 0%, "+color3+" 100%)";
 
 
-    
+
     step += gradientSpeed;
     if ( step >= 1 )
     {
@@ -75,7 +75,7 @@ var colors = new Array(
       colorIndices[2] = colorIndices[3];
       colorIndices[4] = colorIndices[5]
       colorIndices[6] = colorIndices[7]
-      
+
       //pick two new target color indices
       //do not pick the same as the current one
       colorIndices[1] = ( colorIndices[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
@@ -84,5 +84,5 @@ var colors = new Array(
       colorIndices[7] = ( colorIndices[3] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
     }
   }
-  
+
   setInterval(updateGradient,10);
