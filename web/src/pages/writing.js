@@ -1,15 +1,15 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import Page from '../components/page'
 import Layout from '../components/layout'
-import Image from '../components/image'
 import SEO from '../components/seo'
 
-const IndexPage = () => (
+const SecondPage = () => (
   <Page>
     <Layout>
-      <SEO title="alcohollick" />
+      <SEO title="writing." />
     </Layout>
   </Page>
 )
 
-export default IndexPage
+export default SecondPage
