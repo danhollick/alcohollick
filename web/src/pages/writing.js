@@ -1,15 +1,13 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import Page from '../components/page'
-import Layout from '../components/layout'
 import SEO from '../components/seo'
+import { RecentPosts } from '../components/recentPosts'
 
-const SecondPage = () => (
+const WritingPage = () => (
   <Page>
-    <Layout>
-      <SEO title="writing." />
-    </Layout>
+    <SEO title="writing." />
+    <RecentPosts />
   </Page>
 )
 
-export default SecondPage
+export default WritingPage

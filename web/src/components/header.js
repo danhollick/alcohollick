@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 import { colors } from '../utils/colors'
+import { Columns } from './layout'
 
 const NavLink = styled(Link)`
   font: 700 16px Inter, sans-serif;
@@ -24,34 +25,33 @@ const NavLink = styled(Link)`
 `
 const Nav = styled.nav`
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: auto auto;
   max-width: 1000px;
   width: 100%;
   align-self: start;
   padding: 24px 0px;
-  column-gap: 40px;
   .active {
     color: ${colors.purplish};
   }
 `
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <Nav>
-    <NavLink activeClassName="active" to="/">
+    <NavLink className="JustifyStart" activeClassName="active" to="/">
       alcohollick.
     </NavLink>
-    <NavLink activeClassName="active" to="/things/">
-      things I have built.
-    </NavLink>
-    <NavLink activeClassName="active" to="/writing/">
-      writing.
-    </NavLink>
+    <Columns spacing={5} className="JustifyEnd">
+      <NavLink activeClassName="active" to="/things/">
+        things I have built.
+      </NavLink>
+      <NavLink activeClassName="active" to="/writing/">
+        writing.
+      </NavLink>
+    </Columns>
   </Nav>
 )
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
+Header.propTypes = {}
 
 Header.defaultProps = {
   siteTitle: ``,

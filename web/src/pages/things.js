@@ -1,15 +1,12 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Page from '../components/page'
-import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-const SecondPage = () => (
+const ThingsPage = () => (
   <Page>
-    <Layout>
-      <SEO title="things" />
-    </Layout>
+    <SEO title="things" />
   </Page>
 )
 
-export default SecondPage
+export default ThingsPage

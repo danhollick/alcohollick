@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { createGlobalStyle } from 'styled-components'
 import { colors } from '../utils/colors'
+import Header from './header'
 
 const GlobalStyles = createGlobalStyle`
 @font-face {
@@ -18,6 +19,21 @@ const GlobalStyles = createGlobalStyle`
   src: url("Inter.otf") format("otf");
   font-display: swap;
 }
+
+@font-face {
+  font-family: Inter;
+  font-weight: 500;
+  font-style: normal;
+  src: url("Inter-Medium.otf") format("otf");
+  font-display: swap;
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 500;
+  font-style: italic;
+  src: url("Inter-MediumItalic.otf") format("otf");
+  font-display: swap;
+}
 @font-face {
   font-family: Inter;
   font-weight: 700;
@@ -32,10 +48,40 @@ const GlobalStyles = createGlobalStyle`
   src: url("Inter-BoldItalic.otf") format("otf");
   font-display: swap;
 }
+.AlignEnd {
+    align-self: end;
+  }
+  .AlignCenter {
+    align-self: center;
+  }
+  .AlignStart {
+    align-self: start;
+  }
+  .AligntStretch {
+    align-self: stretch;
+  }
+  .JustifyEnd {
+    justify-self: end;
+  }
+  .JustifyCenter {
+    justify-self: center;
+  }
+  .JustifyStart {
+    justify-self: start;
+  }
+  .JustifyStretch {
+    justify-self: stretch;
+  }
   body {
     font: 400 18px Inter, sans-serif;
     box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
   }
+  p, span, a, h1, h2, h3, h4, h5, h6, form, fieldset, legend, label, input {
+        margin:0px;
+        padding: 0;
+    }
 `
 
 const StyledPage = styled.div`
@@ -47,10 +93,25 @@ const StyledPage = styled.div`
   box-sizing: border-box;
 `
 
+const PageWrapper = styled.div`
+  display: grid;
+  justify-self: center;
+  max-width: 1000px;
+  width: 100%;
+  grid-template-rows: auto 1fr;
+`
+
+const Main = styled.main`
+  display: grid;
+`
+
 const Page = ({ children }) => (
   <StyledPage>
     <GlobalStyles />
-    {children}
+    <PageWrapper>
+      <Header />
+      <Main>{children}</Main>
+    </PageWrapper>
   </StyledPage>
 )
 
