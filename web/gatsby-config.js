@@ -32,6 +32,10 @@ module.exports = {
       options: {
         projectId: 'h2w4qpx8',
         dataset: 'production',
+        options: {
+          watchMode: true,
+          overlayDrafts: true,
+        },
         // a token with read permissions is required
         // if you have a private dataset
         // token: process.env.MY_SANITY_TOKEN,

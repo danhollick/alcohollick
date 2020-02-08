@@ -1,11 +1,15 @@
-import React from 'react'
-import Img from 'gatsby-image'
 import { CodeBlock } from './codeblock'
+import { Figure } from './figure'
 
 const serializers = {
   types: {
-    mainImage: Img,
+    // mainImage: Figure,
     code: CodeBlock,
+    // image: node => {
+    //   console.log(node)
+    //   return null
+    // },
+    image: Figure,
   },
 }
 

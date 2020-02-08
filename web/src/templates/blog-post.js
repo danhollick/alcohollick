@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 import React from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import Page from '../components/page'
 import SEO from '../components/seo'
-import { Heading, SubHeading } from '../components/text'
+import { Heading, SubHeading, MassiveHeading, Title } from '../components/text'
 import { Stack } from '../components/layout'
 import PortableText from '../components/portableText'
+import { colors } from '../utils/colors'
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -19,14 +21,8 @@ export const query = graphql`
       mainImage {
         asset {
           url
-          fluid {
-            src
-            aspectRatio
-            base64
-            sizes
-            srcSet
-            srcSetWebp
-            srcWebp
+          fluid(maxWidth: 800) {
+            ...GatsbySanityImageFluid
           }
         }
       }
@@ -35,23 +31,27 @@ export const query = graphql`
       slug {
         current
       }
-      _rawBody
+      _rawBody(resolveReferences: { maxDepth: 5 })
     }
   }
 `
 
 const BlogWrapper = styled.div`
-  max-width: 600px;
+  margin: 56px 0px 108px 0px;
+  max-width: 800px;
+  width: 100%;
   display: grid;
+  justify-self: center;
+  grid-row-gap: 40px;
+  align-content: start;
 `
 
-const BlogPost = ({ description, title, _rawBody }) => (
+const BlogPost = ({ description, title, _rawBody, mainImage }) => (
   <BlogWrapper>
-    <Stack className="AlignStart">
-      <Heading>{title}</Heading>
-      <SubHeading>{description}</SubHeading>
-      <PortableText blocks={_rawBody} />
-    </Stack>
+    <MassiveHeading>{title}</MassiveHeading>
+    <Img fluid={mainImage.asset.fluid} />
+    <Heading color={colors.medium_grey}>{description}</Heading>
+    <PortableText blocks={_rawBody} />
   </BlogWrapper>
 )
 

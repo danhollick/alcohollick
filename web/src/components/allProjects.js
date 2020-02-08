@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import styled from 'styled-components'
-import { ProjectPreview } from './ProjectPreview'
+import { ProjectPreview } from './projectPreview'
 import { below } from './layout'
 
 const All_PROJECTS_QUERY = graphql`

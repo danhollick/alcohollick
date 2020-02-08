@@ -22,7 +22,7 @@ export default {
       // use your content.
       styles: [
         { title: 'Normal', value: 'normal' },
-        { title: 'H1', value: 'h1' },
+        { title: 'H1', value: 'MassiveTitle' },
         { title: 'H2', value: 'h2' },
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
@@ -36,6 +36,7 @@ export default {
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
+          { title: 'Inline Code', value: 'code' },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -57,9 +58,44 @@ export default {
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
+    // {
+    //   type: 'image',
+    //   options: { hotspot: true },
+    // },
     {
+      name: 'image',
       type: 'image',
-      options: { hotspot: true },
+      title: 'Image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Caption',
+          options: {
+            isHighlighted: true,
+          },
+        },
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description: 'Important for SEO and accessiblity.',
+          validation: Rule =>
+            Rule.error('You have to fill out the alternative text.').required(),
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
+      preview: {
+        select: {
+          imageUrl: 'asset.url',
+          title: 'caption',
+        },
+      },
     },
     {
       name: 'code',

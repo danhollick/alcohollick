@@ -83,6 +83,59 @@ const GlobalStyles = createGlobalStyle`
         margin:0px;
         padding: 0;
     }
+
+  /* h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 29px;
+  color: ${props => props.color || colors.dark_grey};
+  }
+  h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 22px;
+  color: ${props => props.color || colors.dark_grey};
+  }
+  h3 {
+    font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: ${props => props.color || colors.dark_grey};
+  }
+  h4 {
+    font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: ${props => props.color || colors.dark_grey};
+  }
+  p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+
+  color: ${props => props.color || colors.dark_grey};
+  }
+
+  blockquote {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  color: ${props => props.color || colors.medium_grey};
+  }
+
+  ul {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: ${props => props.color || colors.dark_grey};
+  } */
 `
 
 const StyledPage = styled.div`

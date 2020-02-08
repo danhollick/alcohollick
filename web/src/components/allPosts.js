@@ -1,10 +1,8 @@
 import React from 'react'
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
 import { Stack, UnstyledLink } from './layout'
 import { Title } from './text'
-import { colors } from '../utils/colors'
 import { PostPreview } from './postPreview'
 
 const All_POSTS_QUERY = graphql`
