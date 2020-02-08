@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { createGlobalStyle } from 'styled-components'
 import { colors } from '../utils/colors'
 import Header from './header'
+import Footer from './footer'
 
 const GlobalStyles = createGlobalStyle`
 @font-face {
@@ -91,6 +92,7 @@ const StyledPage = styled.div`
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
+  padding: 0px 40px;
 `
 
 const PageWrapper = styled.div`
@@ -98,7 +100,7 @@ const PageWrapper = styled.div`
   justify-self: center;
   max-width: 1000px;
   width: 100%;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
 `
 
 const Main = styled.main`
@@ -111,6 +113,7 @@ const Page = ({ children }) => (
     <PageWrapper>
       <Header />
       <Main>{children}</Main>
+      <Footer />
     </PageWrapper>
   </StyledPage>
 )

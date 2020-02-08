@@ -1,7 +1,7 @@
 import React from 'react'
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import { Stack } from './layout'
-import { Title, Subtitle, MassiveHeading, TextLink } from './text'
+import { Job } from './job'
 
 const ALL_JOBS_QUERY = graphql`
   query AllJobsQuery {
@@ -16,26 +16,6 @@ const ALL_JOBS_QUERY = graphql`
     }
   }
 `
-
-const Job = ({
-  title,
-  place,
-  url,
-  startDate,
-  endDate = 'present',
-  className,
-}) => (
-  <Stack spacing={0} className={className}>
-    <Title>
-      <TextLink href={url} target="_blank">
-        {place}, {title}
-      </TextLink>
-    </Title>
-    <Subtitle>
-      {startDate} - {endDate || 'Present'}
-    </Subtitle>
-  </Stack>
-)
 
 export const JobList = ({ className }) => {
   const data = useStaticQuery(ALL_JOBS_QUERY)

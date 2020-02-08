@@ -1,11 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
 import Page from '../components/page'
 import { Stack, Columns } from '../components/layout'
 import PurpleImage from '../components/image'
 import SEO from '../components/seo'
-import { Title, Subtitle, MassiveHeading } from '../components/text'
+import { Title, MassiveHeading } from '../components/text'
 import { JobList } from '../components/jobList'
 
 const IndexPage = () => {
@@ -35,7 +34,7 @@ const IndexPage = () => {
         <PurpleImage
           className="JustifyEnd"
           width={440}
-          url={data.profileImage.childImageSharp.fluid}
+          fluid={data.profileImage.childImageSharp.fluid}
         />
       </Columns>
     </Page>

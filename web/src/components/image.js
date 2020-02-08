@@ -22,6 +22,7 @@ const Greyscale = styled(Img)`
   filter: grayscale(1);
   z-index: 1;
   width: ${props => `${props.width}px`};
+  object-fit: contain;
 `
 
 const PurpleFilter = styled.div`
@@ -58,13 +59,14 @@ const Wrapper = styled.div`
   }
 `
 
-const PurpleImage = ({ width, url, className }) => (
+const PurpleImage = ({ width, fluid, fixed, className }) => (
   <Wrapper className={className}>
     <PurpleFilter />
     <Greyscale
       width={width}
+      fixed={fixed}
       // sizes={data.profileImage.sizes}
-      fluid={url}
+      fluid={fluid}
     />
   </Wrapper>
 )

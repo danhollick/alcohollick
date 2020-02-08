@@ -2,14 +2,10 @@ import styled from 'styled-components'
 import React from 'react'
 import { graphql } from 'gatsby'
 import Page from '../components/page'
-// import Container from '../components/container'
-// import GraphQLErrorList from '../components/graphql-error-list'
-
 import SEO from '../components/seo'
 import { Heading, SubHeading } from '../components/text'
 import { Stack } from '../components/layout'
-
-// import { toPlainText } from '../lib/helpers'
+import PortableText from '../components/portableText'
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -22,6 +18,7 @@ export const query = graphql`
       }
       mainImage {
         asset {
+          url
           fluid {
             src
             aspectRatio
@@ -38,9 +35,25 @@ export const query = graphql`
       slug {
         current
       }
+      _rawBody
     }
   }
 `
+
+const BlogWrapper = styled.div`
+  max-width: 600px;
+  display: grid;
+`
+
+const BlogPost = ({ description, title, _rawBody }) => (
+  <BlogWrapper>
+    <Stack className="AlignStart">
+      <Heading>{title}</Heading>
+      <SubHeading>{description}</SubHeading>
+      <PortableText blocks={_rawBody} />
+    </Stack>
+  </BlogWrapper>
+)
 
 const BlogPostTemplate = props => {
   const { data, errors } = props
@@ -58,12 +71,7 @@ const BlogPostTemplate = props => {
 
       {errors && <div>{/* <GraphQLErrorList errors={errors} /> */}</div>}
 
-      {post && (
-        <Stack className="AlignStart">
-          <Heading>{post.title}</Heading>
-          <SubHeading>{post.description}</SubHeading>
-        </Stack>
-      )}
+      {post && <BlogPost {...post} />}
     </Page>
   )
 }
