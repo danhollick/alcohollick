@@ -2,38 +2,6 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 
-export const Stack = styled.div`
-  display: grid;
-  padding: ${props =>
-    props.padding
-      ? `${props.padding[0] * 8}px ${props.padding[1] * 8}px`
-      : `auto`};
-  row-gap: ${props => (props.spacing ? `${props.spacing * 8}px` : `8px`)};
-  grid-template-rows: ${props =>
-    props.count
-      ? `repeat(${props.count}, auto )`
-      : `repeat(${React.Children.count(props.children)}, auto )`};
-`
-
-export const Columns = styled.div`
-  display: grid;
-  padding: ${props =>
-    props.padding
-      ? `${props.padding[0] * 8}px ${props.padding[1] * 8}px`
-      : `auto`};
-  grid-template-columns: ${props =>
-    props.count
-      ? `repeat(${props.count}, auto )`
-      : `repeat(${React.Children.count(props.children)}, auto )`};
-  column-gap: ${props => (props.spacing ? `${props.spacing * 8}px` : `8px`)};
-  row-gap: ${props => (props.spacing ? `${props.spacing * 8}px` : `8px`)};
-`
-
-export const UnstyledLink = styled(Link)`
-  appearance: none;
-  text-decoration: none;
-`
-
 const sizes = {
   small: 450,
   med: 960,
@@ -70,3 +38,55 @@ export const below = Object.keys(sizes).reduce((acc, label) => {
   `
   return acc
 }, {})
+
+export const Stack = styled.div`
+  display: grid;
+  padding: ${props =>
+    props.padding
+      ? `${props.padding[0] * 8}px ${props.padding[1] * 8}px`
+      : `auto`};
+  row-gap: ${props => (props.spacing ? `${props.spacing * 8}px` : `8px`)};
+  grid-template-rows: ${props =>
+    props.count
+      ? `repeat(${props.count}, auto )`
+      : `repeat(${React.Children.count(props.children)}, auto )`};
+
+  ${below.med`
+      padding: ${props =>
+        props.smallPadding &&
+        `${props.smallPadding[0] * 8}px ${props.smallPadding[1] * 8}px`};
+      row-gap: ${props =>
+        props.smallSpacing ? `${props.smallSpacing * 8}px` : `8px`};
+      grid-template-rows: ${props =>
+        props.smallCount && `repeat(${props.smallCount}, auto )`}
+  `}
+`
+
+export const Columns = styled.div`
+  display: grid;
+  padding: ${props =>
+    props.padding
+      ? `${props.padding[0] * 8}px ${props.padding[1] * 8}px`
+      : `auto`};
+  grid-template-columns: ${props =>
+    props.count
+      ? `repeat(${props.count}, 1fr )`
+      : `repeat(${React.Children.count(props.children)}, auto )`};
+  column-gap: ${props => (props.spacing ? `${props.spacing * 8}px` : `8px`)};
+  row-gap: ${props => (props.spacing ? `${props.spacing * 8}px` : `8px`)};
+
+  ${below.med`
+   padding: ${props =>
+     props.smallPadding &&
+     `${props.smallPadding[0] * 8}px ${props.smallPadding[1] * 8}px`};
+  grid-template-columns: ${props =>
+    props.smallCount && `repeat(${props.smallCount}, 1fr )`};
+  column-gap: ${props => props.smallSpacing && `${props.smallSpacing * 8}px`};
+  row-gap: ${props => props.smallSpacing && `${props.smallSpacing * 8}px`};
+  `}
+`
+
+export const UnstyledLink = styled(Link)`
+  appearance: none;
+  text-decoration: none;
+`

@@ -38,7 +38,7 @@ export const query = graphql`
 
 const BlogWrapper = styled.div`
   margin: 56px 0px 108px 0px;
-  max-width: 800px;
+  max-width: 680px;
   width: 100%;
   display: grid;
   justify-self: center;
@@ -48,10 +48,12 @@ const BlogWrapper = styled.div`
 
 const BlogPost = ({ description, title, _rawBody, mainImage }) => (
   <BlogWrapper>
-    <MassiveHeading>{title}</MassiveHeading>
-    <Img fluid={mainImage.asset.fluid} />
-    <Heading color={colors.medium_grey}>{description}</Heading>
-    <PortableText blocks={_rawBody} />
+    <MassiveHeading className="fadeInUpSlight">{title}</MassiveHeading>
+    <Img className="fadeInUpSlight" fluid={mainImage.asset.fluid} />
+    <Heading className="fadeInUpSlight" color={colors.medium_grey}>
+      {description}
+    </Heading>
+    <PortableText className="fadeInUpSlight" blocks={_rawBody} />
   </BlogWrapper>
 )
 
@@ -68,9 +70,6 @@ const BlogPostTemplate = props => {
           image={post.mainImage}
         />
       )}
-
-      {errors && <div>{/* <GraphQLErrorList errors={errors} /> */}</div>}
-
       {post && <BlogPost {...post} />}
     </Page>
   )

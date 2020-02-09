@@ -12,7 +12,7 @@ const StyledPortableText = styled(BasePortableText)`
     font-weight: 700;
     font-size: 32px;
     line-height: 29px;
-    max-width:680px;
+    max-width: 700px;
     color: ${colors.dark_grey};
   }
   h2 {
@@ -20,7 +20,7 @@ const StyledPortableText = styled(BasePortableText)`
     font-weight: 700;
     font-size: 28px;
     line-height: 22px;
-    max-width:680px;
+    max-width: 700px;
     color: ${colors.dark_grey};
   }
   h3 {
@@ -28,7 +28,7 @@ const StyledPortableText = styled(BasePortableText)`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    max-width:680px;
+    max-width: 700px;
     color: ${colors.dark_grey};
   }
   h4 {
@@ -36,7 +36,7 @@ const StyledPortableText = styled(BasePortableText)`
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-    max-width:680px;
+    max-width: 700px;
     color: ${colors.dark_grey};
   }
   p {
@@ -44,7 +44,7 @@ const StyledPortableText = styled(BasePortableText)`
     font-weight: 400;
     font-size: 20px;
     line-height: 160%;
-    max-width:680px;
+    max-width: 700px;
     color: ${colors.dark_grey};
   }
 

@@ -16,7 +16,6 @@ const StyledCaption = styled.figcaption`
 
 export const Figure = ({ node }) => {
   if (!node || !node.asset || !node.asset._id) {
-    console.log('running', node)
     return null
   }
   const fluidProps = getFluidGatsbyImage(

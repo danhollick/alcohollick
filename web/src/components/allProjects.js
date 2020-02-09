@@ -46,7 +46,7 @@ export const AllProjects = ({ className }) => {
     <AllModule className={className}>
       {data.projects.nodes.map((project, i) => (
         <UnstyledA href={project.url} target="_blank">
-          <ProjectPreview key={i} {...project} />
+          <ProjectPreview key={i} delay={i} {...project} />
         </UnstyledA>
       ))}
     </AllModule>

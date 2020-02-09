@@ -1,5 +1,7 @@
+import React from 'react'
 import { CodeBlock } from './codeblock'
 import { Figure } from './figure'
+import { Gif } from './gif'
 
 const serializers = {
   types: {
@@ -10,6 +12,7 @@ const serializers = {
     //   return null
     // },
     image: Figure,
+    gif: Gif,
   },
 }
 

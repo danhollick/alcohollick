@@ -25,7 +25,7 @@ const IndexPage = () => {
       <SEO title="home" description="Designer + Coder" />
       <Columns className="AlignCenter">
         <Stack>
-          <Stack className="AlignStart" spacing={1}>
+          <Stack className="AlignStart fadeInUpSlight" spacing={1}>
             <MassiveHeading>dan hollick</MassiveHeading>
             <Title> Designer + Coder</Title>
           </Stack>

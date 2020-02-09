@@ -43,7 +43,7 @@ export const AllPosts = ({ className }) => {
       <AllModule>
         {data.posts.nodes.map((post, i) => (
           <UnstyledLink to={`/blog/${post.slug.current || post.slug}/`}>
-            <PostPreview key={i} {...post} />
+            <PostPreview delay={i} key={i} {...post} />
           </UnstyledLink>
         ))}
       </AllModule>

@@ -23,7 +23,7 @@ export const JobList = ({ className }) => {
     <Stack spacing={3} className={className}>
       {data &&
         data.jobs.nodes.map((job, i) => (
-          <Job key={i} className="AlignEnd" {...job} />
+          <Job key={i} delay={i} className="AlignEnd" {...job} />
         ))}
     </Stack>
   )

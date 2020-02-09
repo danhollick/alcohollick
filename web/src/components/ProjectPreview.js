@@ -48,6 +48,12 @@ const ProjectContainer = styled.div`
   :active {
     transform: scale(1);
   }
+
+  animation-name: fadeInUpSlight;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-duration: 800ms;
+  animation-fill-mode: both;
+  animation-delay: ${props => `${props.delay * 150}ms`};
 `
 
 export const ProjectPreview = ({
@@ -56,8 +62,9 @@ export const ProjectPreview = ({
   description,
   publishedAt,
   className,
+  delay = 0,
 }) => (
-  <ProjectContainer>
+  <ProjectContainer delay={delay}>
     <Stack>
       <PurplePostImage className={className}>
         <PurpleFilter />

@@ -49,6 +49,22 @@ const GlobalStyles = createGlobalStyle`
   src: url("Inter-BoldItalic.otf") format("otf");
   font-display: swap;
 }
+.fadeInUpSlight{
+  animation-name: fadeInUpSlight;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-duration: 800ms;
+}
+@keyframes fadeInUpSlight {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 5%, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
 .AlignEnd {
     align-self: end;
   }
@@ -73,6 +89,9 @@ const GlobalStyles = createGlobalStyle`
   .JustifyStretch {
     justify-self: stretch;
   }
+  html {
+    scroll-behavior: smooth
+  }
   body {
     font: 400 18px Inter, sans-serif;
     box-sizing: border-box;
@@ -83,59 +102,6 @@ const GlobalStyles = createGlobalStyle`
         margin:0px;
         padding: 0;
     }
-
-  /* h1 {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 29px;
-  color: ${props => props.color || colors.dark_grey};
-  }
-  h2 {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 22px;
-  color: ${props => props.color || colors.dark_grey};
-  }
-  h3 {
-    font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  color: ${props => props.color || colors.dark_grey};
-  }
-  h4 {
-    font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: ${props => props.color || colors.dark_grey};
-  }
-  p {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 160%;
-
-  color: ${props => props.color || colors.dark_grey};
-  }
-
-  blockquote {
-  font-style: italic;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 160%;
-  color: ${props => props.color || colors.medium_grey};
-  }
-
-  ul {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 160%;
-    color: ${props => props.color || colors.dark_grey};
-  } */
 `
 
 const StyledPage = styled.div`
@@ -146,6 +112,8 @@ const StyledPage = styled.div`
   min-height: 100vh;
   box-sizing: border-box;
   padding: 0px 40px;
+  overflow-x: hidden;
+  box-sizing: border-box;
 `
 
 const PageWrapper = styled.div`
@@ -158,6 +126,15 @@ const PageWrapper = styled.div`
 
 const Main = styled.main`
   display: grid;
+  row-gap: 140px;
+`
+
+const TFWPageWrapper = styled.div`
+  display: grid;
+  justify-self: center;
+  max-width: 1000px;
+  width: 100%;
+  grid-template-rows: 1fr;
 `
 
 const Page = ({ children }) => (
@@ -168,6 +145,15 @@ const Page = ({ children }) => (
       <Main>{children}</Main>
       <Footer />
     </PageWrapper>
+  </StyledPage>
+)
+
+export const TFWPage = ({ children }) => (
+  <StyledPage>
+    <GlobalStyles />
+    <TFWPageWrapper>
+      <Main>{children}</Main>
+    </TFWPageWrapper>
   </StyledPage>
 )
 
