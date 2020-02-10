@@ -37,6 +37,18 @@ export default {
       of: [{ type: 'reference', to: { type: 'category' } }],
     },
     {
+      name: 'related',
+      title: 'Related',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'post' } }],
+    },
+    {
+      name: 'series',
+      title: 'Series',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'post' } }],
+    },
+    {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
