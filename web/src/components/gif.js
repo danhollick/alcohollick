@@ -17,6 +17,11 @@ const StyledFigure = styled.figure`
   max-width: 800px;
 `
 
+const StyledImg = styled.img`
+  justify-self: center;
+  max-width: 800px;
+`
+
 export const Gif = ({ node }) => {
   if (!node || !node.asset) {
     return null
@@ -24,7 +29,7 @@ export const Gif = ({ node }) => {
 
   return (
     <StyledFigure>
-      <img src={node.asset.url} alt={node.alt} />
+      <StyledImg src={node.asset.url} alt={node.alt} />
       <StyledCaption>{node.caption}</StyledCaption>
     </StyledFigure>
   )

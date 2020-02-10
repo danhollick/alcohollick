@@ -68,7 +68,6 @@ const StyledPortableText = styled(BasePortableText)`
             margin-bottom: 16px;
         }
   }
-
   p > code, li > code {
     font-family: monospace;
     font-size: 18px;
