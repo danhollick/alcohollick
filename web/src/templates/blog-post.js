@@ -39,7 +39,7 @@ export const query = graphql`
 const BlogWrapper = styled.div`
   margin: 56px 0px 108px 0px;
   max-width: 680px;
-  width: 100%;
+  /* width: 100%; */
   display: grid;
   justify-self: center;
   grid-row-gap: 40px;

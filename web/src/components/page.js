@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { colors } from '../utils/colors'
 import Header from './header'
 import Footer from './footer'
+import { below } from './layout'
 
 const GlobalStyles = createGlobalStyle`
 @font-face {
@@ -114,6 +115,9 @@ const StyledPage = styled.div`
   padding: 0px 40px;
   overflow-x: hidden;
   box-sizing: border-box;
+  ${below.med`
+    padding: 0px 16px;
+    `}
 `
 
 const PageWrapper = styled.div`
@@ -127,6 +131,9 @@ const PageWrapper = styled.div`
 const Main = styled.main`
   display: grid;
   row-gap: 140px;
+  /* ${below.med`
+    margin-top: 40px;
+  `} */
 `
 
 const TFWPageWrapper = styled.div`

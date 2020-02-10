@@ -2,6 +2,7 @@ import React from 'react'
 import { CodeBlock } from './codeblock'
 import { Figure } from './figure'
 import { Gif } from './gif'
+import { TwitterTweetEmbedPreview } from './tweet'
 
 const serializers = {
   types: {
@@ -13,6 +14,7 @@ const serializers = {
     // },
     image: Figure,
     gif: Gif,
+    twitterTweetEmbed: TwitterTweetEmbedPreview,
   },
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import { TwitterTweetEmbed } from 'react-twitter-embed'
 import Page from '../components/page'
 import { Stack, Columns } from '../components/layout'
 import PurpleImage from '../components/image'
@@ -23,8 +24,8 @@ const IndexPage = () => {
   return (
     <Page>
       <SEO title="home" description="Designer + Coder" />
-      <Columns className="AlignCenter">
-        <Stack>
+      <Columns smallCount={1} smallSpacing={10} className="AlignCenter">
+        <Stack smallSpacing={10}>
           <Stack className="AlignStart fadeInUpSlight" spacing={1}>
             <MassiveHeading>dan hollick</MassiveHeading>
             <Title> Designer + Coder</Title>
@@ -33,7 +34,6 @@ const IndexPage = () => {
         </Stack>
         <PurpleImage
           className="JustifyEnd"
-          width={440}
           fluid={data.profileImage.childImageSharp.fluid}
         />
       </Columns>

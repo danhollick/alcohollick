@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import { colors } from '../utils/colors'
+import { below } from './layout'
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -21,8 +22,11 @@ const Greyscale = styled(Img)`
   transition: filter ease-in-out 400ms;
   filter: grayscale(1);
   z-index: 1;
-  width: ${props => `${props.width}px`};
+  width: 440px;
   object-fit: contain;
+  ${below.med`
+    width: 100%;
+  `}
 `
 
 const PurpleFilter = styled.div`
@@ -40,7 +44,11 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: 1;
-  :hover {
+  ${below.med`
+    width: 100%;
+    height:100%;
+  `}
+    :hover {
     ${Greyscale} {
       filter: grayscale(0);
     }
@@ -63,7 +71,6 @@ const PurpleImage = ({ width, fluid, fixed, className }) => (
   <Wrapper className={className}>
     <PurpleFilter />
     <Greyscale
-      width={width}
       fixed={fixed}
       // sizes={data.profileImage.sizes}
       fluid={fluid}

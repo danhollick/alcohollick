@@ -78,7 +78,7 @@ export const PostPreview = ({
     <Stack>
       <PurplePostImage className={className}>
         <PurpleFilter />
-        <Greyscale fixed={mainImage.asset.fixed} />
+        <Greyscale fluid={mainImage.asset.fluid} />
       </PurplePostImage>
       <Stack className="AlignEnd" padding={[2, 2]}>
         <Title>{title}</Title>

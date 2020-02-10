@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
-import { Stack, UnstyledLink } from './layout'
+import { Stack, UnstyledLink, below } from './layout'
 import { Title } from './text'
 import { PostPreview } from './postPreview'
 
@@ -17,8 +17,8 @@ const RECENT_POSTS_QUERY = graphql`
         publishedAt(fromNow: true)
         mainImage {
           asset {
-            fixed(width: 238) {
-              ...GatsbySanityImageFixed
+            fluid(maxWidth: 238) {
+              ...GatsbySanityImageFluid
             }
           }
         }
@@ -31,6 +31,10 @@ const RecentModule = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 240px);
   grid-column-gap: 32px;
+  ${below.med`
+    grid-template-columns: 1fr;
+    grid-row-gap:32px;
+  `}
 `
 
 export const RecentPosts = ({ className }) => {

@@ -19,7 +19,8 @@ const StyledFigure = styled.figure`
 
 const StyledImg = styled.img`
   justify-self: center;
-  max-width: 800px;
+  /* max-width: 800px; */
+  width: 100%;
 `
 
 export const Gif = ({ node }) => {

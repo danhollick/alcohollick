@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 import { colors } from '../utils/colors'
-import { Columns } from './layout'
+import { Columns, below } from './layout'
 
 const NavLink = styled(Link)`
   font: 700 16px Inter, sans-serif;
@@ -27,12 +27,16 @@ const Nav = styled.nav`
   display: grid;
   grid-template-columns: auto auto;
   max-width: 1000px;
-  width: 100%;
+  /* width: 100%; */
   align-self: start;
   padding: 24px 0px;
+  grid-column-gap: 16px;
   .active {
     color: ${colors.purplish};
   }
+  ${below.med`
+  padding: 16px 0px;
+  `}
 `
 
 const Header = () => (
@@ -40,9 +44,9 @@ const Header = () => (
     <NavLink className="JustifyStart" activeClassName="active" to="/">
       alcohollick.
     </NavLink>
-    <Columns spacing={5} className="JustifyEnd">
+    <Columns spacing={5} smallSpacing={2} className="JustifyEnd">
       <NavLink activeClassName="active" to="/things/">
-        things I have built.
+        things i've built.
       </NavLink>
       <NavLink activeClassName="active" to="/writing/">
         writing.

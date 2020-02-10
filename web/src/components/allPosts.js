@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
-import { Stack, UnstyledLink } from './layout'
+import { Stack, UnstyledLink, below } from './layout'
 import { Title } from './text'
 import { PostPreview } from './postPreview'
 
@@ -17,8 +17,8 @@ const All_POSTS_QUERY = graphql`
         publishedAt(fromNow: true)
         mainImage {
           asset {
-            fixed(width: 238) {
-              ...GatsbySanityImageFixed
+            fluid(maxWidth: 238) {
+              ...GatsbySanityImageFluid
             }
           }
         }
@@ -33,6 +33,10 @@ const AllModule = styled.div`
   grid-template-columns: repeat(auto-fit, 240px);
   grid-gap: 32px;
   justify-content: end;
+  ${below.med`
+    grid-template-columns: 1fr;
+    grid-row-gap:32px;
+  `}
 `
 
 export const AllPosts = ({ className }) => {
