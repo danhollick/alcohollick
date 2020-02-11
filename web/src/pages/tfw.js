@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { TFWPage } from '../components/page'
 import SEO from '../components/seo'
 import { Hero } from '../components/tfw/hero'

@@ -3,12 +3,12 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { Stack, Columns } from '../layout'
-import { MassiveHeading, SubHeading, Heading, Body, Title } from '../text'
+import { Heading, Body, Title } from '../text'
 
 const FullHeightSection = styled.div`
   display: grid;
   margin: 0rem -9999px;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0rem 9999px;
   width: 100%;
   .MaxTextLength {
@@ -40,12 +40,18 @@ export const Section2 = () => {
   return (
     <FullHeightSection id="_how">
       <Columns
+        padding={[6, 3]}
         spacing={10}
-        smallSpacing={4}
+        smallSpacing={10}
         smallCount={1}
         className="AlignCenter"
       >
-        <Stack as="article" spacing={2} className="AlignCenter  MaxTextLength">
+        <Stack
+          as="article"
+          spacing={2}
+          smallSpacing={4}
+          className="AlignCenter  MaxTextLength"
+        >
           <Heading color="white">
             AI?
             <br />
@@ -55,7 +61,7 @@ export const Section2 = () => {
             Nope, this machine is as dumb as can be. <br /> And it will stay
             that way. Forever.
           </Body>
-          <Stack as="ul" spacing={4} padding={[0, 0]}>
+          <Stack as="ul" spacing={4} smallSpacing={4} padding={[0, 0]}>
             <Stack as="li">
               <Title color="white">Step 1: </Title>
               <Body color="white">
@@ -80,6 +86,7 @@ export const Section2 = () => {
           </Stack>
         </Stack>
         <Img
+          className="JustifyCenter"
           alt="An image of a phone displaying the weather scrolled to the bottom of the page."
           fixed={data.device.childImageSharp.fixed}
         />

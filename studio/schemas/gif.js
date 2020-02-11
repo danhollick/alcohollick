@@ -1,6 +1,6 @@
 export default {
   name: 'gif',
-  type: 'object',
+  type: 'image',
   title: 'Gif',
   options: {
     hotspot: true,

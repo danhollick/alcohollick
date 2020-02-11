@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { Stack, Columns } from '../layout'
-import { MassiveHeading, SubHeading, Heading, Body } from '../text'
+import { Body } from '../text'
 import { colors } from '../../utils/colors'
 
 const Wrapper = styled.div`

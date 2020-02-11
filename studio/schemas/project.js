@@ -17,6 +17,11 @@ export default {
       name: 'url',
       title: 'URL',
       type: 'url',
+      validation: Rule =>
+        Rule.uri({
+          allowRelative: true,
+          scheme: ['https', 'http', 'mailto', 'tel'],
+        }),
     },
     {
       name: 'image',

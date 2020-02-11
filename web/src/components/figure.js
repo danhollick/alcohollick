@@ -15,6 +15,19 @@ const StyledCaption = styled.figcaption`
 `
 
 export const Figure = ({ node }) => {
+  // console.log(node)
+  // let normalizedProps = node.asset
+  // if (node.asset.fluid && node.asset.fluid.presentationWidth) {
+  //   normalizedProps = {
+  //     ...node.asset,
+  //     style: {
+  //       ...(node.asset.style || {}),
+  //       maxWidth: node.asset.fluid.presentationWidth,
+  //       margin: '0 auto', // Used to center the image
+  //     },
+  //   }
+  // }
+
   if (!node || !node.asset || !node.asset._id) {
     return null
   }
@@ -25,6 +38,7 @@ export const Figure = ({ node }) => {
   )
   return (
     <figure>
+      {/* <Img fluid={fluidProps} alt={node.alt} {...normalizedProps} /> */}
       <Img fluid={fluidProps} alt={node.alt} />
       <StyledCaption>{node.caption}</StyledCaption>
     </figure>

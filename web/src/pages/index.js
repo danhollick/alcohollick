@@ -1,6 +1,5 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { TwitterTweetEmbed } from 'react-twitter-embed'
 import Page from '../components/page'
 import { Stack, Columns } from '../components/layout'
 import PurpleImage from '../components/image'

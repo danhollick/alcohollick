@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 import { Columns } from '../layout'
 import { colors } from '../../utils/colors'
 import { Title, TextLink } from '../text'

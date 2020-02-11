@@ -2,17 +2,18 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
-import { Stack, Columns, below } from '../layout'
-import { MassiveHeading, SubHeading, Heading } from '../text'
+import { Stack, below } from '../layout'
+import { MassiveHeading, Heading } from '../text'
 import { FloatingHeader } from './floatingHeader'
+import { colors } from '../../utils/colors'
 
 const HeroWrapper = styled.div`
   background-color: red;
   margin: 0rem -9999px;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0rem 9999px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 320px;
   grid-template-rows: auto 1fr;
   background: rgb(162, 192, 207);
   background: linear-gradient(
@@ -22,6 +23,7 @@ const HeroWrapper = styled.div`
   );
   ${below.med`
     grid-template-columns: 1fr;
+    grid-row-gap: 56px;
   `}
 `
 
@@ -29,10 +31,11 @@ const DeviceImage = styled(Img)`
   align-self: end;
   justify-self: end;
   margin: 0px 0px -140px 0px;
+  width: 100%;
   ${below.med`
      align-self: end;
-  justify-self: center;
-  margin: 0px 0px 0px 0px;
+      justify-self: center;
+      margin: 0px 0px 56px 0px;
   `}
 `
 
@@ -52,11 +55,11 @@ export const Hero = () => {
   return (
     <HeroWrapper>
       <FloatingHeader />
-      <Stack spacing={4} className="AlignCenter">
+      <Stack spacing={4} padding={[6, 3]} className="AlignCenter">
         <MassiveHeading color="white">
           The <br /> F*cking <br /> Weather.
         </MassiveHeading>
-        <Heading color="white">
+        <Heading color={colors.light_grey}>
           A weather app for people
           <br /> who hate weather apps.
         </Heading>

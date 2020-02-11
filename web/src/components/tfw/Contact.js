@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Stack } from '../layout'
 import { Heading, Body } from '../text'
-import { colors } from '../../utils/colors'
 
 const Wrapper = styled.div`
   display: grid;

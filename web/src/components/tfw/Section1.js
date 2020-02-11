@@ -7,7 +7,7 @@ import { Heading, Body } from '../text'
 
 const FullHeightSection = styled.div`
   display: grid;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   .MaxTextLength {
     max-width: 400px;
@@ -30,13 +30,21 @@ export const Section1 = () => {
   return (
     <FullHeightSection id="_why">
       <Columns
+        padding={[6, 3]}
         spacing={10}
-        smallSpacing={4}
+        smallSpacing={10}
         smallCount={1}
         className="AlignCenter"
       >
-        <Img fixed={data.device.childImageSharp.fixed} />
-        <Stack spacing={4} className="AlignCenter  MaxTextLength">
+        <Img
+          className="JustifyCenter"
+          fixed={data.device.childImageSharp.fixed}
+        />
+        <Stack
+          spacing={4}
+          smallSpacing={4}
+          className="AlignCenter  MaxTextLength"
+        >
           <Heading>The most vague weather app available today.</Heading>
           <Body>
             If you’re like us, you hate how accurate and precise weather apps

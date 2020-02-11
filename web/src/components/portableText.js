@@ -52,13 +52,25 @@ const StyledPortableText = styled(BasePortableText)`
   blockquote {
     font-style: italic;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 160%;
     text-align:center;
     color: ${colors.medium_grey};
   }
 
   ul {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 160%;
+    max-width:680px;
+    color: ${colors.dark_grey};
+    li:not(:last-child) {
+            margin-bottom: 16px;
+        }
+  }
+
+  ol {
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
