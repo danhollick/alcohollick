@@ -30,6 +30,7 @@ const RECENT_POSTS_QUERY = graphql`
 const RecentModule = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 240px);
+  justify-content: end;
   grid-column-gap: 32px;
   ${below.med`
     grid-template-columns: 1fr;

@@ -9,7 +9,7 @@ const WritingPage = () => (
   <Page>
     <SEO title="writing." />
     <Stack>
-      <RecentPosts className="JustifyEnd AlignStart" />
+      <RecentPosts className=" AlignStart" />
       <AllPosts className="AlignStart" />
     </Stack>
   </Page>
