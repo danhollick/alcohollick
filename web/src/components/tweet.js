@@ -1,18 +1,34 @@
 import React from 'react'
 import { TwitterTweetEmbed } from 'react-twitter-embed'
+import styled from 'styled-components'
+import { Body } from './text'
+import { below } from './layout'
+
+const StyledTweet = styled(TwitterTweetEmbed)`
+  width: 90vw;
+`
+
+const StyledTweetWrapper = styled.div`
+  justify-self: center;
+  display: grid;
+  justify-content: center;
+  /* .twitter-tweet .twitter-tweet-rendered {
+    width: 90vw;
+  } */
+  ${below.med`
+      width:90vw;
+    `}
+`
 
 export const TwitterTweetEmbedPreview = ({ node = {} }) => {
-  console.log(node)
-  const { url } = node
-  if (!url) {
-    return <div>Missing Tweet ID</div>
+  const { tweet } = node
+  if (!tweet) {
+    return <Body>Missing Tweet </Body>
   }
-  //   console.log(url.split('/'))
-  //   if (!tweetId) {
-  //       return (
-  //       <div>
-  //         Missing Tweet ID
-  //       </div>
-  //     )}
-  return <TwitterTweetEmbed tweetId={url} />
+  const id = tweet.split('/').slice(-1)[0]
+  return (
+    <StyledTweetWrapper>
+      <StyledTweet tweetId={id.split('?')[0]} />
+    </StyledTweetWrapper>
+  )
 }

@@ -10,6 +10,7 @@ import category from './category'
 import post from './post'
 import job from './job'
 import project from './project.js'
+import tweet from './tweet'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,6 +25,7 @@ export default createSchema({
     category,
     job,
     project,
+    tweet,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document ,schem,as
     blockContent,

@@ -38,18 +38,18 @@ export const query = graphql`
 
 const BlogWrapper = styled.div`
   margin: 56px 0px 108px 0px;
-  max-width: 680px;
-  /* width: 100%; */
+  /* max-width: 680px; */
   display: grid;
   justify-self: center;
   grid-row-gap: 40px;
   align-content: start;
+  justify-content: center;
 `
 
 const BlogPost = ({ description, title, _rawBody, mainImage }) => (
   <BlogWrapper>
-    <MassiveHeading className="fadeInUpSlight">{title}</MassiveHeading>
     <Img className="fadeInUpSlight" fluid={mainImage.asset.fluid} />
+    <MassiveHeading className="fadeInUpSlight">{title}</MassiveHeading>
     <Heading className="fadeInUpSlight" color={colors.medium_grey}>
       {description}
     </Heading>
@@ -67,7 +67,7 @@ const BlogPostTemplate = props => {
         <SEO
           title={post.title || 'Untitled'}
           description={JSON.stringify(post.description)}
-          image={post.mainImage}
+          image={post.mainImage.asset.url}
         />
       )}
       {post && <BlogPost {...post} />}

@@ -7,6 +7,7 @@ import { colors } from '../utils/colors'
 const StyledPortableText = styled(BasePortableText)`
   display: grid;
   grid-row-gap: 24px;
+  max-width: 680px;
   h1 {
     font-style: normal;
     font-weight: 700;

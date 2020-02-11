@@ -8,6 +8,7 @@ const serializers = {
   types: {
     // mainImage: Figure,
     code: CodeBlock,
+    // gallery: ,
     // image: node => {
     //   console.log(node)
     //   return null

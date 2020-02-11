@@ -7,7 +7,7 @@ import { PostPreview } from './postPreview'
 
 const RECENT_POSTS_QUERY = graphql`
   query RecentPostsQuery {
-    posts: allSanityPost(sort: { fields: _updatedAt, order: DESC }, limit: 3) {
+    posts: allSanityPost(sort: { fields: _createdAt, order: DESC }, limit: 3) {
       nodes {
         title
         slug {
