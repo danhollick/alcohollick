@@ -2,22 +2,12 @@ import React from 'react'
 import { TwitterTweetEmbed } from 'react-twitter-embed'
 import styled from 'styled-components'
 import { Body } from './text'
-import { below } from './layout'
-
-const StyledTweet = styled(TwitterTweetEmbed)`
-  width: 90vw;
-`
 
 const StyledTweetWrapper = styled.div`
   justify-self: center;
   display: grid;
-  justify-content: center;
-  /* .twitter-tweet .twitter-tweet-rendered {
-    width: 90vw;
-  } */
-  ${below.med`
-      width:90vw;
-    `}
+  width: 100%;
+  max-width: 500px;
 `
 
 export const TwitterTweetEmbedPreview = ({ node = {} }) => {
@@ -28,7 +18,12 @@ export const TwitterTweetEmbedPreview = ({ node = {} }) => {
   const id = tweet.split('/').slice(-1)[0]
   return (
     <StyledTweetWrapper>
-      <StyledTweet tweetId={id.split('?')[0]} />
+      <TwitterTweetEmbed
+        options={{
+          width: 'auto',
+        }}
+        tweetId={id.split('?')[0]}
+      />
     </StyledTweetWrapper>
   )
 }
