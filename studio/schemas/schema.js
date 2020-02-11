@@ -11,6 +11,8 @@ import post from './post'
 import job from './job'
 import project from './project.js'
 import tweet from './tweet'
+import gif from './gif'
+import inlineImage from './inlineImage'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -26,6 +28,8 @@ export default createSchema({
     job,
     project,
     tweet,
+    gif,
+    inlineImage,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document ,schem,as
     blockContent,

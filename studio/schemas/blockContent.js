@@ -50,6 +50,11 @@ export default {
                 title: 'URL',
                 name: 'href',
                 type: 'url',
+                // validation: {
+                //   options: {
+                //     allowRelative: true,
+                //   },
+                // },
               },
             ],
           },
@@ -59,79 +64,16 @@ export default {
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
-    // {
-    //   type: 'image',
-    //   options: { hotspot: true },
-    // },
+
     {
       name: 'image',
-      type: 'image',
+      type: 'inlineImage',
       title: 'Image',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: 'caption',
-          type: 'string',
-          title: 'Caption',
-          options: {
-            isHighlighted: true,
-          },
-        },
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          description: 'Important for SEO and accessiblity.',
-          validation: Rule =>
-            Rule.error('You have to fill out the alternative text.').required(),
-          options: {
-            isHighlighted: true,
-          },
-        },
-      ],
-      preview: {
-        select: {
-          imageUrl: 'asset.url',
-          title: 'caption',
-        },
-      },
     },
     {
       name: 'gif',
-      type: 'image',
+      type: 'gif',
       title: 'Gif',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: 'caption',
-          type: 'string',
-          title: 'Caption',
-          options: {
-            isHighlighted: true,
-          },
-        },
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          description: 'Important for SEO and accessiblity.',
-          validation: Rule =>
-            Rule.error('You have to fill out the alternative text.').required(),
-          options: {
-            isHighlighted: true,
-          },
-        },
-      ],
-      preview: {
-        select: {
-          imageUrl: 'asset.url',
-          title: 'caption',
-        },
-      },
     },
     {
       title: 'Twitter Tweet Embed',
