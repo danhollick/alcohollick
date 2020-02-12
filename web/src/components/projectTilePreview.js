@@ -60,7 +60,6 @@ export const ProjectPreview = ({
   name,
   image,
   description,
-  publishedAt,
   className,
   delay = 0,
 }) => (
