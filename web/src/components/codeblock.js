@@ -19,5 +19,6 @@ export const CodeBlock = ({ node = {} }) => {
     >
       {code}
     </SyntaxHighlighter>
+    // <p />
   )
 }

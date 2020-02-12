@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { colors } from '../utils/colors'
+import { below } from './layout'
 
 const StyledCaption = styled.figcaption`
   margin-top: 8px;
@@ -12,15 +13,26 @@ const StyledCaption = styled.figcaption`
   color: ${colors.medium_grey};
 `
 
-const StyledFigure = styled.figure`
-  justify-self: center;
+const StyledFigure = styled.div`
+  /* justify-self: center; */
+  width: 100%;
   max-width: 800px;
+  justify-items: center;
+  background-color: red;
+  display: grid;
+  /* object-fit: cover; */
 `
 
 const StyledImg = styled.img`
   justify-self: center;
   /* max-width: 800px; */
-  width: 100%;
+  /* object-fit: contain; */
+
+  ${below.med`
+    max-width: 100vw;
+    // width: 100%;
+    // padding: 24px;
+  `}
 `
 
 export const Gif = ({ node }) => {

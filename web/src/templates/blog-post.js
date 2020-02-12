@@ -79,7 +79,6 @@ export const RelatedPosts = ({ className, posts }) => (
 
 const BlogWrapper = styled.div`
   margin: 56px 0px 108px 0px;
-  /* max-width: 680px; */
   display: grid;
   justify-self: center;
   grid-row-gap: 40px;

@@ -46,7 +46,7 @@ export const AllPosts = ({ className }) => {
       <Title className="JustifyEnd"> All</Title>
       <AllModule>
         {data.posts.nodes.map((post, i) => (
-          <UnstyledLink to={`/blog/${post.slug.current || post.slug}/`}>
+          <UnstyledLink to={`/writing/${post.slug.current || post.slug}/`}>
             <PostPreview delay={i} key={i} {...post} />
           </UnstyledLink>
         ))}

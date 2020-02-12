@@ -48,7 +48,7 @@ const Header = () => (
       <NavLink activeClassName="active" to="/things/">
         things i've built.
       </NavLink>
-      <NavLink activeClassName="active" to="/writing/">
+      <NavLink activeClassName="active" partiallyActive to="/writing/">
         writing.
       </NavLink>
     </Columns>
