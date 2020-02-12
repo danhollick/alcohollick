@@ -5,9 +5,9 @@ import { below } from './layout'
 import { Body } from './text'
 
 const StyledTweetWrapper = styled.div`
-  /* justify-self: center;
+  justify-self: center;
   display: grid;
-  width: 100%; */
+  width: 100%;
   max-width: 500px;
   /* padding: 24px; */
   /* background-color: red;
@@ -19,7 +19,7 @@ const StyledTweetWrapper = styled.div`
 
 const StyledTweet = styled(TwitterTweetEmbed)`
   /* justify-self: center; */
-  /* width: 100%; */
+  width: 100%;
   /* display: grid; */
   /* justify-items: center; */
 `
@@ -36,7 +36,7 @@ export const TwitterTweetEmbedPreview = ({ node = {} }) => {
       <StyledTweet
         key={id}
         options={{
-          width: '500px',
+          width: 'auto',
         }}
         tweetId={id}
       />

@@ -69,7 +69,7 @@ export const RelatedPosts = ({ className, posts }) => (
     <Title className="JustifyEnd"> Related</Title>
     <RelatedModule>
       {posts.map((post, i) => (
-        <UnstyledLink to={`/blog/${post.slug.current || post.slug}/`}>
+        <UnstyledLink to={`/writing/${post.slug.current || post.slug}/`}>
           <PostPreview key={i} delay={i} {...post} />
         </UnstyledLink>
       ))}
