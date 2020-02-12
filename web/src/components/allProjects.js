@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { ProjectPreview } from './projectPreview'
 import { below } from './layout'
 
-const All_PROJECTS_QUERY = graphql`
+const allProjectsQuery = graphql`
   query AllProjectsQuery {
     projects: allSanityProject(sort: { fields: name, order: DESC }) {
       nodes {
@@ -42,7 +42,7 @@ const UnstyledA = styled.a`
 `
 
 export const AllProjects = ({ className }) => {
-  const data = useStaticQuery(All_PROJECTS_QUERY)
+  const data = useStaticQuery(allProjectsQuery)
   return (
     <AllModule className={className}>
       {data.projects.nodes.map((project, i) => (

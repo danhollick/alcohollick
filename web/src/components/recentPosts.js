@@ -5,7 +5,7 @@ import { Stack, UnstyledLink, below } from './layout'
 import { Title } from './text'
 import { PostPreview } from './postPreview'
 
-const RECENT_POSTS_QUERY = graphql`
+const recentPostsQuery = graphql`
   query RecentPostsQuery {
     posts: allSanityPost(sort: { fields: publishedAt, order: DESC }, limit: 3) {
       nodes {
@@ -39,7 +39,7 @@ const RecentModule = styled.div`
 `
 
 export const RecentPosts = ({ className }) => {
-  const data = useStaticQuery(RECENT_POSTS_QUERY)
+  const data = useStaticQuery(recentPostsQuery)
   return (
     <Stack padding={[10, 0]} className={className}>
       <Title className="JustifyEnd"> Recent</Title>

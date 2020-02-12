@@ -5,7 +5,7 @@ import { Stack, UnstyledLink, below } from './layout'
 import { Title } from './text'
 import { PostPreview } from './postPreview'
 
-const All_POSTS_QUERY = graphql`
+const allPostsQuery = graphql`
   query AllPostsQuery {
     posts: allSanityPost(sort: { fields: publishedAt, order: DESC }) {
       nodes {
@@ -40,7 +40,7 @@ const AllModule = styled.div`
 `
 
 export const AllPosts = ({ className }) => {
-  const data = useStaticQuery(All_POSTS_QUERY)
+  const data = useStaticQuery(allPostsQuery)
   return (
     <Stack padding={[10, 0]} className={className}>
       <Title className="JustifyEnd"> All</Title>
