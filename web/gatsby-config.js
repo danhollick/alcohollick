@@ -3,6 +3,9 @@ module.exports = {
     title: `alcohollick`,
     description: `Persoal site of Dan Hollick, a Product Designer and amatuer coder from South Africa living in sunny Norway.`,
     author: `dan hollick`,
+    url: 'https://www.alcohollick.com', // No trailing slash allowed!
+    image: '/images/siteScreenshot.png', // Path to your image you placed in the 'static' folder
+    twitterUsername: '@danhollick',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

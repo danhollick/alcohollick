@@ -19,6 +19,9 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
+            url
+            image
+            twitterUsername
           }
         }
       }
@@ -38,6 +41,14 @@ function SEO({ description, lang, meta, title }) {
         {
           name: `description`,
           content: metaDescription,
+        },
+        {
+          name: `image`,
+          content: site.siteMetadata.image,
+        },
+        {
+          name: `og:image`,
+          content: site.siteMetadata.image,
         },
         {
           property: `og:title`,
