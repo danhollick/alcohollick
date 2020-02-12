@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<title>Dan Hollick - Portfolio</title>
+
+<head>
+  <link rel="shortcut icon" href="./assets/favicon-home.ico">
+  <link rel="stylesheet" href="../css/tachyons.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+  <meta property="og:url" content="https://alcohollick.com/portfolio.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dan Hollick's Portfolio">
+  <meta property="og:description" content="Use the arrow keys to steer your way around.">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image" content="https://alcohollick.com/assets/portfolioPreview.png">
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+  <script src="../js/p5.min.js"></script>
+  <script src="../js/p5.dom.min.js"></script>
+  <script src="../js/p5.sound.min.js"></script>
+  <script src="../js/p5.collide2d.min.js"></script>
+  <script src="sketch.js"></script>
+  <script src="Mover.js"></script>
+  <script src="Hole.js"></script>
+  <script src="Planet.js"></script>
+  <script src="popup.js"></script>
+</head>
+
+<body class="sans-serif" style="-webkit-font-smoothing: antialiased">
+  <div class="dn di-l">
+    <div class="flex flex-row-reverse absolute right-0">
+      <a class="link " href="./index.html">
+        <div class="br--bottom br2 flex h2 items-center pointer grow o-80 glow" style="background-color: #F0484C;">
+          <p class="mh3 f7 fw6 white"> Exit </p>
+        </div>
+      </a>
+      <a class="mh3 link" href="javascript:reset()">
+        <div class="br--bottom br2 flex h2 items-center pointer bg-gold grow o-80 glow">
+          <p class="mh3 f7 fw6 white"> Reset </p>
+        </div>
+      </a>
+      <a class="ml3 link" href="javascript:mute()">
+        <div class="br--bottom br2 flex h2 items-center pointer bg-light-purple grow o-80 glow">
+          <p class="mh3 f7 fw6 white"> Toggle sound </p>
+        </div>
+      </a>
+      <div class="br--bottom br2 flex h2 items-center bg-white-60">
+        <p class="mh3 f7 fw6 dark-gray"> Use the arrow keys to steer! </p>
+      </div>
+    </div>
+  </div>
+  <div id="error"></div>
+  <div id="p5_loading" class="tc bg-navy vh-100 w-100 flex items-center justify-center">
+    <h1 class="f4 fw6 white">Loading...</h1>
+  </div>
+  <div id="container"></div>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Dan Hollick</title>
+
+<head>
+  <link rel="stylesheet" href="/css/tachyons.min.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="shortcut icon" href="./assets/favicon-home.ico" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta property="og:url" content="https://alcohollick.com/index.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Dan Hollick" />
+  <meta property="og:description" content="Abusing the browser since early 2016" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image" content="https://alcohollick.com/assets/aboutPreview.png" />
+</head>
+
+<body class="sans-serif" style="-webkit-font-smoothing: antialiased;">
+  <nav class="flex justify-between ph4-l ph4-m ph3 pv3 w-100 fixed">
+    <h2 class="f6 white">dan hollick</h2>
+    <div class="flex items-center">
+      <a href="./tfw.html" target="_blank" class="TFW link f7 fw9 mh3-ns mh4 w2 w-auto-ns">The F*cking Weather.</a>
+      <a href="./portfolio.html" class="link f7 fw5 white o-80 glow mh3-ns mh2">portfolio</a>
+      <a href="./index.html" class="link fw9 f7 white mh3-ns  m3">about me</a>
+    </div>
+  </nav>
+  <main role="main" class="flex-ns flex-column-ns vh-100-ns w-100 flex vh-100 " style="background-color: #73bcbf">
+    <div class="mh6-ns mh5-m w-100 w-auto-ns pv0-ns flex flex-column flex-row-reverse-ns justify-between">
+      <figure class="flex justify-center items-center-ns mt6 mt0-ns mr6-l">
+        <img class="logo" style="max-height: 200px;" alt="Stylized image of a Daniel Hollick's face"
+          src="./assets/simple.png" />
+      </figure>
+      <article class="vh-100-ns flex mb5 mb0-ns items-center-ns justify-center">
+        <div class="dib">
+          <header class="flex-l ph0 mb0-ns mb4">
+            <div class="flex items-center h2">
+              <h1 class="f3 mr2 white">
+                Mediocre
+              </h1>
+              <h1 id="designer" class="pt2"></h1>
+            </div>
+            <div class="flex items-center h2">
+              <h1 class="f3 ml3-l mr2 white">
+                Terrible
+              </h1>
+              <h1 id="developer"></h1>
+            </div>
+          </header>
+          <div class="flex-l ph0 mb4 mb0-ns items-center-l ">
+            <p class="lh-copy f5 fw4 white">
+              Product Designer at
+              <a target="_blank" href="https://listen.tidal.com/" class="link glow dark-gray o-60 pointer">TIDAL</a>
+              in Oslo, Norway. <br />
+              Previously at
+              <a target="_blank" href="https://www.fusetools.com/"
+                class="link glow dark-gray o-60 pointer">Fusetools</a>
+              and
+              <a target="_blank" href="https://www.barclaysafrica.com/barclaysafrica/"
+                class="link glow dark-gray o-60 pointer">Barclays Africa.</a>
+            </p>
+          </div>
+          <section class="flex justify-between flex-row-ns mt5">
+            <a target="_blank" href="https://twitter.com/DanHollick"
+              class="link f3 fw9 white dim  ml0-ns mv2 mv0-ns">Twitter</a>
+            <a target="_blank" href="https://medium.com/@danhollick"
+              class="link f3 fw9 white dim  mv2 mv0-ns">Medium</a>
+            <a target="_blank" href="https://github.com/danhollick" class="link f3 fw9 white dim  mv2 mv0-ns">Github</a>
+          </section>
+        </div>
+      </article>
+    </div>
+  </main>
+</body>
+<script src="blotter.min.js"></script>
+<script src="fliesMaterial.js"></script>
+<script src="rollingDistortMaterial.js"></script>
+<script>
+  var text = new Blotter.Text("designer.", {
+    family: "sans-serif",
+    size: 24,
+    fill: "#fff",
+    paddingTop: 8,
+    leading: 1.5,
+    weight: 600
+  });
+
+  var material = new Blotter.FliesMaterial();
+  material.uniforms.uPointCellWidth.value = 0.034;
+  material.uniforms.uPointRadius.value = 1;
+  material.uniforms.uSpeed.value = 4;
+  var elem = document.getElementById("designer");
+
+  var blotter = new Blotter(material, { texts: text });
+
+  var scope = blotter.forText(text);
+
+  scope.appendTo(elem);
+</script>
+
+<script>
+  var text = new Blotter.Text("developer.", {
+    family: "sans-serif",
+    size: 24,
+    fill: "#fff",
+    paddingTop: 8,
+    paddingRight: 10,
+    leading: 1.0,
+    weight: 600
+  });
+
+  var material = new Blotter.RollingDistortMaterial();
+  material.uniforms.uSpeed.value = 4.6;
+  material.uniforms.uRotation.value = 0;
+  material.uniforms.uSineDistortSpread.value = 1;
+  material.uniforms.uSineDistortCycleCount.value = 0.4;
+  material.uniforms.uSineDistortAmplitude.value = 0.04;
+  material.uniforms.uNoiseDistortVolatility.value = 4;
+  var elem = document.getElementById("developer");
+
+  var blotter = new Blotter(material, { texts: text });
+
+  var scope = blotter.forText(text);
+
+  scope.appendTo(elem);
+</script>
+
+</html>
