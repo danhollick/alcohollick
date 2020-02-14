@@ -4,7 +4,8 @@ module.exports = {
     description: `Persoal site of Dan Hollick, a Product Designer and amatuer coder from South Africa living in sunny Norway.`,
     author: `dan hollick`,
     url: 'https://www.alcohollick.com', // No trailing slash allowed!
-    image: '/images/siteScreenshot.png', // Path to your image you placed in the 'static' folder
+    image:
+      'https://cdn.sanity.io/images/h2w4qpx8/production/8c8ab9aff37b358a8db3bf9a6555964b706d8a78-2870x1486.png?h=400&fit=max', // Path to your image you placed in the 'static' folder
     twitterUsername: '@danhollick',
   },
   plugins: [

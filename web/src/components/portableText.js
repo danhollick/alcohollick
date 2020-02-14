@@ -56,8 +56,8 @@ const StyledPortableText = styled(BasePortableText)`
     font-size: 18px;
     line-height: 160%;
     text-align:left;
-    border-left: 2px solid ${colors.light_grey};
-    padding: 8px;
+    border-left: 2px solid ${colors.light_purplish};
+    padding-left: 24px;
     color: ${colors.medium_grey};
   }
 
@@ -94,8 +94,11 @@ const StyledPortableText = styled(BasePortableText)`
   a {
       text-decoration: none;
     color: ${colors.purplish};
+    transition: background-color 200ms ease-in-out;
     :hover {
       color: ${colors.dark_purplish};
+      border-radius: 2px;
+      background-color: ${colors.light_purplish};
     }
     /* :active {
       color: ${colors.dark_purplish};

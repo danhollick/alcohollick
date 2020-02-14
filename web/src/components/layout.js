@@ -90,3 +90,13 @@ export const UnstyledLink = styled(Link)`
   appearance: none;
   text-decoration: none;
 `
+
+export const HoverWrapper = styled.div`
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  :hover {
+    transform: scale(1.05);
+  }
+  :active {
+    transform: scale(1);
+  }
+`
