@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
-import { Stack } from './layout'
+import { Stack, HoverWrapper } from './layout'
 import { Title, Subtitle } from './text'
 import { colors } from '../utils/colors'
 
@@ -43,10 +43,6 @@ const ProjectContainer = styled.div`
     ${PurpleFilter} {
       background-color: transparent;
     }
-    transform: scale(1.05);
-  }
-  :active {
-    transform: scale(1);
   }
 
   animation-name: fadeInUpSlight;
@@ -63,16 +59,18 @@ export const ProjectPreview = ({
   className,
   delay = 0,
 }) => (
-  <ProjectContainer delay={delay}>
-    <Stack>
-      <PurplePostImage className={className}>
-        <PurpleFilter />
-        <Greyscale fluid={image.asset.fluid} />
-      </PurplePostImage>
-      <Stack className="AlignEnd" padding={[2, 2]}>
-        <Title>{name}</Title>
-        <Subtitle>{description}</Subtitle>
+  <HoverWrapper>
+    <ProjectContainer delay={delay}>
+      <Stack>
+        <PurplePostImage className={className}>
+          <PurpleFilter />
+          <Greyscale fluid={image.asset.fluid} />
+        </PurplePostImage>
+        <Stack className="AlignEnd" padding={[2, 2]}>
+          <Title>{name}</Title>
+          <Subtitle>{description}</Subtitle>
+        </Stack>
       </Stack>
-    </Stack>
-  </ProjectContainer>
+    </ProjectContainer>
+  </HoverWrapper>
 )

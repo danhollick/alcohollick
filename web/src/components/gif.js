@@ -22,10 +22,9 @@ const StyledFigure = styled.div`
 
 const StyledImg = styled.img`
   justify-self: center;
+
   ${below.med`
-    // max-width: 100vw;
     max-width: 100%;
-    // padding: 24px;
   `}
 `
 

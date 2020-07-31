@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
-import { Stack } from './layout'
+import { Stack, HoverWrapper } from './layout'
 import { colors } from '../utils/colors'
 import { Title, Subtitle } from './text'
 
@@ -41,6 +41,15 @@ const PostContainer = styled.div`
   animation-duration: 800ms;
   animation-fill-mode: both;
   animation-delay: ${props => `${props.delay * 150}ms`};
+  :hover {
+    transform: scale(1.05);
+    ${Greyscale} {
+      filter: grayscale(0);
+    }
+    ${PurpleFilter} {
+      background-color: transparent;
+    }
+  }
   @keyframes fadeInUpSlight {
     from {
       opacity: 0;
@@ -52,18 +61,6 @@ const PostContainer = styled.div`
       transform: translate3d(0, 0, 0);
     }
   }
-  :hover {
-    ${Greyscale} {
-      filter: grayscale(0);
-    }
-    ${PurpleFilter} {
-      background-color: transparent;
-    }
-    transform: scale(1.05);
-  }
-  :active {
-    transform: scale(1);
-  }
 `
 
 export const PostPreview = ({
@@ -74,16 +71,18 @@ export const PostPreview = ({
   className,
   delay = 0,
 }) => (
-  <PostContainer delay={delay}>
-    <Stack>
-      <PurplePostImage className={className}>
-        <PurpleFilter />
-        <Greyscale fluid={mainImage.asset.fluid} />
-      </PurplePostImage>
-      <Stack className="AlignEnd" padding={[2, 2]}>
-        <Title>{title}</Title>
-        <Subtitle>{description}</Subtitle>
+  <HoverWrapper>
+    <PostContainer delay={delay}>
+      <Stack>
+        <PurplePostImage className={className}>
+          <PurpleFilter />
+          <Greyscale fluid={mainImage.asset.fluid} />
+        </PurplePostImage>
+        <Stack className="AlignEnd" padding={[2, 2]}>
+          <Title>{title}</Title>
+          <Subtitle>{description}</Subtitle>
+        </Stack>
       </Stack>
-    </Stack>
-  </PostContainer>
+    </PostContainer>
+  </HoverWrapper>
 )
