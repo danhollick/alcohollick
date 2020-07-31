@@ -14,23 +14,17 @@ const StyledCaption = styled.figcaption`
 `
 
 const StyledFigure = styled.div`
-  /* justify-self: center; */
   width: 100%;
   max-width: 800px;
   justify-items: center;
-  background-color: red;
   display: grid;
-  /* object-fit: cover; */
 `
 
 const StyledImg = styled.img`
   justify-self: center;
-  /* max-width: 800px; */
-  /* object-fit: contain; */
-
   ${below.med`
-    max-width: 100vw;
-    // width: 100%;
+    // max-width: 100vw;
+    max-width: 100%;
     // padding: 24px;
   `}
 `
