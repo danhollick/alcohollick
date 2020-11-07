@@ -1,14 +1,17 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "alcohollick.com",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Daniel Hollick's personal website",
+  "version": "0.2.1",
+  "author": "Daniel Hollick",
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
-    "babel-plugin-styled-components": "^1.10.7",
-    "prop-types": "^15.7.2",
+    "@sanity/client": "^2.0.9",
+    "graphql": "^15.4.0",
+    "graphql-tag": "^2.11.0",
+    "groq": "^2.0.9",
     "next": "latest",
+    "prop-types": "^15.7.2",
     "react": "latest",
     "react-dom": "latest",
     "react-helmet": "^5.2.1",
@@ -26,23 +29,20 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "babel-plugin-styled-components": "^1.8.0"
   },
-  "keywords": [
-    "gatsby"
-  ],
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-  
+    "start": "next start"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/danhollick/alcohollick"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/danhollick/alcohollick/issues"
   }
 }

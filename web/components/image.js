@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import Image from 'next/image'
 import styled from 'styled-components'
 import { colors } from '../utils/colors'
 import { below } from './layout'
@@ -15,7 +15,7 @@ import { below } from './layout'
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Greyscale = styled(Img)`
+const Greyscale = styled(Image)`
   grid-row: 1;
   grid-column: 1;
   transition: filter ease-in-out 400ms;
@@ -66,14 +66,10 @@ const Wrapper = styled.div`
   }
 `
 
-const PurpleImage = ({ width, fluid, fixed, className }) => (
+const PurpleImage = ({ width, height, src, className }) => (
   <Wrapper className={className}>
     <PurpleFilter />
-    <Greyscale
-      fixed={fixed}
-      // sizes={data.profileImage.sizes}
-      fluid={fluid}
-    />
+    <Greyscale width={width} height={height} src={src} />
   </Wrapper>
 )
 

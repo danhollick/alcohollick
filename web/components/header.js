@@ -1,4 +1,4 @@
-import { Link } from 'gatsby'
+import Link from 'next/link'
 // import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -41,14 +41,14 @@ const Nav = styled.nav`
 
 const Header = () => (
   <Nav>
-    <NavLink className="JustifyStart" activeClassName="active" to="/">
+    <NavLink className="JustifyStart" activeClassName="active" href="/">
       alcohollick.
     </NavLink>
     <Columns spacing={5} smallSpacing={2} className="JustifyEnd">
-      <NavLink activeClassName="active" to="/things/">
+      <NavLink activeClassName="active" href="/things/">
         things i've built.
       </NavLink>
-      <NavLink activeClassName="active" partiallyActive to="/writing/">
+      <NavLink activeClassName="active" partiallyActive href="/writing/">
         writing.
       </NavLink>
     </Columns>

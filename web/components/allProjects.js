@@ -1,10 +1,11 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import gql from 'graphql-tag'
 import styled from 'styled-components'
 import { ProjectPreview } from './projectPreview'
 import { below } from './layout'
+import client from '../client'
 
-const allProjectsQuery = graphql`
+const allProjectsQuery = gql`
   query AllProjectsQuery {
     projects: allSanityProject(sort: { fields: name, order: DESC }) {
       nodes {
@@ -42,7 +43,7 @@ const UnstyledA = styled.a`
 `
 
 export const AllProjects = ({ className }) => {
-  const data = useStaticQuery(allProjectsQuery)
+  const data = client.fetch(allProjectsQuery)
   return (
     <AllModule className={className}>
       {data.projects.nodes.map((project, i) => (

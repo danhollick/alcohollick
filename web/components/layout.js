@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 
 const sizes = {
   small: 450,

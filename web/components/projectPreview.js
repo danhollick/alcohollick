@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import Image from 'next/image'
 import { Stack, HoverWrapper } from './layout'
 import { Title, Subtitle } from './text'
 import { colors } from '../utils/colors'
 
-const Greyscale = styled(Img)`
+const Greyscale = styled(Image)`
   max-height: 200px;
   object-fit: cover;
   grid-row: 1;
@@ -64,7 +64,7 @@ export const ProjectPreview = ({
       <Stack>
         <PurplePostImage className={className}>
           <PurpleFilter />
-          <Greyscale fluid={image.asset.fluid} />
+          <Greyscale src={image.asset.src} />
         </PurplePostImage>
         <Stack className="AlignEnd" padding={[2, 2]}>
           <Title>{name}</Title>

@@ -1,11 +1,12 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import gql from 'graphql-tag';
 import styled from 'styled-components'
 import { Stack, UnstyledLink, below } from './layout'
 import { Title } from './text'
 import { PostPreview } from './postPreview'
+import client from '../client'
 
-const allPostsQuery = graphql`
+export const allPostsQuery = gql`
   query AllPostsQuery {
     posts: allSanityPost(sort: { fields: publishedAt, order: DESC }) {
       nodes {
@@ -40,13 +41,13 @@ const AllModule = styled.div`
 `
 
 export const AllPosts = ({ className }) => {
-  const data = useStaticQuery(allPostsQuery)
+  const data = client.fetch(allPostsQuery)
   return (
     <Stack padding={[10, 0]} className={className}>
       <Title className="JustifyEnd"> All</Title>
       <AllModule>
         {data.posts.nodes.map((post, i) => (
-          <UnstyledLink to={`/writing/${post.slug.current || post.slug}/`}>
+          <UnstyledLink href={`/writing/${post.slug.current || post.slug}/`}>
             <PostPreview delay={i} key={i} {...post} />
           </UnstyledLink>
         ))}
