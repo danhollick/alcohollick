@@ -32,7 +32,7 @@ const IndexPage = () => {
     <Page>
       <SEO title="home" description="Designer + Coder" />
       <Columns smallCount={1} smallSpacing={10} className="AlignCenter">
-        <Stack smallSpacing={10} sma>
+        <Stack smallSpacing={10}>
           <Stack className="AlignStart fadeInUpSlight" spacing={1}>
             <MassiveHeading>dan hollick</MassiveHeading>
             <Title> Designer + Coder</Title>
