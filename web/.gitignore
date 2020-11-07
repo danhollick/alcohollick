@@ -54,7 +54,8 @@ typings/
 # dotenv environment variable files
 .env*
 
-
+# nextjs
+.next
 
 # Mac files
 .DS_Store
