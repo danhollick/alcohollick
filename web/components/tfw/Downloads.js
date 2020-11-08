@@ -1,7 +1,7 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+// import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import Image from 'next/image'
 import { Columns } from '../layout'
 import { Heading } from '../text'
 import { colors } from '../../utils/colors'
@@ -27,49 +27,32 @@ const UnstyledLink = styled.a`
   }
 `
 
-export const Downloads = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      google: file(relativePath: { eq: "play-store.png" }) {
-        childImageSharp {
-          fixed(width: 120) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      apple: file(relativePath: { eq: "app-store.png" }) {
-        childImageSharp {
-          fixed(width: 120) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `)
-
-  return (
-    <Wrapper>
-      <Heading className="JustifyCenter">Download</Heading>
-      <Columns spacing={10} className="JustifyCenter">
-        <UnstyledLink
-          target="_blank"
-          href="https://play.google.com/store/apps/details?id=com.twf.prod"
-        >
-          <Img
-            className="JustifyCenter"
-            fixed={data.google.childImageSharp.fixed}
-          />
-        </UnstyledLink>
-        <UnstyledLink
-          target="_blank"
-          href="https://itunes.apple.com/us/app/tfw/id1359091947?ls=1&mt=8"
-        >
-          <Img
-            className="JustifyCenter"
-            fixed={data.apple.childImageSharp.fixed}
-          />
-        </UnstyledLink>
-      </Columns>
-    </Wrapper>
-  )
-}
+export const Downloads = () => (
+  <Wrapper>
+    <Heading className="JustifyCenter">Download</Heading>
+    <Columns spacing={10} className="JustifyCenter">
+      <UnstyledLink
+        target="_blank"
+        href="https://play.google.com/store/apps/details?id=com.twf.prod"
+      >
+        <Image
+          width={120}
+          height={120}
+          className="JustifyCenter"
+          src="/play-store.png"
+        />
+      </UnstyledLink>
+      <UnstyledLink
+        target="_blank"
+        href="https://itunes.apple.com/us/app/tfw/id1359091947?ls=1&mt=8"
+      >
+        <Image
+          width={120}
+          height={120}
+          className="JustifyCenter"
+          src="/app-store.png"
+        />
+      </UnstyledLink>
+    </Columns>
+  </Wrapper>
+)

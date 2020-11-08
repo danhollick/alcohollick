@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import { TFWPage } from '../components/page'
 import SEO from '../components/seo'
 import { Hero } from '../components/tfw/hero'
@@ -11,6 +12,7 @@ import { Contact } from '../components/tfw/Contact'
 const IndexPage = () => (
   <TFWPage>
     <SEO
+      // favicon="/tfw.png"
       title="The F*cking Weather"
       description="A weather app for people who hate weather apps"
     />

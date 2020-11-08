@@ -1,7 +1,6 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import Image from 'next/image'
 import { Stack, Columns } from '../layout'
 import { Heading, Body, Title } from '../text'
 
@@ -24,73 +23,61 @@ const FullHeightSection = styled.div`
   );
 `
 
-export const Section2 = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      device: file(relativePath: { eq: "div3.png" }) {
-        childImageSharp {
-          fixed(width: 320) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `)
-
-  return (
-    <FullHeightSection id="_how">
-      <Columns
-        padding={[6, 3]}
-        spacing={10}
-        smallSpacing={10}
-        smallCount={1}
-        className="AlignCenter"
+export const Section2 = () => (
+  <FullHeightSection id="_how">
+    <Columns
+      padding={[6, 3]}
+      spacing={10}
+      smallSpacing={10}
+      smallCount={1}
+      className="AlignCenter"
+    >
+      <Stack
+        as="article"
+        spacing={2}
+        smallSpacing={4}
+        className="AlignCenter  MaxTextLength"
       >
-        <Stack
-          as="article"
-          spacing={2}
-          smallSpacing={4}
-          className="AlignCenter  MaxTextLength"
-        >
-          <Heading color="white">
-            AI?
-            <br />
-            Machine learning?
-          </Heading>
-          <Body color="white">
-            Nope, this machine is as dumb as can be. <br /> And it will stay
-            that way. Forever.
-          </Body>
-          <Stack as="ul" spacing={4} smallSpacing={4} padding={[0, 0]}>
-            <Stack as="li">
-              <Title color="white">Step 1: </Title>
-              <Body color="white">
-                We use openweathermap to get extremely accurate weather data for
-                your location
-              </Body>
-            </Stack>
-            <Stack as="li">
-              <Title color="white">Step 2: </Title>
-              <Body color="white">
-                We greatly reduce the accuracy of the data by converting it into
-                a score.
-              </Body>
-            </Stack>
-            <Stack as="li">
-              <Title color="white">Step 3: </Title>
-              <Body color="white">
-                Finally, we remove any semblance of usefullness by replacing
-                that score with an incredibly vague sentence.{' '}
-              </Body>
-            </Stack>
+        <Heading color="white">
+          AI?
+          <br />
+          Machine learning?
+        </Heading>
+        <Body color="white">
+          Nope, this machine is as dumb as can be. <br /> And it will stay that
+          way. Forever.
+        </Body>
+        <Stack as="ul" spacing={4} smallSpacing={4} padding={[0, 0]}>
+          <Stack as="li">
+            <Title color="white">Step 1: </Title>
+            <Body color="white">
+              We use openweathermap to get extremely accurate weather data for
+              your location
+            </Body>
+          </Stack>
+          <Stack as="li">
+            <Title color="white">Step 2: </Title>
+            <Body color="white">
+              We greatly reduce the accuracy of the data by converting it into a
+              score.
+            </Body>
+          </Stack>
+          <Stack as="li">
+            <Title color="white">Step 3: </Title>
+            <Body color="white">
+              Finally, we remove any semblance of usefullness by replacing that
+              score with an incredibly vague sentence.{' '}
+            </Body>
           </Stack>
         </Stack>
-        <Img
-          className="JustifyCenter"
-          alt="An image of a phone displaying the weather scrolled to the bottom of the page."
-          fixed={data.device.childImageSharp.fixed}
-        />
-      </Columns>
-    </FullHeightSection>
-  )
-}
+      </Stack>
+      <Image
+        className="JustifyCenter"
+        alt="An image of a phone displaying the weather scrolled to the bottom of the page."
+        src="/div3.png"
+        width={320}
+        height={320}
+      />
+    </Columns>
+  </FullHeightSection>
+)

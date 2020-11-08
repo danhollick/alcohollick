@@ -1,7 +1,6 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import Image from 'next/image'
 import { Stack, below } from '../layout'
 import { MassiveHeading, Heading } from '../text'
 import { FloatingHeader } from './floatingHeader'
@@ -27,7 +26,7 @@ const HeroWrapper = styled.div`
   `}
 `
 
-const DeviceImage = styled(Img)`
+const DeviceImage = styled(Image)`
   align-self: end;
   justify-self: end;
   margin: 0px 0px -140px 0px;
@@ -39,32 +38,18 @@ const DeviceImage = styled(Img)`
   `}
 `
 
-export const Hero = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      device: file(relativePath: { eq: "div1.png" }) {
-        childImageSharp {
-          fixed(width: 320) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `)
-
-  return (
-    <HeroWrapper>
-      <FloatingHeader />
-      <Stack spacing={4} padding={[6, 3]} className="AlignCenter">
-        <MassiveHeading color="white">
-          The <br /> F*cking <br /> Weather.
-        </MassiveHeading>
-        <Heading color={colors.light_grey}>
-          A weather app for people
-          <br /> who hate weather apps.
-        </Heading>
-      </Stack>
-      <DeviceImage fixed={data.device.childImageSharp.fixed} />
-    </HeroWrapper>
-  )
-}
+export const Hero = () => (
+  <HeroWrapper>
+    <FloatingHeader />
+    <Stack spacing={4} padding={[6, 3]} className="AlignCenter">
+      <MassiveHeading color="white">
+        The <br /> F*cking <br /> Weather.
+      </MassiveHeading>
+      <Heading color={colors.light_grey}>
+        A weather app for people
+        <br /> who hate weather apps.
+      </Heading>
+    </Stack>
+    <DeviceImage src="/div1.png" width={320} height={320} />
+  </HeroWrapper>
+)

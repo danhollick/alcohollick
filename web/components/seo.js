@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 
-function SEO({ description, title, image, url }) {
+function SEO({ description, title, image, url, favicon }) {
+  const faviconUrl = favicon || '/favicon.png'
   const siteUrl = url || 'https://www.alcohollick.com'
   const metaDescription =
     description ||
@@ -16,7 +17,7 @@ function SEO({ description, title, image, url }) {
     <Head>
       <title>{titleTemplate}</title>
       {/* <description>{metaDescription}</description> */}
-      <link rel="shortcut icon" href="/favicon.png" />
+      <link rel="shortcut icon" href={faviconUrl} />
       <meta property="og:image" content={previewImage} />
       <meta property="og:title" content={titleTemplate} />
       <meta property="og:description" content={metaDescription} />
