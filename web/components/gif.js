@@ -23,10 +23,7 @@ const StyledFigure = styled.div`
 
 const StyledImg = styled.img`
   justify-self: center;
-
-  ${below.med`
-    max-width: 100%;
-  `}
+  max-width: 100%;
 `
 
 export const Gif = ({ node }) => {
@@ -34,7 +31,6 @@ export const Gif = ({ node }) => {
     return null
   }
 
-  console.log(node)
   return (
     <StyledFigure>
       <StyledImg src={builder.image(node)} alt={node.alt} />

@@ -9,7 +9,8 @@ const AllModule = styled.div`
   grid-template-columns: repeat(2, minmax(200px, 400px));
   grid-gap: 32px;
   justify-content: end;
-  align-content: start;
+  align-items: stretch;
+  /* align-content: start; */
   margin: 48px 0px;
   ${below.small`
     grid-template-columns: 1fr;

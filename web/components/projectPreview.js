@@ -5,8 +5,10 @@ import { Stack, HoverWrapper } from './layout'
 import { Title, Subtitle } from './text'
 import { colors } from '../utils/colors'
 
-const Greyscale = styled(Image)`
-  max-height: 200px;
+const Greyscale = styled.img`
+  /* max-height: 200px; */
+  width: 100%;
+  min-height: 100%;
   object-fit: cover;
   grid-row: 1;
   grid-column: 1;
@@ -34,8 +36,8 @@ const PurplePostImage = styled.div`
 
 const ProjectContainer = styled.div`
   border: 1px solid ${colors.light_grey};
+  display: grid;
   height: 100%;
-  width: 398px;
   transition: transform ease-in-out 200ms;
   :hover {
     ${Greyscale} {
@@ -65,7 +67,7 @@ export const ProjectPreview = ({
       <Stack>
         <PurplePostImage className={className}>
           <PurpleFilter />
-          <Greyscale src={image} width={398} height={200} />
+          <Greyscale src={image} layout="fill" />
         </PurplePostImage>
         <Stack className="AlignEnd" padding={[2, 2]}>
           <Title>{name}</Title>

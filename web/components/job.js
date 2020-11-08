@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { parseISO, format } from 'date-fns'
 import { Stack } from './layout'
 import { Title, Subtitle, TextLink } from './text'
 
@@ -16,7 +17,7 @@ export const Job = ({
   place,
   url,
   startDate,
-  endDate = 'present',
+  endDate,
   className,
   delay,
 }) => (
@@ -27,7 +28,8 @@ export const Job = ({
       </TextLink>
     </Title>
     <Subtitle>
-      {startDate} - {endDate || 'Present'}
+      {format(parseISO(startDate), 'yyyy')} -{' '}
+      {endDate ? format(parseISO(endDate), 'yyyy') : 'Present'}
     </Subtitle>
   </AnimatedJob>
 )

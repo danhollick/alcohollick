@@ -41,6 +41,7 @@ const getAllJobs = groq`*[_type == "job" ] | order(startDate desc) {title, endDa
 
 export async function getStaticProps() {
   const jobs = await client.fetch(getAllJobs)
+  console.log(jobs)
   return {
     props: { jobs: jobs || null }, // will be passed to the page component as props
   }

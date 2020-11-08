@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import Image from 'next/image'
 import { Stack, HoverWrapper } from './layout'
 import { colors } from '../utils/colors'
 import { Title, Subtitle } from './text'
 
-const Greyscale = styled(Image)`
-  max-height: 120px;
+const Greyscale = styled.img`
+  width: 100%;
+  min-height: 100%;
   object-fit: cover;
   grid-row: 1;
   grid-column: 1;
