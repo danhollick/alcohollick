@@ -86,10 +86,16 @@ export const Columns = styled.div`
   `}
 `
 
-export const UnstyledLink = styled(Link)`
+export const UnstyledAnchorLink = styled.a`
   appearance: none;
   text-decoration: none;
 `
+
+export const UnstyledLink = ({ href, passHref, children }) => (
+  <Link href={href} passHref={passHref}>
+    <UnstyledAnchorLink>{children}</UnstyledAnchorLink>
+  </Link>
+)
 
 export const HoverWrapper = styled.div`
   transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);

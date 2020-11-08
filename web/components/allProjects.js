@@ -1,28 +1,7 @@
 import React from 'react'
-import gql from 'graphql-tag'
 import styled from 'styled-components'
 import { ProjectPreview } from './projectPreview'
 import { below } from './layout'
-import client from '../client'
-
-const allProjectsQuery = gql`
-  query AllProjectsQuery {
-    projects: allSanityProject(sort: { fields: name, order: DESC }) {
-      nodes {
-        url
-        name
-        description
-        image {
-          asset {
-            fluid(maxWidth: 398) {
-              ...GatsbySanityImageFluid
-            }
-          }
-        }
-      }
-    }
-  }
-`
 
 const AllModule = styled.div`
   width: 100%;
@@ -42,15 +21,12 @@ const UnstyledA = styled.a`
   appearance: none;
 `
 
-export const AllProjects = ({ className }) => {
-  const data = client.fetch(allProjectsQuery)
-  return (
-    <AllModule className={className}>
-      {data.projects.nodes.map((project, i) => (
-        <UnstyledA href={project.url} target="_blank">
-          <ProjectPreview key={i} delay={i} {...project} />
-        </UnstyledA>
-      ))}
-    </AllModule>
-  )
-}
+export const AllProjects = ({ className, projects }) => (
+  <AllModule className={className}>
+    {projects.map((project, i) => (
+      <UnstyledA href={project.url} key={i} target="_blank">
+        <ProjectPreview delay={i} {...project} />
+      </UnstyledA>
+    ))}
+  </AllModule>
+)

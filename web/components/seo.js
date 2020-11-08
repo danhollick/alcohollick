@@ -6,7 +6,7 @@ function SEO({ description, title, image, url }) {
   const siteUrl = url || 'https://www.alcohollick.com'
   const metaDescription =
     description ||
-    `Persoal site of Dan Hollick, a Product Designer and amatuer coder from South Africa living in sunny Norway.`
+    `Personal site of Dan Hollick, a Product Designer and amatuer coder from South Africa living in sunny Norway.`
   const previewImage =
     image ||
     'https://cdn.sanity.io/images/h2w4qpx8/production/8c8ab9aff37b358a8db3bf9a6555964b706d8a78-2870x1486.png?h=400&fit=max'
@@ -15,7 +15,8 @@ function SEO({ description, title, image, url }) {
   return (
     <Head>
       <title>{titleTemplate}</title>
-      <description>{metaDescription}</description>
+      {/* <description>{metaDescription}</description> */}
+      <link rel="shortcut icon" href="/favicon.png" />
       <meta property="og:image" content={previewImage} />
       <meta property="og:title" content={titleTemplate} />
       <meta property="og:description" content={metaDescription} />

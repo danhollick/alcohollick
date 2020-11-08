@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import React from 'react'
 import gql from 'graphql-tag'
-import Img from 'gatsby-image'
+import Image from 'next/image'
+import groq from 'groq'
 import Page from '../../components/page'
 import SEO from '../../components/seo'
 import { Heading, MassiveHeading, Title } from '../../components/text'
@@ -54,6 +55,29 @@ export const query = gql`
   }
 `
 
+const getPost = groq`*[_type == "post" && slug.current == $slug ][0] { 
+  "id": _id,
+  publishedAt,
+  categories[] -> ,
+  "mainImage": mainImage.asset->url,
+  title,
+  description,
+  "slug": slug.current,
+  "related": related[] -> {
+    "mainImage": mainImage.asset->url,
+    ...
+  }, 
+  body
+}`
+const getAllPosts = groq`*[_type == "post" ] { 
+  "id": _id,
+  title,
+  publishedAt,
+  "slug": slug.current,
+  description,
+  "mainImage": mainImage.asset->url
+  }`
+
 const RelatedModule = styled.div`
   display: grid;
   width: 100%;
@@ -88,21 +112,25 @@ const BlogWrapper = styled.div`
   justify-content: center;
 `
 
-const BlogPost = ({ description, title, _rawBody, mainImage, related }) => (
+const BlogPost = ({ description, title, body, mainImage, related }) => (
   <BlogWrapper>
-    <Img className="fadeInUpSlight" fluid={mainImage.asset.fluid} />
+    <Image
+      width={800}
+      height={450}
+      className="fadeInUpSlight"
+      src={mainImage}
+    />
     <MassiveHeading className="fadeInUpSlight">{title}</MassiveHeading>
     <Heading className="fadeInUpSlight" color={colors.medium_grey}>
       {description}
     </Heading>
-    <PortableText className="fadeInUpSlight" blocks={_rawBody} />
-    <RelatedPosts posts={related} />
+    <PortableText className="fadeInUpSlight" blocks={body} />
+    {related && <RelatedPosts posts={related} />}
   </BlogWrapper>
 )
 
 const BlogPostTemplate = props => {
-  const { data, errors } = props
-  const post = data && data.post
+  const { post, errors } = props
   return (
     <Page>
       {errors && <SEO title="GraphQL Error" />}
@@ -111,7 +139,7 @@ const BlogPostTemplate = props => {
         <SEO
           title={post.title || 'Untitled'}
           description={JSON.stringify(post.description)}
-          image={post.mainImage.asset.url}
+          image={post.mainImage}
         />
       )}
       {post && <BlogPost {...post} />}
@@ -120,23 +148,23 @@ const BlogPostTemplate = props => {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const data = await client.fetch(BlogPostTemplateQuery, { id: params.id })
-  // const data = await getPostAndMorePosts(params.slug, preview)
+  const post = await client.fetch(getPost, { slug: params.slug })
+  // console.log('data', post)
   return {
     props: {
-      data,
+      post,
     },
   }
 }
 
 export async function getStaticPaths() {
-  const allPosts = await client.fetch(allPostsQuery)
-  // const allPosts = await getAllPostsWithSlug()
+  const allPosts = await client.fetch(getAllPosts)
+
   return {
     paths:
       allPosts?.map(post => ({
         params: {
-          id: post.id,
+          slug: post.slug.toString(),
         },
       })) || [],
     fallback: true,

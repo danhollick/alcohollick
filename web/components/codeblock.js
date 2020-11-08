@@ -1,6 +1,6 @@
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { ocean } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { ocean } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 export const CodeBlock = ({ node = {} }) => {
   const { language, code } = node
@@ -19,6 +19,5 @@ export const CodeBlock = ({ node = {} }) => {
     >
       {code}
     </SyntaxHighlighter>
-    // <p />
   )
 }

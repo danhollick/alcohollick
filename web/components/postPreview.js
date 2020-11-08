@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import Image from 'next/image'
 import { Stack, HoverWrapper } from './layout'
 import { colors } from '../utils/colors'
 import { Title, Subtitle } from './text'
 
-const Greyscale = styled(Img)`
+const Greyscale = styled(Image)`
   max-height: 120px;
   object-fit: cover;
   grid-row: 1;
@@ -41,6 +41,7 @@ const PostContainer = styled.div`
   animation-duration: 800ms;
   animation-fill-mode: both;
   animation-delay: ${props => `${props.delay * 150}ms`};
+  cursor: pointer;
   :hover {
     transform: scale(1.05);
     ${Greyscale} {
@@ -76,7 +77,7 @@ export const PostPreview = ({
       <Stack>
         <PurplePostImage className={className}>
           <PurpleFilter />
-          <Greyscale fluid={mainImage.asset.fluid} />
+          <Greyscale src={mainImage} width={238} height={120} />
         </PurplePostImage>
         <Stack className="AlignEnd" padding={[2, 2]}>
           <Title>{title}</Title>

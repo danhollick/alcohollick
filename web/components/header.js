@@ -1,11 +1,12 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 // import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 import { colors } from '../utils/colors'
 import { Columns, below } from './layout'
 
-const NavLink = styled(Link)`
+const NavLink = styled.a`
   font: 700 16px Inter, sans-serif;
   text-decoration: none;
   appearance: none;
@@ -39,21 +40,32 @@ const Nav = styled.nav`
   `}
 `
 
-const Header = () => (
-  <Nav>
-    <NavLink className="JustifyStart" activeClassName="active" href="/">
-      alcohollick.
-    </NavLink>
-    <Columns spacing={5} smallSpacing={2} className="JustifyEnd">
-      <NavLink activeClassName="active" href="/things/">
-        things i've built.
+const Header = () => {
+  const { pathname } = useRouter()
+  console.log(pathname)
+  return (
+    <Nav>
+      <NavLink
+        className={pathname === '/' ? 'JustifyStart active' : 'JustifyStart'}
+        href="/"
+      >
+        alcohollick.
       </NavLink>
-      <NavLink activeClassName="active" partiallyActive href="/writing/">
-        writing.
-      </NavLink>
-    </Columns>
-  </Nav>
-)
+      <Columns spacing={5} smallSpacing={2} className="JustifyEnd">
+        <Link href="/things/">
+          <NavLink className={pathname === '/things' && 'active'}>
+            things i've built.
+          </NavLink>
+        </Link>
+        <Link href="/writing/">
+          <NavLink className={pathname === '/writing' && 'active'}>
+            writing.
+          </NavLink>
+        </Link>
+      </Columns>
+    </Nav>
+  )
+}
 
 Header.propTypes = {}
 

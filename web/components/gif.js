@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { colors } from '../utils/colors'
 import { below } from './layout'
+import { builder } from './figure'
 
 const StyledCaption = styled.figcaption`
   margin-top: 8px;
@@ -33,9 +34,10 @@ export const Gif = ({ node }) => {
     return null
   }
 
+  console.log(node)
   return (
     <StyledFigure>
-      <StyledImg src={node.asset.url} alt={node.alt} />
+      <StyledImg src={builder.image(node)} alt={node.alt} />
       <StyledCaption>{node.caption}</StyledCaption>
     </StyledFigure>
   )

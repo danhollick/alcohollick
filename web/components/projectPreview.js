@@ -35,6 +35,7 @@ const PurplePostImage = styled.div`
 const ProjectContainer = styled.div`
   border: 1px solid ${colors.light_grey};
   height: 100%;
+  width: 398px;
   transition: transform ease-in-out 200ms;
   :hover {
     ${Greyscale} {
@@ -64,7 +65,7 @@ export const ProjectPreview = ({
       <Stack>
         <PurplePostImage className={className}>
           <PurpleFilter />
-          <Greyscale src={image.asset.src} />
+          <Greyscale src={image} width={398} height={200} />
         </PurplePostImage>
         <Stack className="AlignEnd" padding={[2, 2]}>
           <Title>{name}</Title>

@@ -1,8 +1,9 @@
 import React from 'react'
-import Img from 'gatsby-image'
-import { getFluidGatsbyImage } from 'gatsby-source-sanity'
+import imageUrlBuilder from '@sanity/image-url'
 import styled from 'styled-components'
+import Image from 'next/image'
 import { colors } from '../utils/colors'
+import client from '../client'
 
 const StyledCaption = styled.figcaption`
   margin-top: 8px;
@@ -13,33 +14,51 @@ const StyledCaption = styled.figcaption`
   text-align: center;
   color: ${colors.medium_grey};
 `
+export const builder = imageUrlBuilder(client)
 
 export const Figure = ({ node }) => {
   // console.log(node)
-  // let normalizedProps = node.asset
-  // if (node.asset.fluid && node.asset.fluid.presentationWidth) {
-  //   normalizedProps = {
-  //     ...node.asset,
-  //     style: {
-  //       ...(node.asset.style || {}),
-  //       maxWidth: node.asset.fluid.presentationWidth,
-  //       margin: '0 auto', // Used to center the image
-  //     },
-  //   }
-  // }
 
-  if (!node || !node.asset || !node.asset._id) {
+  if (!node || !node.asset) {
     return null
   }
-  const fluidProps = getFluidGatsbyImage(
-    node.asset._id,
-    { maxWidth: 800 },
-    { projectId: 'h2w4qpx8', dataset: 'production' }
-  )
+  // Get a pre-configured url-builder from your sanity client
+
+  // Then we like to make a simple function like this that gives the
+  // builder an image and returns the builder for you to specify additional
+  // parameters:
+  function urlFor(source) {
+    return builder.image(source)
+  }
+
   return (
-    <figure>
-      {/* <Img fluid={fluidProps} alt={node.alt} {...normalizedProps} /> */}
-      <Img fluid={fluidProps} alt={node.alt} />
+    <figure
+      style={{
+        width: '100%',
+        maxWidth: '680px',
+        // backgroundColor: 'red',
+        position: 'relative',
+        display: 'grid',
+        justifyItems: 'center',
+        // height: '800px',
+      }}
+    >
+      <img
+        style={{
+          objectFit: 'contain',
+          maxWidth: '100%',
+          // height: '800px',
+        }}
+        src={urlFor(node)
+          .width(800)
+          .url()}
+        alt={node.alt}
+        layout="fill"
+        loading="lazy"
+        // width={800}
+        // height={450}
+      />
+
       <StyledCaption>{node.caption}</StyledCaption>
     </figure>
   )
