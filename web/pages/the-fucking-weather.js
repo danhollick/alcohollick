@@ -48,7 +48,7 @@ const PageWrapper = styled.div`
 const IndexPage = () => (
   <StyledPage>
     <SEO
-      image="/tfw-web-screenshot.png"
+      image="https://cdn.sanity.io/images/h2w4qpx8/production/75211319d59a598abc302663cb6259e31225f869-2876x1588.png"
       favicon="/tfw-favicon.png"
       title="The F*cking Weather"
       description="A weather app for people who don't give a shit about weather."
