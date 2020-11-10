@@ -48,9 +48,10 @@ const PageWrapper = styled.div`
 const IndexPage = () => (
   <StyledPage>
     <SEO
-      // favicon="/tfw.png"
+      image="/tfw-web-screenshot.png"
+      favicon="/tfw-favicon.png"
       title="The F*cking Weather"
-      description="A weather app for people who hate weather apps"
+      description="A weather app for people who don't give a shit about weather."
     />
     <PageWrapper>
       <Box display={['block', 'block', 'none']}>
