@@ -125,7 +125,6 @@ const CloudIcon = ({ isActive, setActiveVid }) => {
 
 const Toggle = ({ setActiveVid, activeVid }) => (
   <Columns
-    debug
     gap={[4, 4, 4]}
     justifySelf={['center', 'center', 'center']}
     columns={['1fr 1fr', '1fr 1fr', '1fr 1fr']}
