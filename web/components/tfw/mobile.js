@@ -49,7 +49,7 @@ const PhoneWrapper = styled.div`
 `
 
 const SunIcon = ({ isActive, setActiveVid }) => {
-  const randomSvgId = `gradient${Math.floor(Math.random() * 10) + 1}`
+  const randomSvgId = `warmGradient${Math.floor(Math.random() * 10) + 1}`
   return (
     <svg
       onClick={() => setActiveVid('warm')}
@@ -84,7 +84,7 @@ const SunIcon = ({ isActive, setActiveVid }) => {
 }
 
 const CloudIcon = ({ isActive, setActiveVid }) => {
-  const randomSvgId = `gradient${Math.floor(Math.random() * 10) + 1}`
+  const randomSvgId = `coldGradient${Math.floor(Math.random() * 10) + 1}`
   return (
     <svg
       onClick={() => setActiveVid('cold')}
