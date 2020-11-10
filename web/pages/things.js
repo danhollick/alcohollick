@@ -12,7 +12,7 @@ const ThingsPage = ({ projects }) => (
   </Page>
 )
 
-const getAllProjects = groq`*[_type == "project" ] | order(startDate desc) { 
+const getAllProjects = groq`*[_type == "project" ] | order(_createdAt asc) { 
   url,
   name,
   description,

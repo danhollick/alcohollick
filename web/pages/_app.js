@@ -4,49 +4,19 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { colors } from '../utils/colors'
 
 const GlobalStyles = createGlobalStyle`
-@font-face {
-  font-family: Inter;
-  font-weight: 400;
-  font-style: normal;
-  src: url("Inter.otf") format("otf");
-  font-display: swap;
-}
-@font-face {
-  font-family: Inter;
-  font-weight: 400;
-  font-style: italic;
-  src: url("Inter.otf") format("otf");
-  font-display: swap;
-}
+:root {
+ --spacing_base: 8px;
+  --spacing_half: calc(var(--spacing_base) * 0.5);
+  --spacing_two: calc(var(--spacing_base) * 2);
+  --spacing_three: calc(var(--spacing_base) * 3);
+  --spacing_four: calc(var(--spacing_base) * 4);
+  --spacing_five: calc(var(--spacing_base) * 5);
+  --spacing_six: calc(var(--spacing_base) * 6);
+  --spacing_seven: calc(var(--spacing_base) * 7);
+  --spacing_eight: calc(var(--spacing_base) * 8);
+  }
 
-@font-face {
-  font-family: Inter;
-  font-weight: 500;
-  font-style: normal;
-  src: url("Inter-Medium.otf") format("otf");
-  font-display: swap;
-}
-@font-face {
-  font-family: Inter;
-  font-weight: 500;
-  font-style: italic;
-  src: url("Inter-MediumItalic.otf") format("otf");
-  font-display: swap;
-}
-@font-face {
-  font-family: Inter;
-  font-weight: 700;
-  font-style: normal;
-  src: url("Inter-Bold.otf") format("otf");
-  font-display: swap;
-}
-@font-face {
-  font-family: Inter;
-  font-weight: 700;
-  font-style: italic;
-  src: url("Inter-BoldItalic.otf") format("otf");
-  font-display: swap;
-}
+
 .fadeInUpSlight{
   animation-name: fadeInUpSlight;
   transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);

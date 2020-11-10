@@ -18,6 +18,10 @@ function SEO({ description, title, image, url, favicon }) {
       <title>{titleTemplate}</title>
       {/* <description>{metaDescription}</description> */}
       <link rel="shortcut icon" href={faviconUrl} />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
+        rel="stylesheet"
+      />
       <meta property="og:image" content={previewImage} />
       <meta property="og:title" content={titleTemplate} />
       <meta property="og:description" content={metaDescription} />

@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { createGlobalStyle } from 'styled-components'
+import styled from 'styled-components'
 import { colors } from '../utils/colors'
 import Header from './header'
 import Footer from './footer'
 import { below } from './layout'
 
-const StyledPage = styled.div`
+export const StyledPage = styled.div`
   background-color: ${colors.background};
   display: grid;
   margin: 0 auto;
@@ -43,6 +43,7 @@ const TFWPageWrapper = styled.div`
   max-width: 1000px;
   width: 100%;
   grid-template-rows: 1fr;
+  /* background-color: red; */
 `
 
 const Page = ({ children }) => (
