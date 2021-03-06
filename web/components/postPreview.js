@@ -6,7 +6,7 @@ import { Title, Subtitle } from './text'
 
 const Greyscale = styled.img`
   width: 100%;
-  min-height: 100%;
+  /* min-height: 100%; */
   object-fit: cover;
   grid-row: 1;
   grid-column: 1;

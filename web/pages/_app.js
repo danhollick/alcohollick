@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
-import { colors } from '../utils/colors'
+import { useRouter } from 'next/router'
+import * as Fathom from 'fathom-client'
 
 const GlobalStyles = createGlobalStyle`
 :root {
@@ -73,6 +73,25 @@ const GlobalStyles = createGlobalStyle`
 `
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter()
+
+  useEffect(() => {
+    // Initialize Fathom when the app loads
+    Fathom.load('LSSGHCET', {
+      includedDomains: ['https://alcohollick.com/'],
+    })
+
+    function onRouteChangeComplete() {
+      Fathom.trackPageview()
+    }
+    // Record a pageview when route changes
+    router.events.on('routeChangeComplete', onRouteChangeComplete)
+
+    // Unassign event listener
+    return () => {
+      router.events.off('routeChangeComplete', onRouteChangeComplete)
+    }
+  }, [])
   return (
     <>
       <GlobalStyles />

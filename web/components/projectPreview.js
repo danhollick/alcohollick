@@ -6,9 +6,9 @@ import { Title, Subtitle } from './text'
 import { colors } from '../utils/colors'
 
 const Greyscale = styled.img`
-  /* max-height: 200px; */
+  max-height: 200px;
   width: 100%;
-  min-height: 100%;
+  /* min-height: 100%; */
   object-fit: cover;
   grid-row: 1;
   grid-column: 1;
