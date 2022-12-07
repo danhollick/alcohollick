@@ -23,7 +23,7 @@ const IndexPage = ({ jobs }) => (
       <Stack smallSpacing={10}>
         <Stack className="AlignStart fadeInUpSlight" spacing={1}>
           <MassiveHeading>dan hollick</MassiveHeading>
-          <Title>designer and builder.</Title>
+          <Title>Design, technically.</Title>
         </Stack>
         {jobs && <JobList className="AlignEnd" jobs={jobs} />}
       </Stack>
@@ -40,8 +40,42 @@ const IndexPage = ({ jobs }) => (
 const getAllJobs = groq`*[_type == "job" ] | order(startDate desc) {title, endDate, startDate, place, url }[0...4]`
 
 export async function getStaticProps() {
-  const jobs = await client.fetch(getAllJobs)
-  console.log(jobs)
+  const jobs = [
+    {
+      place: 'Rectangle Labs',
+      startDate: '2020-12-01',
+      title: 'Owner',
+      url: 'https://rectangle-labs.com',
+    },
+    // {
+    //   place: 'juggle',
+    //   startDate: '2018-07-02',
+    //   title: 'Co-Founder',
+    //   url: 'https://juggle.properties/',
+    // },
+    {
+      endDate: '2020-11-30',
+      place: 'TIDAL',
+      startDate: '2018-07-01',
+      title: 'Product Designer',
+      url: 'https://listen.tidal.com/',
+    },
+    {
+      endDate: '2018-07-01',
+      place: 'Fusetools',
+      startDate: '2016-05-01',
+      title: 'Lead Product Designer',
+      url: 'https://fuseopen.com/',
+    },
+    {
+      endDate: '2016-05-01',
+      place: 'Barclays Africa',
+      startDate: '2015-05-01',
+      title: 'Product Designer',
+      url: 'https://www.absa.co.za/',
+    },
+  ]
+  // const jobs = await client.fetch(getAllJobs)
   return {
     props: { jobs: jobs || null }, // will be passed to the page component as props
   }

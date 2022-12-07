@@ -5,7 +5,7 @@ import { Stack, below } from '../layout'
 import { Columns } from '../Layout/index'
 import { MassiveHeading, Heading } from '../text'
 import { colors } from '../../utils/colors'
-import Mobile from './Mobile'
+import Mobile from './mobile'
 
 const GradientText = styled.h1`
   background-image: radial-gradient(

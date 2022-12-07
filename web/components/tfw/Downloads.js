@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Columns, Stack } from '../layout'
 import { Heading, Body } from '../text'
 import { colors } from '../../utils/colors'
-import { AppStoreIcons } from './Hero'
+import { AppStoreIcons } from './hero'
 
 const Wrapper = styled.div`
   display: grid;
