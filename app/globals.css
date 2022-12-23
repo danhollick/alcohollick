@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .ext-link {
+    @apply text-purplish hover:text-dark_purplish;
+  }
+}
