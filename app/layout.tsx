@@ -5,32 +5,32 @@ import localFont from '@next/font/local'
 const basis = localFont({
   src: [
     {
-      path: './basis-grotesque-mono-regular-pro.otf',
+      path: '../styles/fonts/basis-grotesque-mono-regular-pro.otf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: './basis-grotesque-mono-italic-pro.otf',
+      path: '../styles/fonts/basis-grotesque-mono-italic-pro.otf',
       weight: '400',
       style: 'italic',
     },
     {
-      path: './basis-grotesque-mono-medium-pro.otf',
+      path: '../styles/fonts/basis-grotesque-mono-medium-pro.otf',
       weight: '600',
       style: 'normal',
     },
     {
-      path: './basis-grotesque-mono-medium-italic-pro.otf',
+      path: '../styles/fonts/basis-grotesque-mono-medium-italic-pro.otf',
       weight: '600',
       style: 'italic',
     },
     {
-      path: './basis-grotesque-mono-bold-pro.otf',
+      path: '../styles/fonts/basis-grotesque-mono-bold-pro.otf',
       weight: '700',
       style: 'normal',
     },
     {
-      path: './basis-grotesque-mono-bold-italic-pro.otf',
+      path: '../styles/fonts/basis-grotesque-mono-bold-italic-pro.otf',
       weight: '700',
       style: 'italic',
     },

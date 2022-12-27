@@ -9,12 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdx-js/loader": "^2.2.1",
+    "@mdx-js/react": "^2.2.1",
     "@next/font": "^13.1.0",
+    "@next/mdx": "^13.1.0",
     "@types/node": "18.11.17",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
     "eslint": "8.30.0",
     "eslint-config-next": "13.1.0",
+    "framer-motion": "^8.0.2",
+    "gray-matter": "^4.0.3",
     "next": "13.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
