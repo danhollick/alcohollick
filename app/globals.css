@@ -5,6 +5,6 @@
 
 @layer components {
   .ext-link {
-    @apply text-purplish hover:text-dark_purplish;
+    @apply text-purplish hover:text-dark_purplish hover:bg-gray-100;
   }
 }

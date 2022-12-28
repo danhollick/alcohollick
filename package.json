@@ -23,6 +23,8 @@
     "next-mdx-remote": "^4.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "remark-toc": "^8.0.1",
+    "twitter-lite": "^1.1.0",
     "typescript": "4.9.4"
   },
   "devDependencies": {

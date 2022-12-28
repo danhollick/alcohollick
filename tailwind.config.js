@@ -16,6 +16,9 @@ module.exports = {
         sans: ['var(--font-inter)'],
         mono: ['var(--font-basis-mono)'],
       },
+      fontSize: {
+        base: ['15px', '1.6'],
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
