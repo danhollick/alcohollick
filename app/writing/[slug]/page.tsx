@@ -1,53 +1,76 @@
-import fs from 'fs'
-import { MDXProvider } from '@mdx-js/react'
-// import Markdown from "markdown-to-jsx";
-import matter from 'gray-matter'
-import getPostMetadata from '../../../lib/getPostMetadata'
+import MDXWrapper from './mdxWrapper'
+import { type MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { serialize } from 'next-mdx-remote/serialize'
+import { promises as fs } from 'fs'
+import { Body, H1 } from './components'
 
-const getPostContent = (slug: string) => {
-  const folder = 'posts'
-  const file = `${folder}/${slug}.mdx`
-  // console.log(file)
-  // const meta = require(`../../../${file}`).meta
-  const content = fs.readFileSync(file, 'utf8')
-  // console.log(meta)
-  // console.log(content)
+type Frontmatter = {
+  title: string
+  date: string
+  description: string
+}
 
-  const matterResult = matter(content)
-  return matterResult
+type Post<TFrontmatter> = {
+  serialized: MDXRemoteSerializeResult
+  frontmatter: TFrontmatter
 }
 
 export const generateStaticParams = async () => {
-  const posts = getPostMetadata()
-
+  // const posts = getPostMetadata()
+  const files = await fs.readdir('posts/')
+  const mdxPosts = files.filter(file => file.endsWith('.mdx'))
+  const posts = mdxPosts.map(fileName => {
+    return {
+      slug: fileName.replace('.mdx', ''),
+    }
+  })
   return posts.map(post => ({
     slug: post.slug,
   }))
 }
 
-// const components = {
-//   // img: ResponsiveImage,
-//   h1: Heading.H1,
-//   h2: Heading.H2,
-//   p: Text,
-//   pre: Pre,
-//   code: InlineCode,
-// }
+async function getPost(filepath: string): Promise<Post<Frontmatter>> {
+  // Read the file from the filesystem
+  const raw = await fs.readFile(filepath, 'utf-8')
 
-const PostPage = (props: any) => {
+  // Serialize the MDX content and parse the frontmatter
+  const serialized = await serialize(raw, {
+    parseFrontmatter: true,
+    mdxOptions: {
+      remarkPlugins: [],
+      rehypePlugins: [],
+      development: false,
+    },
+  })
+
+  // Typecast the frontmatter to the correct type
+  const frontmatter = serialized.frontmatter as Frontmatter
+
+  // Return the serialized content and frontmatter
+  return {
+    frontmatter,
+    serialized,
+  }
+}
+
+const PostPage = async (props: any) => {
   const slug = props.params.slug
-  console.log('props', props)
-  const post = getPostContent(slug)
-  return (
-    <div>
-      <div className="my-12 text-center">
-        <h1 className="text-2xl text-slate-600 ">{post.data.title}</h1>
-        <p className="text-slate-400 mt-2">{post.data.date}</p>
-      </div>
+  const { serialized, frontmatter } = await getPost(`posts/${slug}.mdx`)
+  const date = new Date(frontmatter.date).toLocaleString('en-GB', {
+    weekday: 'short',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
 
-      <article className="prose">
-        {/* <Markdown>{post.content}</Markdown> */}
-        {post.content}
+  return (
+    <div className="w-full grid justify-center">
+      <div className="my-12 max-w-prose">
+        <H1>{frontmatter.title}</H1>
+        <Body className="text-slate-400 mt-2">{date}</Body>
+      </div>
+      <article className="max-w-prose prose">
+        <MDXWrapper source={serialized} />
       </article>
     </div>
   )
