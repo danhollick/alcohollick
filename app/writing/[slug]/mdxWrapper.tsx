@@ -13,6 +13,7 @@ import {
   ListItem,
   // Aside,
 } from './components'
+import Image from 'next/image'
 import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 type MdxContentProps = {
@@ -31,6 +32,10 @@ const components = {
   ul: UList,
   li: ListItem,
   Callout: Callout,
+  img: props => (
+    // height and width are part of the props, so they get automatically passed here with {...props}
+    <Image {...props} loading="lazy" />
+  ),
   // pre: Pre,
   // code: InlineCode,
 }

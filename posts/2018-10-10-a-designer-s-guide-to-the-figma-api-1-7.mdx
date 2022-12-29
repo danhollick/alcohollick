@@ -10,6 +10,8 @@ categories: '[object Object],[object Object]'
 ---
 
 import { Callout } from '../app/writing/[slug]/components.tsx'
+import step1 from '../public/figma-api/part-1/step1.png'
+import Image from 'next/image'
 
 You can find the code for this tutorial [here](https://github.com/danhollick/FigmaAPIThing).
 
@@ -61,32 +63,32 @@ So what if we wanted to get a few screens from a file and display them? The basi
 - #### Step 1:
   We send a request to the `GET File` endpoint with the URL of our file as an endpoint.
 
-![An illustration demonstrating how a server communicates to an endpoint](https://cdn.sanity.io/images/h2w4qpx8/production/d1a1cae1ad398e9e0a1dffb1df820f74fb093599-700x236.png)
+![An illustration demonstrating how a server communicates to an endpoint](/figma-api/part-1/step1.png)
 
 - #### Step 2:
   We get a response in return. This will be a chunk of JSON that contains all the information for every element inside that file. You can think of this as a giant list that describes all the attributes every element has (and doesn’t have).
 
-![An illustration showing how an endpoint delivers a server request](https://cdn.sanity.io/images/h2w4qpx8/production/45feb6115d19d9543bc4c9ecf47bf0eb1e4c58db-700x236.png)
+![An illustration showing how an endpoint delivers a server request](/figma-api/part-1/step2.png)
 
 - #### Step 3:
   We iterate through this chunk of information and find the screens we want to display. Each element in a Figma file has a unique ID we need.
 
-![An illustration showing a server processing a request](https://cdn.sanity.io/images/h2w4qpx8/production/098c5c074d24db5f26788a02e7b13dfc2c177d14-700x236.png)
+![An illustration showing a server processing a request](/figma-api/part-1/step3.png)
 
 - #### Step 4:
   Once we have found those IDs, we send them along with a new request, this time to the `GET File images` endpoint.
 
-![An illustration demonstrating a server making a second request to an endpoint](https://cdn.sanity.io/images/h2w4qpx8/production/f49ab368054f7071997b861ed874c160ee243148-700x236.png)
+![An illustration demonstrating a server making a second request to an endpoint](/figma-api/part-1/step4.png)
 
 - #### Step 5:
   That endpoint will then send us some more JSON, but this time it will contain URLs. These URLs are where the images of our screens are hosted by Figma.
 
-![An illustration demonstrating an endpoint processing and returning a request](https://cdn.sanity.io/images/h2w4qpx8/production/a9b6d58a83ec13fabfc65b24a6abce7d3640dcde-700x236.png)
+![An illustration demonstrating an endpoint processing and returning a request](/figma-api/part-1/step5.png)
 
 - #### Step 6:
   We send those URLs to our frontend to display them as images.
 
-![An illustration demonstrating a server returning a request to a front end client](https://cdn.sanity.io/images/h2w4qpx8/production/0cb02e57a91452f129b9b54420b71e96bf4b5ae5-700x236.png)
+![An illustration demonstrating a server returning a request to a front end client](/figma-api/part-1/step6.png)
 
 ---
 

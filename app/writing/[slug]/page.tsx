@@ -4,8 +4,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { promises as fs } from 'fs'
 import { Body, H1 } from './components'
 import { getId } from '../../../lib/getId'
-
-import ProgressIndicator from './progressIndicator'
+import imageSize from 'rehype-img-size'
 
 type Frontmatter = {
   title: string
@@ -48,7 +47,9 @@ async function getPost(filepath: string): Promise<Post<Frontmatter>> {
     parseFrontmatter: true,
     mdxOptions: {
       remarkPlugins: [],
-      rehypePlugins: [],
+      // use the image size plugin, you can also specify which folder to load images from
+      // in my case images are in /public/images/, so I just prepend 'public'
+      rehypePlugins: [[imageSize, { dir: 'public' }]],
       development: false,
     },
   })
@@ -89,8 +90,8 @@ const PostPage = async (props: any) => {
   })
 
   return (
-    <div className="w-full grid justify-center ">
-      <div className="grid grid-cols-[1fr_auto] gap-12 ">
+    <div className="w-full grid ">
+      <div className="grid w-full max-w-[950px] grid-cols-[3fr,1fr] gap-12 justify-self-center">
         <div className=" grid auto-rows-auto max-w-prose py-10">
           <Body className="text-gray-500 text-sm font-mono mb-4">
             {date}
@@ -111,8 +112,8 @@ const PostPage = async (props: any) => {
             <MDXWrapper source={serialized} />
           </article>
         </div>
-        <div className="h-screen top-0 bottom-0 sticky grid grid-flow-row grid-rows-[1fr_auto] pt-20 pb-6 ">
-          <ul className="grid auto-rows-auto content-start gap-2 ">
+        <div className="h-screen top-0 bottom-0 sticky grid grid-flow-row py-20 ">
+          <ul className="grid auto-rows-auto content-start gap-2">
             {headings.map(({ id, text }) => (
               <a
                 key={id}
@@ -123,7 +124,6 @@ const PostPage = async (props: any) => {
               </a>
             ))}
           </ul>
-          <ProgressIndicator />
         </div>
       </div>
     </div>

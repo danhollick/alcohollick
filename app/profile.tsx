@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function Profile() {
+export default function Profile({ width = 400, height = 400 }) {
   return (
     <div className="relative">
       <div className="bg-purplish absolute w-full h-full z-10 mix-blend-screen " />
@@ -8,8 +8,8 @@ export default function Profile() {
         className="filter grayscale"
         src="/profile.png"
         alt="Picture of the Dan Hollick and his cat Weez"
-        width={400}
-        height={400}
+        width={height}
+        height={height}
       />
     </div>
   )

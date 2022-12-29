@@ -19,6 +19,10 @@ module.exports = {
       fontSize: {
         base: ['15px', '1.6'],
       },
+      backgroundImage: {
+        'gradient-radial-footer':
+          'radial-gradient(var(--tw-gradient-from) 1px, var(--tw-gradient-to) 1px)',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
