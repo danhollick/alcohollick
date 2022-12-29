@@ -5,6 +5,8 @@ import { promises as fs } from 'fs'
 import { Body, H1 } from './components'
 import { getId } from '../../../lib/getId'
 
+import ProgressIndicator from './progressIndicator'
+
 type Frontmatter = {
   title: string
   date: string
@@ -87,9 +89,9 @@ const PostPage = async (props: any) => {
   })
 
   return (
-    <div className="w-full grid justify-center my-12 scroll-smooth ">
-      <div className="grid grid-cols-[1fr_auto] gap-8 ">
-        <div className=" grid auto-rows-auto max-w-prose ">
+    <div className="w-full grid justify-center ">
+      <div className="grid grid-cols-[1fr_auto] gap-12 ">
+        <div className=" grid auto-rows-auto max-w-prose py-10">
           <Body className="text-gray-500 text-sm font-mono mb-4">
             {date}
             {frontmatter.updatedAt &&
@@ -109,8 +111,8 @@ const PostPage = async (props: any) => {
             <MDXWrapper source={serialized} />
           </article>
         </div>
-        <div className="h-screen top-0 sticky">
-          <ul className="grid auto-rows-auto content-start gap-2 py-10 ">
+        <div className="h-screen top-0 bottom-0 sticky grid grid-flow-row grid-rows-[1fr_auto] pt-20 pb-6 ">
+          <ul className="grid auto-rows-auto content-start gap-2 ">
             {headings.map(({ id, text }) => (
               <a
                 key={id}
@@ -121,6 +123,7 @@ const PostPage = async (props: any) => {
               </a>
             ))}
           </ul>
+          <ProgressIndicator />
         </div>
       </div>
     </div>
