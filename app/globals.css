@@ -7,4 +7,64 @@
   .ext-link {
     @apply text-purplish hover:text-dark_purplish hover:bg-gray-100;
   }
+
+  .code-block {
+    @apply  rounded box-border p-4 overflow-auto font-mono text-sm leading-relaxed whitespace-pre bg-gray-100 text-gray-700
+  }
+
+  & > code {
+    @apply block 
+    }
+
+  .token.parameter {
+    @apply text-blue-600;
+  }
+
+  .token.tag, .token.class-name, .token.selector, .token.selector .class, .token.function {
+    @apply text-rose-600;
+  }
+
+  .token.attr-value, .token.class, .token.string, .token.number, .token.unit, .token.color {
+    @apply text-emerald-600;
+  }
+
+  .token.attr-name, .token.keyword, .token.rule, .token.operator, .token.pseudo-class, .token.important {
+    @apply text-amber-600;
+  }
+
+  .token.punctuation, .token.module, .token.property {
+    @apply text-pink-600;
+  }
+
+  .token.comment {
+    @apply text-gray-400 italic;
+  }
+
+  .token.atapply .token:not(.rule):not(.important) {
+    @apply text-current
+  }
+
+  .language-shell .token:not(.comment) {
+    @apply text-current
+  }
+
+  .language-css .token.function {
+    @apply text-current
+  }
+
+  .token.deleted:not(.prefix), .token.inserted:not(.prefix) {
+    @apply block px-2 mx-2
+  }
+
+  .token.deleted:not(.prefix) {
+    @apply text-gray-400
+  }
+
+  .token.inserted:not(.prefix) {
+    @apply text-pink-600
+  }
+
+  .token.deleted.prefix, .token.inserted.prefix {
+    @apply  select-none
+  }
 }

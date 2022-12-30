@@ -11,6 +11,8 @@ import {
   Blockquote,
   Callout,
   ListItem,
+  Pre,
+  InlineCode,
   // Aside,
 } from './components'
 import Image from 'next/image'
@@ -34,10 +36,14 @@ const components = {
   Callout: Callout,
   img: props => (
     // height and width are part of the props, so they get automatically passed here with {...props}
-    <Image {...props} loading="lazy" />
+    <Image
+      className="border border-gray-200 rounded-md"
+      {...props}
+      loading="lazy"
+    />
   ),
-  // pre: Pre,
-  // code: InlineCode,
+  pre: Pre,
+  code: InlineCode,
 }
 
 const MDXWrapper = ({ source }: MdxContentProps) => {

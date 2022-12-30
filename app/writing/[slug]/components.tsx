@@ -38,6 +38,17 @@ export const Body = (props: React.HTMLProps<HTMLParagraphElement>) => (
   <p className="text-base" {...props} />
 )
 
+export const Pre = (props: React.HTMLProps<HTMLPreElement>) => (
+  <pre className="code-block" {...props} />
+)
+
+export const InlineCode = (props: React.HTMLProps<HTMLElement>) => (
+  <code
+    className="text-sm text-mono text-gray900 py-[1px] bg-gray-600/5 border-gray-700/5 border rounded-sm"
+    {...props}
+  />
+)
+
 export const ExternalLink = (props: React.HTMLProps<HTMLAnchorElement>) => (
   <a className="ext-link font-mono font-semibold" {...props} />
 )

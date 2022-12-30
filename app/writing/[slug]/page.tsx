@@ -5,6 +5,8 @@ import { promises as fs } from 'fs'
 import { Body, H1 } from './components'
 import { getId } from '../../../lib/getId'
 import imageSize from 'rehype-img-size'
+import rehypeHighlightCode from './rehype-highlight-code'
+import rehypeMetaAttribute from './rehype-meta-attribute'
 
 type Frontmatter = {
   title: string
@@ -49,7 +51,11 @@ async function getPost(filepath: string): Promise<Post<Frontmatter>> {
       remarkPlugins: [],
       // use the image size plugin, you can also specify which folder to load images from
       // in my case images are in /public/images/, so I just prepend 'public'
-      rehypePlugins: [[imageSize, { dir: 'public' }]],
+      rehypePlugins: [
+        [imageSize, { dir: 'public' }],
+        rehypeHighlightCode,
+        rehypeMetaAttribute,
+      ],
       development: false,
     },
   })
@@ -91,7 +97,7 @@ const PostPage = async (props: any) => {
 
   return (
     <div className="w-full grid ">
-      <div className="grid w-full max-w-[950px] grid-cols-[3fr,1fr] gap-12 justify-self-center">
+      <div className="grid w-full max-w-[800px] grid-cols-[3fr,1fr] gap-12 justify-self-center">
         <div className=" grid auto-rows-auto max-w-prose py-10">
           <Body className="text-gray-500 text-sm font-mono mb-4">
             {date}
