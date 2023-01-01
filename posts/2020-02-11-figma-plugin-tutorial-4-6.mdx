@@ -1,26 +1,21 @@
-
 ---
 layout: post
-title: "Figma Plugin Tutorial (4/6)"
+title: 'Figma Plugin Tutorial (4/6)'
 date: 2020-02-11 15:23:57.914Z
-description: "Working with colours"
-categories: "[object Object],[object Object],[object Object]"
+description: 'Working with colours'
+categories: '[object Object],[object Object],[object Object]'
 ---
 
-_** The code for this section is_ _[here](https://github.com/danhollick/zebra/tree/master/step2).**_
+*\*\* The code for this section is* \*[here](https://github.com/danhollick/zebra/tree/master/step2).\*\*\*
 
 Now we have the outline of our plugin we need to fill in the gaps.
-
-
-
-
 
 ## 🚦Getting an “un-normal” RGB Value
 
 Before we can really get cracking we need to do some house keeping. You have probably noticed that Figma stores colours in objects like so:
 
 ```json
-{r: 0.8999999761581421, g: 0.1875, b: 0.1875}
+{ "r": 0.8999999761581421, "g": 0.1875, "b": 0.1875 }
 ```
 
 The channel values have been _normalised_ to be between 0 and 1. To prevent some headaches we would prefer to work with the channels in the more common 0-255 range. To do this we can write a function that converts them back:
@@ -34,29 +29,21 @@ function getRGB({ r, g, b }) {
 
 We are destructuring the object into `r`, `g`, and `b` and putting it into an array. We then loop through the array and multiply each value by 255 and round it to the nearest integer. We do this to prevent weird decimal points in our RGB values like: `rgb(255, 171.5, 255)`.
 
-Now we can store these “normalised” values in some global variables at the top of `code.js` when ever selection changes. This way we always have the currently selected foreground and background colours available and can pass them as arguments where needed:  
-
+Now we can store these “normalised” values in some global variables at the top of `code.js` when ever selection changes. This way we always have the currently selected foreground and background colours available and can pass them as arguments where needed:
 
 ```javascript
 let foregroundColor
 let backgoundColor
 // ...
 // inside selection listener
-  const fills = selection.map(node => node.fills[0])
-  foregroundColor = getRGB(fills[0].color)
-  backgoundColor = getRGB(fills[1].color)
-  const contrast = calculateContrast(
-    foregroundColor,
-    backgoundColor
-  )
-  sendContrastInfo(contrast, foregroundColor, backgoundColor)
+const fills = selection.map(node => node.fills[0])
+foregroundColor = getRGB(fills[0].color)
+backgoundColor = getRGB(fills[1].color)
+const contrast = calculateContrast(foregroundColor, backgoundColor)
+sendContrastInfo(contrast, foregroundColor, backgoundColor)
 ```
 
 Alright, now we can get on to the hard stuff.
-
-
-
-
 
 ## 🧮 Calculating Luminance
 
@@ -80,15 +67,11 @@ function calculateLuminance(color) {
 
 You can totally skip this little explanation but in the simplest terms this is how it works:
 
-* We split our colour up into RGB channels by looping through the array and working on one channel at a time.
-* Normalise those channels between 0 and 1. Wait, didn’t we just write something to undo this? Well, yes. For complicated reasons involving rounding we would have to do this anyway. 🤫
-* Check if each normalised value is below _or_ above **0.03928**. This number has something to do with the sRGB colour space gamma threshold (whatever that means). If the number is below we divide the value by 12.92. If it is above we add 0.55, divide by 1.055 and then multiply the result by a power of 2.4.
-* After that, each channel gets multiplied by a specific value. `Red * 0.2126, G * 0.7152, B* 0.0722`
-* Lastly we add all the channels together to produce a relative luminance value between 0 and 1.
-
-
-
-
+- We split our colour up into RGB channels by looping through the array and working on one channel at a time.
+- Normalise those channels between 0 and 1. Wait, didn’t we just write something to undo this? Well, yes. For complicated reasons involving rounding we would have to do this anyway. 🤫
+- Check if each normalised value is below _or_ above **0.03928**. This number has something to do with the sRGB colour space gamma threshold (whatever that means). If the number is below we divide the value by 12.92. If it is above we add 0.55, divide by 1.055 and then multiply the result by a power of 2.4.
+- After that, each channel gets multiplied by a specific value. `Red * 0.2126, G * 0.7152, B* 0.0722`
+- Lastly we add all the channels together to produce a relative luminance value between 0 and 1.
 
 ## ☯️ Correcting Contrast
 
@@ -113,11 +96,7 @@ We are doing a little check to see if this happens and correct the result if it 
 
 Now head back to Figma and test if it’s working. One way to test it out is to set up a bunch of rectangles in Figma and check their contrast in an [online contrast checker](https://contrast-ratio.com/). Then run through and double check with our plugin to make sure we are getting the same results.
 
-![A grid of colours and their relative contrast ratios.](https://cdn.sanity.io/images/h2w4qpx8/production/e10e4e7a4cad4d6e5180927c946a7a62641d8ee4-1696x652.png)
-
-
-
-
+![A grid of colours and their relative contrast ratios.](/figma-plugin/part-4/color_grid.png)
 
 ## 💅 Converting RGB to Hex
 
@@ -151,17 +130,13 @@ function sendContrastInfo(contrast, foregroundColor, backgroundColor) {
 }
 ```
 
-
-
-
-
 ## 💯 Calculating a Score
 
 Another piece of information that is missing is what the WCAG contrast score is. If you read the WCAG guide they outline three different grades of contrast:
 
-* ✅ ✅ `AAA` : A contrast ratio of **4.5:1** or higher for text over 18pt. Or a contrast ratio of **7:1** or higher for text under 18pt.
-* ✅ `AA` : A contrast ratio of **3:1** or higher for text over 18pt. Or a contrast ratio of **4.5:1** or higher for text under 18pt.
-* 🆘 `FAIL` : A contrast ratio of under **3:1** for text over 18pt. Or a contrast ratio of under **4.5:1** for text under 18pt.
+- ✅ ✅ `AAA` : A contrast ratio of **4.5:1** or higher for text over 18pt. Or a contrast ratio of **7:1** or higher for text under 18pt.
+- ✅ `AA` : A contrast ratio of **3:1** or higher for text over 18pt. Or a contrast ratio of **4.5:1** or higher for text under 18pt.
+- 🆘 `FAIL` : A contrast ratio of under **3:1** for text over 18pt. Or a contrast ratio of under **4.5:1** for text under 18pt.
 
 We need to encapsulate this scoring logic in a function so that we can send the correct score along with every message:
 
@@ -209,11 +184,11 @@ function sendContrastInfo(contrast, foreground, background) {
 
 Now we should see the `scores` object logged in Figma if we test our plugin:
 
-![A screenshot of the Figma console showing the scores object inside the message object](https://cdn.sanity.io/images/h2w4qpx8/production/f777c4b3121c7d4a767d3ff7ee58e821a836313d-743x169.png)
+![A screenshot of the Figma console showing the scores object inside the message object](/figma-plugin/part-4/console_scores.png)
 
-## 
+##
 
-## 
+##
 
 ## 👻 Handling Opacity
 
@@ -221,7 +196,7 @@ Up until now we have been dealing with the happy path of comparing two solid col
 
 To calculate contrast with opacity we have to make a new solid colour by blending the two colours like so:
 
-![A diagram showing two overlapping colours producing a third colour.](https://cdn.sanity.io/images/h2w4qpx8/production/9d2c3b1d80a69b894e98c5fbc920d0c438d3ebba-1001x522.png)
+![A diagram showing two overlapping colours producing a third colour.](/figma-plugin/part-4/overlap.png)
 
 We then calculate the contrast between this _new_ foreground colour (`#9D5186`) and the background colour (`#E53030`). The problem is if the **_background_** has opacity we can’t determine what colour is _behind_ it to know what new colour to make. This means we can only reliably calculate the contrast if the opacity is on the foreground colour.
 
@@ -240,9 +215,9 @@ function overlay(foreground, alpha, backgound) {
 
 So what is happening here? Well we are blending the two colours in specific proportions using the alpha value to figure out those proportions. Lets walk through it channel by channel:
 
-* Let’s say our `red` channel value was `255` and the alpha was 80% or `0.8`. We get 80% of the red value like this: `255 * 0.8 = 204`.
-* Next we take the `red` channel of the background colour, let’s say it is `180`, and get the remaining 20% like this: `180 * 0.2 = 36`.
-* We then add those two together to get the new `red` value of `240`. The result of all of this is we end up with a solid colour that is 80% foreground and 20% background.
+- Let’s say our `red` channel value was `255` and the alpha was 80% or `0.8`. We get 80% of the red value like this: `255 * 0.8 = 204`.
+- Next we take the `red` channel of the background colour, let’s say it is `180`, and get the remaining 20% like this: `180 * 0.2 = 36`.
+- We then add those two together to get the new `red` value of `240`. The result of all of this is we end up with a solid colour that is 80% foreground and 20% background.
 
 In the `calculateContrast()` function we do a check to see if the opacity on the foreground colour is less than 1 _(100% opacity)_ and if it is we call `overlay()` to produce a new colour and assign it to the foreground:
 
@@ -267,19 +242,15 @@ let foregroundColor
 let foregroundAlpha
 //...
 // selecton listener
-  foregroundColor = getRGB(fills[0].color)
-  foregroundAlpha = fills[0].opacity
-  backgoundColor = getRGB(fills[1].color)
-  const contrast = calculateContrast(
-      foregroundColor,
-      foregroundAlpha,
-      backgoundColor
-    )
+foregroundColor = getRGB(fills[0].color)
+foregroundAlpha = fills[0].opacity
+backgoundColor = getRGB(fills[1].color)
+const contrast = calculateContrast(
+  foregroundColor,
+  foregroundAlpha,
+  backgoundColor
+)
 //...
 ```
-
-
-
-
 
 Okay, so that is most of the functionality we need behind the scenes. In the next chapter we will work on displaying information in the UI.

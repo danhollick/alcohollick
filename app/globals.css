@@ -13,7 +13,7 @@
   }
 
   & > code {
-    @apply block 
+    @apply block
     }
 
   .token.parameter {
@@ -66,5 +66,21 @@
 
   .token.deleted.prefix, .token.inserted.prefix {
     @apply  select-none
+  }
+
+  .highlight-line[data-highlighted="false"] {
+    @apply opacity-40
+  }
+
+  .highlight-line[data-highlighted="true"] {
+    /* @apply bg-amber-300 */
+  }
+
+  .highlight-line.line-numbers {
+    @apply relative pl-4 before:content-[attr(data-line)] before:absolute before:-left-1 before:top-0 before:text-gray-300
+  }
+
+  .highlight-word  {
+    @apply bg-amber-300
   }
 }

@@ -17,6 +17,7 @@ import {
 } from './components'
 import Image from 'next/image'
 import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote'
+import rangeParser from 'parse-numeric-range'
 
 type MdxContentProps = {
   source: MDXRemoteSerializeResult
@@ -37,13 +38,32 @@ const components = {
   img: props => (
     // height and width are part of the props, so they get automatically passed here with {...props}
     <Image
-      className="border border-gray-200 rounded-md"
+      className="border border-gray-200 rounded-md max-w-prose"
       {...props}
       loading="lazy"
     />
   ),
-  pre: Pre,
-  code: InlineCode,
+  pre: ({ children, theme, showLineNumbers, ...props }) => {
+    console.log(showLineNumbers, props)
+    return (
+      <pre className={`code-block line-numbers`} {...props}>
+        {children}
+      </pre>
+    )
+  },
+
+  // code: InlineCode,
+  code: ({ children, showLineNumbers, ...props }) => {
+    return (
+      <code
+        className={`line-numbers`}
+        {...props}
+        // className="text-sm text-mono text-gray900 py-[1px] bg-gray-600/5 border-gray-700/5 border rounded-sm"
+      >
+        {children}
+      </code>
+    )
+  },
 }
 
 const MDXWrapper = ({ source }: MdxContentProps) => {

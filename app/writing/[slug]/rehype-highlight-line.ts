@@ -1,7 +1,7 @@
 import { toHtml } from 'hast-util-to-html'
 import { unified } from 'unified'
 import rehypeParse from 'rehype-parse'
-import highlightWord from './rehype-highlight-word'
+
 
 const lineNumberify = function lineNumberify(ast, lineNum = 1) {
   let lineNumber = lineNum
@@ -46,6 +46,7 @@ const lineNumberify = function lineNumberify(ast, lineNum = 1) {
 }
 
 const wrapLines = function wrapLines(ast, linesToHighlight) {
+
   const highlightAll =
     linesToHighlight.length === 1 && linesToHighlight[0] === 0
   const allLines = Array.from(new Set(ast.map(x => x.lineNumber)))
@@ -68,7 +69,7 @@ const wrapLines = function wrapLines(ast, linesToHighlight) {
         break
       }
     }
-
+    
     nodes.push({
       type: 'element',
       tagName: 'div',
@@ -111,7 +112,6 @@ const applyMultilineFix = function (ast) {
 function highlightLine (ast, lines) {
   const formattedAst = applyMultilineFix(ast)
   const numbered = lineNumberify(formattedAst).nodes
-
   return wrapLines(numbered, lines)
 }
 

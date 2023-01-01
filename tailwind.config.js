@@ -6,6 +6,9 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    maxWidth: {
+      prose: '600px',
+    },
     extend: {
       colors: {
         purplish: '#0038FE',

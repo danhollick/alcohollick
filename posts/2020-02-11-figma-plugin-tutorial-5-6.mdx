@@ -1,13 +1,12 @@
-
 ---
 layout: post
-title: "Figma Plugin Tutorial (5/6)"
+title: 'Figma Plugin Tutorial (5/6)'
 date: 2020-02-11 15:24:06.963Z
-description: "Working with the UI"
-categories: "[object Object],[object Object],[object Object]"
+description: 'Working with the UI'
+categories: '[object Object],[object Object],[object Object]'
 ---
 
-_** The code for this section is_ _[here](https://github.com/danhollick/zebra/tree/master/step3).**_
+*\*\* The code for this section is* *[here](https://github.com/danhollick/zebra/tree/master/step3).\*\**
 
 In this chapter we are going to be manipulating the UI based on the updates we receive from the plugin sandbox. Go ahead and open up `ui.html` if you don’t have it open already and update it like this:
 
@@ -15,20 +14,20 @@ In this chapter we are going to be manipulating the UI based on the updates we r
 <div id="background">
   <h3 id="foreground">The quick brown fox</h3>
 </div>
-<h2 id="contrast"> </h2>
+<h2 id="contrast"></h2>
 <script>
-window.onmessage = async event => {
-  const message = event.data.pluginMessage
-  console.log(message)
-  if (message.type === 'selectionChange') {
-    const background = document.getElementById('background')
-    const foreground = document.getElementById('foreground')
-    const contrast = document.getElementById('contrast')
-    background.style = `background-color: ${message.background};`
-    foreground.style = `color: ${message.foreground};`
-    contrast.textContent = message.contrast
+  window.onmessage = async event => {
+    const message = event.data.pluginMessage
+    console.log(message)
+    if (message.type === 'selectionChange') {
+      const background = document.getElementById('background')
+      const foreground = document.getElementById('foreground')
+      const contrast = document.getElementById('contrast')
+      background.style = `background-color: ${message.background};`
+      foreground.style = `color: ${message.foreground};`
+      contrast.textContent = message.contrast
+    }
   }
-}
 </script>
 ```
 
@@ -36,15 +35,15 @@ We added some html to display some of our results and in `<script/>` we are usin
 
 If we click around we should see the plugin UI update:
 
-![A screenshot show the plugin window and two selected layers. The window is displaying text in the same colours as the two selected layers.](https://cdn.sanity.io/images/h2w4qpx8/production/9143efbd65b03669c88cd9615a350cb69f9326ec-902x612.png)
+![A screenshot show the plugin window and two selected layers. The window is displaying text in the same colours as the two selected layers.](/figma-plugin/part-5/color_match.png)
 
-## 
+##
 
-## 
+##
 
 ## 🔁 Swapping the Foreground and Background
 
-If you are like me, you’ll be a bit annoyed that we can’t swap the two colours around. This is especially annoying because the order of the layers in `figma.currentPage.selection` _is basically random_ so we can’t reliably pick which layer will be which.
+If you are like me, you’ll be a bit annoyed that we can’t swap the two colours around. This is especially annoying because the order of the layers in `figma.currentPage.selection` *is basically random* so we can’t reliably pick which layer will be which.
 
 To solve this we are going to add a button to the UI to swap the current colours around. When the button is clicked we want to post a message back to the sandbox to swap those colours around. This is what the message posting looks like on this end:
 
@@ -52,12 +51,12 @@ To solve this we are going to add a button to the UI to swap the current colours
 // ...
 <button id="swap"></button>
 <script>
-window.onmessage = async event => {
- //...
-}
-document.getElementById('swap').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'swap' } }, '*')
-}
+  window.onmessage = async event => {
+    //...
+  }
+  document.getElementById('swap').onclick = () => {
+    parent.postMessage({ pluginMessage: { type: 'swap' } }, '*')
+  }
 </script>
 ```
 
@@ -105,15 +104,9 @@ In fact, if it weren’t that we need to handle foreground opacity, we wouldn’
 
 Go ahead and open this up in Figma and test it out. You should see the foreground and background colours swapping:
 
-![A screenshot of the Figma interface demonstrating that the colours can be swapped. ](https://cdn.sanity.io/images/h2w4qpx8/production/9a06e86338cedfa6b29956962116fd13a5db80f6-779x672.png)
-
-
+![A screenshot of the Figma interface demonstrating that the colours can be swapped. ](/figma-plugin/part-5/color_swap.png)
 
 This is awesome. The colours are swapping and the score is being recalculated — which we can see when testing on colours with opacity.
-
-
-
-
 
 ## 🩺 Fixing a Structural Problem
 
@@ -124,7 +117,7 @@ So how can we fix this? Well this is a bit of a structural hole we have dug ours
 
 ```javascript
 function calculateAndSendContrast(foreground, alpha, backgound) {
-// ...
+  // ...
   let contrast = foregroundLuminance / backgroundLuminance
   if (backgroundLuminance > foregroundLuminance) {
     contrast = 1 / contrast
@@ -154,10 +147,8 @@ figma.ui.onmessage = msg => {
 
 Now in Figma we can see the right colour value is being sent to the UI:
 
-![A screenshot of the Figma interface demonstrating that the plugin receives the correct value for the layers that contain opacity.](https://cdn.sanity.io/images/h2w4qpx8/production/9ab86ed125d6bf113d18c68a870f9d2bdbdb0116-710x513.png)
+![A screenshot of the Figma interface demonstrating that the plugin receives the correct value for the layers that contain opacity.](/figma-plugin/part-5/color_opacity.png)
 
 Phew 😓. That was a lot. But the good news is that is all the sandbox functionality we need!
-
-
 
 In the final chapter we are going to clean up the UI and look into some optional improvements like bundling things with webpack.

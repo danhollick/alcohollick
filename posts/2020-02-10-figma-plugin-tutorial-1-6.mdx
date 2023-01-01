@@ -1,21 +1,20 @@
-
 ---
 layout: post
-title: "Figma Plugin Tutorial (1/6)"
+title: 'Figma Plugin Tutorial (1/6)'
 date: 2020-02-10 23:15:00.000Z
-description: "Building a colour contrast checker."
-categories: ""
+description: 'Building a colour contrast checker.'
+categories: ''
 ---
 
 > “Should designers code?  
-F*ck yeah!” — socrates
+> F\*ck yeah!” — socrates
 
 Figma plugins are the new shiny thing in the design. From the outside it might seem like they are complicated to build but that’s not true. They are about as complicated as you make them and getting started with plugins is super easy.  
 If you’ve ever wanted to build your own you’re in the right place.
 
-## 
+##
 
-## 
+##
 
 ## 🏗 What are we building
 
@@ -24,18 +23,18 @@ If you’ve ever wanted to build your own you’re in the right place.
 We are going to build this 👆, a lightweight and flexible colour contrast checker called [**zebra**](https://www.figma.com/c/plugin/806578669827234193/zebra) 🦓  
 There are 6 parts including this one but you can bounce around however you want:
 
-* (1/6) —Getting Started.
-* [(2/6) — How Figma Plugins Work.](/writing/figma-plugin-tutorial-2-6/)
-* [(3/6) — Wiring Things Up](/writing/figma-plugin-tutorial-3-6/)
-* [(4/6) —Working with Colours](/writing/figma-plugin-tutorial-4-6/)
-* [(5/6) —Working with the UI.](/writing/figma-plugin-tutorial-5-6/)
-* [(6/6) — Polishing Things Up.](/writing/figma-plugin-tutorial-6-6/)
+- (1/6) —Getting Started.
+- [(2/6) — How Figma Plugins Work.](/writing/figma-plugin-tutorial-2-6/)
+- [(3/6) — Wiring Things Up](/writing/figma-plugin-tutorial-3-6/)
+- [(4/6) —Working with Colours](/writing/figma-plugin-tutorial-4-6/)
+- [(5/6) —Working with the UI.](/writing/figma-plugin-tutorial-5-6/)
+- [(6/6) — Polishing Things Up.](/writing/figma-plugin-tutorial-6-6/)
 
 The repo for the plugin is [here](https://github.com/danhollick/zebra). It’s split up into steps to make it easier to follow.
 
-## 
+##
 
-## 
+##
 
 ## 👨‍👩‍👧 Who is this Tutorial for?
 
@@ -48,9 +47,9 @@ If you have ever _partially understood_ a Mark Dalgleish tweet, you should do ju
 
 Twitter: https://twitter.com/markdalgleish/status/1222631444897361920?s=20
 
-## 
+##
 
-## 
+##
 
 ## 🚀 **Getting Started.**
 
@@ -59,8 +58,6 @@ Luckily for us Figma has done some amazing work on the plugin creation process.
 All we need to do is hit `Plugins -> Development -> New Plugin` in the menu bar. After that we’ll get to a dialog where we need to add the plugin name or link to an existing plugin. Enter zebra here and press Continue.
 
 ![Figma's create new plugin UI](https://cdn.sanity.io/images/h2w4qpx8/production/5d67460c1999ed6dd5194177ded73d33b1a60ef7-737x503.png)
-
-
 
 We’ll get another dialog that allows us to pick from three different templates:
 
@@ -72,15 +69,17 @@ Let’s take a minute to talk through the options here and what they give us. Al
 
 ![Starter files for the "Empty" template](https://cdn.sanity.io/images/h2w4qpx8/production/0f8ba98d23a483cd1784f28b8759dddd1e26f163-656x219.png)
 
-* **Empty** provides a dead simple code.js file and a manifest.json. The manifest file is how Figma identifies plugins. It contains stuff like the plugin name, API version etc.  
-Only use this one if you are happy to configure stuff on your own.
-* **Run Once** comes with a few more files but most of them are to enable Typescript:  
-- `code.ts` is a Typescript file that you can use instead of code.js.  
--` figma.d.ts` is a list of all the types the API uses. VSCode uses this to do nifty auto-complete stuff.  
-- `tsconfig.json` configures Typescript.
-* **With UI and Browser APIs** has all the the same files as **Run Once**, but it also has a ui.html file. This is because we are expecting the user to interact with our plugin and this file will be what launches in the little plugin window.
+- **Empty** provides a dead simple code.js file and a manifest.json. The manifest file is how Figma identifies plugins. It contains stuff like the plugin name, API version etc.  
+  Only use this one if you are happy to configure stuff on your own.
+- **Run Once** comes with a few more files but most of them are to enable Typescript:
 
-**__**
+* `code.ts` is a Typescript file that you can use instead of code.js.  
+  -` figma.d.ts` is a list of all the types the API uses. VSCode uses this to do nifty auto-complete stuff.
+* `tsconfig.json` configures Typescript.
+
+- **With UI and Browser APIs** has all the the same files as **Run Once**, but it also has a ui.html file. This is because we are expecting the user to interact with our plugin and this file will be what launches in the little plugin window.
+
+**\_\_**
 
 #### **_TYPESCRIPT TRIGGER WARNING_**
 
@@ -92,9 +91,9 @@ If you don’t already have it, [download VSCode](https://code.visualstudio.com/
 
 In VSCode, open up the folder you downloaded the template files into and navigate to `README.md.` You’ll see that here we have a few instructions for setting up the TypeScript compiler which **_we will completely ignore_**. In fact you can delete the code.ts and all the other typescript files if you want. Feel free to write your own little README.md to replace this.
 
-## 
+##
 
-## 
+##
 
 ## 🎤 Testing 1, 2…
 
@@ -102,11 +101,11 @@ Open code.js and you’ll see there is a bunch of example code there. You can re
 
 Open up Figma again and launch the plugin by hitting `Plugins -> Development -> zebra` in the menu. You should see this:
 
-![A screenshot of our plugin UI at this point.](https://cdn.sanity.io/images/h2w4qpx8/production/8c78dfe3a10c71b8d9b690cb06dbb420e929f03f-451x366.png)
+![A screenshot of our plugin UI at this point.](/figma-plugin/part-1/plugin_1.png)
 
 If you click `Create` you should see this:
 
-![A screenshot of the result of our plugin: 5 orange rectangles.](https://cdn.sanity.io/images/h2w4qpx8/production/eab71b6b1c455e86d5ac992fd7edab8366fffcda-1010x263.png)
+![A screenshot of the result of our plugin: 5 orange rectangles.](/figma-plugin/part-1/five_rects.png)
 
 Now we need to make sure our template is working properly by editing something in `code.js`. On line 19 change the color from:
 
@@ -122,8 +121,6 @@ color: { r: 1, g: 0.5, b: 1 } }
 
 and hit `cmd + s` to save. If we run the plugin in Figma again we should now see this:
 
-![A screenshot of the result of our plugin: 5 pink rectangles.](https://cdn.sanity.io/images/h2w4qpx8/production/e78b62da60a9c4efc6918ec698fab3ba032fb1aa-908x247.png)
-
-
+![A screenshot of the result of our plugin: 5 pink rectangles.](/figma-plugin/part-1/five_pink_rects.png)
 
 This means our template is up and running and we can get on to the more interesting stuff. 🎉

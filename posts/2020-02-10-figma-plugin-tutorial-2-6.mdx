@@ -90,7 +90,7 @@ This works for simple properties **but** a lot of properties are objects or arra
 
 ### 🆘 **Bad:**
 
-```javascript
+```javascript line=2-3
 const node = figma.root.findOne(node => node.type === 'TEXT')
 // this assumes we know fills has at least one item
 node.fills[0].opacity = 0.5
@@ -98,7 +98,7 @@ node.fills[0].opacity = 0.5
 
 ### ✅ **Good:**
 
-```javascript
+```javascript line=2-5
 const node = figma.root.findOne(node => node.type === "TEXT")
 // this assumes we know fills has at least one item
 const fills = node.fills
