@@ -1,6 +1,7 @@
 import { serialize } from 'next-mdx-remote/serialize'
 import { promises as fs } from 'fs'
 import Post from './post'
+import Tweet from './[slug]/tweet'
 
 type Frontmatter = {
   title: string
@@ -56,6 +57,9 @@ const PostListPage = async (props: any) => {
               <Post post={post} key={i} />
             ))}
           </ul>
+          <Tweet url="https://twitter.com/DanHollick/status/1583080119068807168?s=20" />
+          <Tweet url="https://twitter.com/DanHollick/status/1572587712234029056?s=20" />
+          <Tweet url="https://twitter.com/DanHollick/status/1491436859238412288?s=20" />
         </div>
       </div>
     </div>
