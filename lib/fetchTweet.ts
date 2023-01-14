@@ -11,7 +11,7 @@ export const fetchTweet = async ({url}) => {
 
     const response = await fetch(
       `https://api.twitter.com/2/tweets/?ids=${id}${options}`,
-      { headers: { Authorization: `Bearer AAAAAAAAAAAAAAAAAAAAAKFIlAEAAAAAM3vmEgglX54mXAvtzGUrpkeYWus%3DVvv6Jiqxw0tCxYAoqpX4mb4BXWB3eJ0o0I3QdPfduKmIVPOnPz` } }
+      { headers: { Authorization: process.env.TWITTER_TOKEN } }
     )
     const body = await response.json()
     const tweet = body.data[0]

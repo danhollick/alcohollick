@@ -44,7 +44,6 @@ const components = {
     />
   ),
   pre: ({ children, theme, showLineNumbers, ...props }) => {
-    console.log(showLineNumbers, props)
     return (
       <pre className={`code-block line-numbers`} {...props}>
         {children}
