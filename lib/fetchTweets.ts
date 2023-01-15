@@ -1,33 +1,27 @@
-export const fetchTweet = async ({url}) => {
+export const fetchTweets = async ({ ids }) => {
+  if (ids.length === 0) return []
+ 
 
-  const pathname = new URL(
-    url
-  ).pathname
-  const handle = pathname.split('/')[1]
-  const id = pathname.split('/')[3]
-  
-    const options =
-      '&expansions=author_id,attachments.media_keys&media.fields=duration_ms,height,media_key,preview_image_url,type,url,width,alt_text&tweet.fields=public_metrics,created_at&user.fields=profile_image_url'
+  const options =
+    '&expansions=author_id,attachments.media_keys&media.fields=duration_ms,height,media_key,preview_image_url,type,url,width,alt_text&tweet.fields=public_metrics,created_at&user.fields=profile_image_url'
 
-    const response = await fetch(
-      `https://api.twitter.com/2/tweets/?ids=${id}${options}`,
-      { headers: { Authorization: process.env.TWITTER_TOKEN } }
-    )
-    const body = await response.json()
-    const tweet = body.data[0]
+  const response = await fetch(
+    `https://api.twitter.com/2/tweets/?ids=${ids.join(',')}${options}`,
+    { headers: { Authorization: process.env.TWITTER_TOKEN } }
+  )
+  const body = await response.json()
+  return body.data.map((tweet, i) => {
     const author = body.includes.users.find(a => a.id === tweet.author_id)
-
+    const attacthments = tweet?.attachments?.media_keys || []
     const media = body.includes?.media?.map(item => ({
       type: item.type,
       media_key: item.media_key,
-    preview_image_url: item?.preview_image_url,
-    height: item.height,
-    width: item.width,
-    url: item?.url
+      preview_image_url: item?.preview_image_url,
+      height: item.height,
+      width: item.width,
+      url: item?.url,
     }))
 
-    
-    
     return {
       id: tweet.id,
       text: tweet.text,
@@ -47,10 +41,10 @@ export const fetchTweet = async ({url}) => {
         username: author.username,
         profileImageUrl: author.profile_image_url,
       },
-      media: media,
-      url
-      // url: `https://twitter.com/${author.username}/status/${tweet.id}`,
+      media: media && media.filter(att => attacthments.includes(att.media_key)),
+      url: `https://twitter.com/${author.username}/status/${tweet.id}`,
     }
+  })
 }
 
 export const formatMetric = number => {

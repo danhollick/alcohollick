@@ -7,6 +7,9 @@ import { getId } from '../../../lib/getId'
 import imageSize from 'rehype-img-size'
 import rehypeHighlightCode from './rehype-highlight-code'
 import rehypeMetaAttribute from './rehype-meta-attribute'
+import { fetchTweets } from '../../../lib/fetchTweets'
+import Footer from './footer'
+import formatDate from '../../../lib/formatDate'
 
 type Frontmatter = {
   title: string
@@ -40,6 +43,8 @@ export const generateStaticParams = async () => {
   }))
 }
 
+const TWEET_RE = /<StaticTweet\sid="[0-9]+"\s\/>/g
+
 async function getPost(filepath: string): Promise<Post<Frontmatter>> {
   // Read the file from the filesystem
   const raw = await fs.readFile(filepath, 'utf-8')
@@ -59,6 +64,17 @@ async function getPost(filepath: string): Promise<Post<Frontmatter>> {
       development: false,
     },
   })
+  /**
+   * Find all occurrence of <StaticTweet id="NUMERIC_TWEET_ID"/>
+   * in the content of the MDX blog post
+   */
+  const tweetMatch = raw.match(TWEET_RE)
+  const tweetIDs = tweetMatch?.map(mdxTweet => {
+    const id = mdxTweet.match(/[0-9]+/g)![0]
+    return id
+  })
+
+  const tweets = await fetchTweets({ ids: tweetIDs || [] })
 
   // Typecast the frontmatter to the correct type
   const frontmatter = serialized.frontmatter as Frontmatter
@@ -68,6 +84,7 @@ async function getPost(filepath: string): Promise<Post<Frontmatter>> {
     frontmatter,
     serialized,
     headings: getHeadings(raw),
+    tweets,
   }
 }
 
@@ -87,9 +104,10 @@ const getHeadings = (content: string): Heading[] => {
 
 const PostPage = async (props: any) => {
   const slug = props.params.slug
-  const { serialized, frontmatter, headings } = await getPost(
+  const { serialized, frontmatter, headings, tweets } = await getPost(
     `posts/${slug}.mdx`
   )
+
   const date = new Date(frontmatter.date).toLocaleString('en-GB', {
     year: 'numeric',
     month: 'long',
@@ -100,22 +118,16 @@ const PostPage = async (props: any) => {
       <div className="grid w-full max-w-[850px] grid-cols-[minmax(600px,3fr),minmax(200px,1fr)] gap-12 justify-self-center">
         <div className=" grid auto-rows-auto max-w-prose py-10 ">
           <Body className="text-gray-500 text-sm font-mono mb-4">
-            {date}
+            {formatDate(date)}
             {frontmatter.updatedAt &&
-              ` | Updated: ${new Date(frontmatter.updatedAt).toLocaleString(
-                'en-GB',
-                {
-                  year: 'numeric',
-                  month: 'long',
-                }
-              )}`}
+              ` | Updated: ${formatDate(frontmatter.updatedAt)}`}
           </Body>
           <H1>{frontmatter.title}</H1>
           <h3 className="text-xl text-gray-900 mt-3">
             {frontmatter.description}
           </h3>
-          <article className="max-w-prose prose align-start my-12">
-            <MDXWrapper source={serialized} />
+          <article className="max-w-prose prose align-start mt-12">
+            <MDXWrapper source={serialized} tweets={tweets} />
           </article>
         </div>
         <div className="h-screen top-0 bottom-0 sticky grid grid-flow-row py-20 ">
@@ -131,6 +143,7 @@ const PostPage = async (props: any) => {
             ))}
           </ul>
         </div>
+        <Footer />
       </div>
     </div>
   )

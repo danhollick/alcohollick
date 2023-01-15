@@ -1,15 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { fetchTweet } from '../../../lib/fetchTweet'
 
-const Tweet = async ({ url }) => {
-  const tweet = await fetchTweet({ url })
+const Tweet = ({ tweet }) => {
+  if (!tweet) {
+    return null
+  }
   return (
-    <Link href={tweet.url}>
+    <Link href={tweet.url} className="not-prose no-underline max-w-[600px]">
       <div className="bg-gray-50 border hover:bg-gray-100 border-gray-300 rounded-2xl duration-300 my-8 p-5 max-w-xl mx-auto text-gray-900">
         <div className="flex justify-between">
-          <a className="flex items-center gap-3 group" href={tweet.url}>
+          <div className="flex items-center gap-3 ">
             <img
               className="rounded-full h-12 w-12"
               src={tweet.author.profileImageUrl}
@@ -25,16 +26,25 @@ const Tweet = async ({ url }) => {
                 {tweet.createdAt.toLocaleString()}
               </p>
             </div>
-          </a>
+          </div>
         </div>
         <p className=" my-3 leading-normal whitespace-pre-wrap">{tweet.text}</p>
 
         <div className="grid grid-flow-row grid-cols-[auto,auto] gap-4">
           {tweet?.media?.map(
-            ({ type, media_key, preview_image_url, height, width, url }) => (
+            ({
+              type,
+              media_key,
+              preview_image_url,
+              height,
+              width,
+              url,
+              alt,
+            }) => (
               <Image
                 className="rounded border-gray-200 border"
                 key={media_key}
+                alt={alt}
                 src={type === 'photo' ? url : preview_image_url}
                 width={570}
                 height={height * (570 / width)}
@@ -68,9 +78,7 @@ const Tweet = async ({ url }) => {
               </g>
             </svg>
             <p className=" text-gray-900">{tweet.metrics.retweets}</p>
-            {/* Likes */}
           </div>
-
           <div className="grid grid-flow-col items-center gap-2">
             <svg
               height={18}
@@ -83,7 +91,6 @@ const Tweet = async ({ url }) => {
               </g>
             </svg>
             <p className=" text-gray-900">{tweet.metrics.likes}</p>
-            {/* Likes */}
           </div>
         </div>
       </div>

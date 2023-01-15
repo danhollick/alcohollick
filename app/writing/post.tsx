@@ -1,11 +1,21 @@
 import React from 'react'
 import Link from 'next/link'
+import formatDate from '../../lib/formatDate'
 
 const Post = ({ post }) => {
+  // console.log(post)
   return (
-    <Link href={`writing/${post?.slug}`}>
-      <li>{post?.frontmatter?.title}</li>
-    </Link>
+    <div className=" grid grid-cols-[minmax(200px,2fr),minmax(600px,3fr)]">
+      <p className="font-mono text-sm text-gray-500">
+        {formatDate(post?.frontmatter?.date)}
+      </p>
+      <Link className="hover:text-purplish" href={`writing/${post?.slug}`}>
+        <li className="grid grid-flow-row">
+          <h3 className="text-xl ">{post?.frontmatter?.title}</h3>
+          <p className=" text-gray-700">{post?.frontmatter?.description}</p>
+        </li>
+      </Link>
+    </div>
   )
 }
 

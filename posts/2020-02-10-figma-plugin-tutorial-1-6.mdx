@@ -16,9 +16,9 @@ If you’ve ever wanted to build your own you’re in the right place.
 
 ##
 
-## 🏗 What are we building
+## 🏗 What are we building?
 
-![A animated .gif of the Figma Plugin in action](https://cdn.sanity.io/images/h2w4qpx8/production/2f6286171681e3dc29ab885ee444fd61fc4dad7a-600x362.gif)
+![A animated .gif of the Figma Plugin in action](/figma-plugin/part-1/final.gif)
 
 We are going to build this 👆, a lightweight and flexible colour contrast checker called [**zebra**](https://www.figma.com/c/plugin/806578669827234193/zebra) 🦓  
 There are 6 parts including this one but you can bounce around however you want:
@@ -45,8 +45,7 @@ If you have never written JavaScript you might feel a little lost.
 
 If you have ever _partially understood_ a Mark Dalgleish tweet, you should do just fine.
 
-Twitter: https://twitter.com/markdalgleish/status/1222631444897361920?s=20
-
+<StaticTweet id="1222631444897361920" />
 ##
 
 ##
@@ -57,17 +56,17 @@ Luckily for us Figma has done some amazing work on the plugin creation process.
 
 All we need to do is hit `Plugins -> Development -> New Plugin` in the menu bar. After that we’ll get to a dialog where we need to add the plugin name or link to an existing plugin. Enter zebra here and press Continue.
 
-![Figma's create new plugin UI](https://cdn.sanity.io/images/h2w4qpx8/production/5d67460c1999ed6dd5194177ded73d33b1a60ef7-737x503.png)
+![Figma's create new plugin UI](/figma-plugin/part-1/create_plugin_ui.png)
 
 We’ll get another dialog that allows us to pick from three different templates:
 
-![A screenshot of the default plugin starter templates in Figma](https://cdn.sanity.io/images/h2w4qpx8/production/a42ca5900a8a88d6767dbbdc6495825c1335872b-736x503.png)
+![A screenshot of the default plugin starter templates in Figma](/figma-plugin/part-1/starter_templates.png)
 
 For our case we want the user to interact with our plugin because they might want to check the contrast on multiple parts of their designs, so we are going to pick the 3rd option.
 
 Let’s take a minute to talk through the options here and what they give us. All three of these just add some template files to a folder:
 
-![Starter files for the "Empty" template](https://cdn.sanity.io/images/h2w4qpx8/production/0f8ba98d23a483cd1784f28b8759dddd1e26f163-656x219.png)
+![Starter files for the "Empty" template](/figma-plugin/part-1/starter_files.png)
 
 - **Empty** provides a dead simple code.js file and a manifest.json. The manifest file is how Figma identifies plugins. It contains stuff like the plugin name, API version etc.  
   Only use this one if you are happy to configure stuff on your own.

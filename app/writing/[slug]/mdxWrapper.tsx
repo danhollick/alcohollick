@@ -18,6 +18,7 @@ import {
 import Image from 'next/image'
 import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote'
 import rangeParser from 'parse-numeric-range'
+import Tweet from './tweet'
 
 type MdxContentProps = {
   source: MDXRemoteSerializeResult
@@ -51,22 +52,22 @@ const components = {
     )
   },
 
-  // code: InlineCode,
   code: ({ children, showLineNumbers, ...props }) => {
     return (
-      <code
-        className={`line-numbers`}
-        {...props}
-        // className="text-sm text-mono text-gray900 py-[1px] bg-gray-600/5 border-gray-700/5 border rounded-sm"
-      >
+      <code className={`line-numbers`} {...props}>
         {children}
       </code>
     )
   },
 }
 
-const MDXWrapper = ({ source }: MdxContentProps) => {
-  return <MDXRemote {...source} components={components} />
+const MDXWrapper = ({ source, tweets }: MdxContentProps) => {
+  const StaticTweet = ({ id }) => {
+    // Use the tweets map that is present in the outer scope to get the content associated with the id passed as prop
+    return <Tweet tweet={tweets.filter(tweet => tweet.id === id)[0]} />
+  }
+
+  return <MDXRemote {...source} components={{ ...components, StaticTweet }} />
 }
 
 export default MDXWrapper
