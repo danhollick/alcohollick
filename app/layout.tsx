@@ -1,6 +1,9 @@
 import './globals.css'
 import { Inter } from '@next/font/google'
+import { EB_Garamond } from '@next/font/google'
 import localFont from '@next/font/local'
+
+// font-family: 'EB Garamond', serif;
 
 const basis = localFont({
   src: [
@@ -38,6 +41,52 @@ const basis = localFont({
   variable: '--font-basis-mono',
 })
 
+const erode = localFont({
+  src: [
+    {
+      path: '../styles/fonts/Erode-Regular.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../styles/fonts/Erode-Italic.otf',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../styles/fonts/Erode-Medium.otf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../styles/fonts/Erode-MediumItalic.otf',
+      weight: '600',
+      style: 'italic',
+    },
+    {
+      path: '../styles/fonts/Erode-Semibold.otf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../styles/fonts/Erode-SemiboldItalic.otf',
+      weight: '700',
+      style: 'italic',
+    },
+    {
+      path: '../styles/fonts/Erode-Bold.otf',
+      weight: '800',
+      style: 'normal',
+    },
+    {
+      path: '../styles/fonts/Erode-BoldItalic.otf',
+      weight: '800',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-erode',
+})
+
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
@@ -51,7 +100,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${basis.variable} bg-gray-50 scroll-smooth `}
+      className={`${inter.variable} ${basis.variable} ${erode.variable} bg-gray-50 scroll-smooth `}
     >
       {/*
         <head /> will contain the components returned by the nearest parent

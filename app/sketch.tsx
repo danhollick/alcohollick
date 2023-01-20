@@ -27,6 +27,7 @@ let to
 
 const Vectorfield = ({ grid, mode, wave, color }) => {
   const setup = (p5, canvasParentRef) => {
+    console.log('setup', grid.outerWidth, grid.outerHeight)
     p5.createCanvas(grid.outerWidth, grid.outerHeight)
       .parent(canvasParentRef)
       .class('absolute top-0 bottom-0 left-0 right-0 h-screen w-screen -z-10 ')
@@ -47,6 +48,7 @@ const Vectorfield = ({ grid, mode, wave, color }) => {
   }
 
   const windowResized = p5 => {
+    console.log('resize')
     p5.resizeCanvas(grid.outerWidth, grid.outerHeight)
     scl = grid.size
     cols = grid.innerWidth / scl

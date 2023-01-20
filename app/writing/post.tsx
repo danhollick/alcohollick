@@ -11,7 +11,9 @@ const Post = ({ post }) => {
       </p>
       <Link className="hover:text-purplish" href={`writing/${post?.slug}`}>
         <li className="grid grid-flow-row">
-          <h3 className="text-xl ">{post?.frontmatter?.title}</h3>
+          <h3 className="text-3xl font-semibold font-serif">
+            {post?.frontmatter?.title}
+          </h3>
           <p className=" text-gray-700">{post?.frontmatter?.description}</p>
         </li>
       </Link>

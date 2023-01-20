@@ -18,6 +18,7 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-inter)'],
         mono: ['var(--font-basis-mono)'],
+        serif: ['var(--font-erode)'],
       },
       fontSize: {
         base: ['15px', '1.6'],

@@ -3,7 +3,7 @@ import { getId } from '../../../lib/getId'
 
 export const H1 = (props: React.HTMLProps<HTMLHeadingElement>) => (
   <h1
-    className="text-4xl font-semibold text-gray-900 leading-tight font-mono max-w-prose"
+    className="text-6xl font-semibold text-gray-900 leading-tight font-serif max-w-prose"
     {...props}
   />
 )
@@ -13,7 +13,7 @@ export const H2 = (props: React.HTMLProps<HTMLHeadingElement>) => {
   return (
     <h2
       id={id}
-      className="text-xl text-gray-900 font-mono font-semibold mt-16 max-w-prose"
+      className="text-2xl text-gray-900 font-serif font-semibold mt-16 max-w-prose"
       {...props}
     />
   )
@@ -24,7 +24,7 @@ export const H3 = (props: React.HTMLProps<HTMLHeadingElement>) => {
   return (
     <h3
       id={id}
-      className="text-xl font-semibold text-gray-900 font-mono max-w-prose"
+      className="text-xl font-semibold text-gray-900 font-serif max-w-prose"
       {...props}
     />
   )
@@ -34,7 +34,7 @@ export const H4 = (props: React.HTMLProps<HTMLHeadingElement>) => {
   return (
     <h4
       id={id}
-      className="font-bold text-gray-900 font-mono max-w-prose"
+      className="font-semibold text-lg text-gray-900 font-serif max-w-prose"
       {...props}
     />
   )
