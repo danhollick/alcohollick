@@ -6,7 +6,7 @@ const Post = ({ post }) => {
   // console.log(post)
   return (
     <div className=" grid grid-cols-[minmax(200px,2fr),minmax(600px,3fr)]">
-      <p className="font-mono text-sm text-gray-500">
+      <p className="font-mono text-sm text-gray-500 pt-2">
         {formatDate(post?.frontmatter?.date)}
       </p>
       <Link className="hover:text-purplish" href={`writing/${post?.slug}`}>

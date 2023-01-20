@@ -51,7 +51,7 @@ const PostListPage = async (props: any) => {
   const posts = await getPosts()
   // const series = posts.filter(p => p.frontmatter.series !== null)
 
-  const groupedPosts = posts.reduce((accumulator, current) => {
+  const groupedPosts = posts.reverse().reduce((accumulator, current) => {
     if (current.frontmatter.series) {
       const index = accumulator.findIndex(
         p => p.type === 'series' && p.name === current.frontmatter.series
