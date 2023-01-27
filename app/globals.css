@@ -9,7 +9,7 @@
   }
 
   .code-block {
-    @apply  rounded box-border p-4 overflow-auto font-mono text-sm leading-relaxed whitespace-pre bg-gray-100 text-gray-700
+    @apply max-w-[100%] overflow-x-auto rounded box-border p-4 overflow-auto font-mono text-sm leading-relaxed whitespace-pre bg-gray-100 text-gray-700
   }
 
   & > code {
@@ -17,11 +17,11 @@
     }
 
   .token.parameter {
-    @apply text-blue-600;
+    @apply text-blue-500;
   }
 
   .token.tag, .token.class-name, .token.selector, .token.selector .class, .token.function {
-    @apply text-rose-600;
+    @apply text-rose-500;
   }
 
   .token.attr-value, .token.class, .token.string, .token.number, .token.unit, .token.color {
@@ -29,11 +29,11 @@
   }
 
   .token.attr-name, .token.keyword, .token.rule, .token.operator, .token.pseudo-class, .token.important {
-    @apply text-amber-600;
+    @apply text-amber-500;
   }
 
   .token.punctuation, .token.module, .token.property {
-    @apply text-pink-600;
+    @apply text-purple-500;
   }
 
   .token.comment {

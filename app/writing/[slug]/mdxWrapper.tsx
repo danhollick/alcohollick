@@ -17,8 +17,8 @@ import {
 } from './components'
 import Image from 'next/image'
 import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote'
-import rangeParser from 'parse-numeric-range'
 import Tweet from './tweet'
+import Link from 'next/link'
 
 type MdxContentProps = {
   source: MDXRemoteSerializeResult
@@ -35,30 +35,52 @@ const components = {
   blockquote: Blockquote,
   ul: UList,
   li: ListItem,
+  Link: Link,
   Callout: Callout,
-  img: props => (
-    // height and width are part of the props, so they get automatically passed here with {...props}
-    <Image
-      className="border border-gray-200 rounded-md max-w-prose"
-      {...props}
-      loading="lazy"
-    />
-  ),
-  pre: ({ children, theme, showLineNumbers, ...props }) => {
+  img: ({ width, height, alt = '', src }) => {
     return (
-      <pre className={`code-block line-numbers`} {...props}>
-        {children}
-      </pre>
+      // height and width are part of the props, so they get automatically passed here with {...props}
+      <Image
+        className="border border-gray-200 rounded-md md:max-w-prose max-w-full"
+        width={width}
+        height={height}
+        alt={alt}
+        src={src}
+        loading="lazy"
+      />
     )
   },
-
-  code: ({ children, showLineNumbers, ...props }) => {
+  pre: ({ className = '', showLineNumbers, ...props }) => {
     return (
-      <code className={`line-numbers`} {...props}>
-        {children}
-      </code>
+      <pre
+        className={`${className} code-block ${
+          showLineNumbers && `line-numbers`
+        }`}
+        {...props}
+      />
     )
   },
+  code: ({ className = '', ...props }) => {
+    return (
+      <code
+        className={`${className} line-numbers bg-gray-100 text-gray-600 pb-1 rounded-sm prose-code:before:content-none prose-code:after:content-none`}
+        {...props}
+      />
+    )
+  },
+  // code: ({ children, showLineNumbers, ...props }) => {
+  //   console.log(children)
+  //   return (
+  //     <code
+  //       className={`${
+  //         props.className && props.className
+  //       } line-numbers bg-gray-100 text-gray-600 pb-1 rounded-sm`}
+  //       {...props}
+  //     >
+  //       {children}
+  //     </code>
+  //   )
+  // },
 }
 
 const MDXWrapper = ({ source, tweets }: MdxContentProps) => {

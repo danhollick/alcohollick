@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { motion, useScroll } from 'framer-motion'
 
-const ProgressIndicator = ({}) => {
+const ProgressIndicator = ({ className }) => {
   const { scrollYProgress } = useScroll()
   const [progress, setProgress] = useState(0)
   useEffect(() => {
@@ -12,7 +12,7 @@ const ProgressIndicator = ({}) => {
     })
   }, [])
   return (
-    <div className="grid grid-cols-[auto_1fr] uppercase font-mono text-sm space-between">
+    <div className=" md:grid hidden md:grid-cols-[auto_1fr] uppercase font-mono text-sm space-between">
       <div className="grid grid-flow-col auto-cols-auto gap-[2px]">
         <p className="text-gray-400 ">[</p>
         {[...Array(10)].map((_, i) => (

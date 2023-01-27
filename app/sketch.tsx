@@ -27,21 +27,23 @@ let to
 
 const Vectorfield = ({ grid, mode, wave, color }) => {
   const setup = (p5, canvasParentRef) => {
-    console.log('setup', grid.outerWidth, grid.outerHeight)
+    // console.log('setup', grid.innerWidth, grid.innerHeight)
     p5.createCanvas(grid.outerWidth, grid.outerHeight)
       .parent(canvasParentRef)
       .class('absolute top-0 bottom-0 left-0 right-0 h-screen w-screen -z-10 ')
     from = p5.color(180, 180, 180)
     to = p5.color(0, 56, 254)
 
+    rotationSpeed = p5.map(grid.outerWidth, 1800, 2000, 2.4, 1.6, true)
     scl = grid.size
-
     cols = grid.innerWidth / scl
     rows = grid.innerHeight / scl
-    fr = p5
-      .createP('')
-      .class('font-mono text-sm  text-gray-500 absolute left-4 bottom-4')
-
+    // fr = p5
+    //   .createP('')
+    //   .class(
+    //     'font-mono text-sm  text-gray-700 absolute md:left-4 md:text-left left-0 text-center  md:mr-0 bottom-4 md:w-auto w-full'
+    //   )
+    // console.log('rows * cols', cols * rows, rows, cols)
     flowfield = new Array(cols * rows)
 
     p5.background(250)
@@ -50,6 +52,8 @@ const Vectorfield = ({ grid, mode, wave, color }) => {
   const windowResized = p5 => {
     console.log('resize')
     p5.resizeCanvas(grid.outerWidth, grid.outerHeight)
+
+    rotationSpeed = p5.map(grid.outerWidth, 1800, 2000, 2.4, 1.6, true)
     scl = grid.size
     cols = grid.innerWidth / scl
     rows = grid.innerHeight / scl
@@ -68,8 +72,6 @@ const Vectorfield = ({ grid, mode, wave, color }) => {
     } else {
       p5.background(250, 120)
     }
-
-    rotationSpeed = 1.6
 
     var yoff = 0
     for (var y = 0; y < rows; y++) {
@@ -91,13 +93,14 @@ const Vectorfield = ({ grid, mode, wave, color }) => {
         var velocity
         if (flowfield[index]) {
           velocity =
-            p5.dist(flowfield[index].x, flowfield[index].y, v.x, v.y) * 20
+            p5.dist(flowfield[index].x, flowfield[index].y, v.x, v.y) *
+            (scl * 0.25)
         }
 
         let lineColor = p5.lerpColor(from, to, p5.map(velocity, 0, 5, 0, 1))
-        let normalizedVelocity = p5.map(velocity, 0, 10, 15, 50)
+        let normalizedVelocity = p5.map(velocity, 0, 10, scl * 0.15, scl * 0.5)
         p5.stroke(lineColor, normalizedVelocity)
-        p5.strokeWeight(p5.map(velocity, 0, 10, 1, 5))
+        p5.strokeWeight(p5.map(velocity, 0, 10, 1, scl * 0.0625))
         // p5.strokeWeight(4)
 
         p5.push()
@@ -130,11 +133,11 @@ const Vectorfield = ({ grid, mode, wave, color }) => {
       rate = p5.floor(p5.frameRate())
     }
 
-    fr.html(
-      `[fps:${rate}] / [count: ${
-        cols * rows
-      }] / [scale: ${scl}] / [ellapsed time: ${p5.round(p5.frameCount / 60)}]`
-    )
+    // fr.html(
+    //   `[fps:${rate}] / [count: ${cols * rows}] / [duration: ${p5.round(
+    //     p5.frameCount / 60
+    //   )}]`
+    // )
   }
 
   return <Sketch setup={setup} draw={draw} windowResized={windowResized} />

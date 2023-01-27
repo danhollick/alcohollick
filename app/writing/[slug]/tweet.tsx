@@ -8,7 +8,7 @@ const Tweet = ({ tweet }) => {
   }
   return (
     <Link href={tweet.url} className="not-prose no-underline max-w-[600px]">
-      <div className="bg-gray-50 border hover:bg-gray-100 border-gray-300 rounded-2xl duration-300 my-8 p-5 max-w-xl mx-auto text-gray-900">
+      <div className="bg-gray-50 border hover:bg-gray-100 border-gray-300 rounded-2xl duration-300 my-8 md:p-5 p-2 max-w-xl mx-auto text-gray-900">
         <div className="flex justify-between">
           <div className="flex items-center gap-3 ">
             <img

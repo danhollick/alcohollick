@@ -115,7 +115,7 @@ const PostPage = async (props: any) => {
 
   return (
     <div className="w-full grid ">
-      <div className="grid w-full max-w-[850px] grid-cols-[minmax(600px,3fr),minmax(200px,1fr)] gap-12 justify-self-center">
+      <div className="grid w-full max-w-full md:max-w-[850px] md:grid-cols-[minmax(600px,3fr),minmax(200px,1fr)] grid-flow-row gap-12 justify-self-center p-4">
         <div className=" grid auto-rows-auto max-w-prose py-10 ">
           <Body className="text-gray-500 text-sm font-mono mb-4">
             {formatDate(date)}
@@ -124,13 +124,14 @@ const PostPage = async (props: any) => {
           </Body>
           <H1>{frontmatter.title}</H1>
           <h3 className="text-xl text-gray-900 mt-3">
+            {frontmatter.series && `Part ${frontmatter.part}: `}
             {frontmatter.description}
           </h3>
-          <article className="max-w-prose prose align-start mt-12">
+          <article className="max-w-prose prose align-start mt-12 w-full">
             <MDXWrapper source={serialized} tweets={tweets} />
           </article>
         </div>
-        <div className="h-screen top-0 bottom-0 sticky grid grid-flow-row py-20 ">
+        <div className="h-screen top-0 bottom-0 sticky md:grid grid-flow-row py-20 hidden">
           <ul className="grid auto-rows-auto content-start gap-2">
             {headings.map(({ id, text }) => (
               <a

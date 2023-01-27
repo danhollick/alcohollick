@@ -27,6 +27,18 @@ module.exports = {
         'gradient-radial-footer':
           'radial-gradient(var(--tw-gradient-from) 1px, var(--tw-gradient-to) 1px)',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+          },
+        },
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],

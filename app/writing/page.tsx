@@ -35,6 +35,7 @@ async function getPosts() {
         mdxOptions: {
           remarkPlugins: [],
           rehypePlugins: [],
+          format: 'mdx',
         },
       })
       return {
@@ -48,9 +49,7 @@ async function getPosts() {
 }
 
 const PostListPage = async (props: any) => {
-  const posts = await getPosts()
-  // const series = posts.filter(p => p.frontmatter.series !== null)
-
+  const posts = await getPosts()!
   const groupedPosts = posts.reverse().reduce((accumulator, current) => {
     if (current.frontmatter.series) {
       const index = accumulator.findIndex(
@@ -66,7 +65,7 @@ const PostListPage = async (props: any) => {
           },
         ]
       } else {
-        accumulator[index].posts = [...accumulator[index].posts, current]
+        accumulator[index].posts = [current, ...accumulator[index].posts]
         return [...accumulator]
       }
     } else {
@@ -74,14 +73,17 @@ const PostListPage = async (props: any) => {
     }
   }, [])
 
-  console.log('groupedPosts', groupedPosts)
   return (
-    <div className="w-full grid ">
-      <div className="grid w-full max-w-[850px]  gap-12 justify-self-center py-20">
-        <h1 className="text-6xl font-serif">Writing.</h1>
-        <ul className=" grid auto-rows-auto max-w-prose py-10 gap-12">
+    <div className="w-full grid">
+      <div className="grid w-full max-w-[850px] md:gap-12 gap-6 justify-self-center py-10 md:py-20 px-4">
+        {/* <div className="grid grid-cols-[minmax(200px,2fr),minmax(650px,3fr)] w-full "> */}
+        <div className="grid md:grid-cols-[minmax(200px,2fr),minmax(650px,3fr)] grid-cols-[1fr,3fr] w-full ">
+          <h1 className="md:text-6xl text-5xl font-serif md:col-start-2 ">
+            Writing.
+          </h1>
+        </div>
+        <ul className=" grid auto-rows-auto py-10 gap-20">
           {groupedPosts.map((item, i) => {
-            console.log(item)
             if (item.type === 'series') {
               return <Series series={item} key={i} />
             }
@@ -89,9 +91,6 @@ const PostListPage = async (props: any) => {
               return <Post post={item.post} key={i} />
             }
           })}
-          {/* {posts.map((post, i) => (
-            <Post post={post} key={i} />
-          ))} */}
         </ul>
         <Footer />
       </div>
