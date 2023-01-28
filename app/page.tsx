@@ -1,13 +1,22 @@
 'use client'
 import Profile from './profile'
 import P5Wrapper from './p5Wrapper'
-import React, { useLayoutEffect, useState, useCallback } from 'react'
+import React, { useLayoutEffect, useEffect, useState, useCallback } from 'react'
 import { useWindowSize, useMeasure } from 'react-use'
 import Link from 'next/link'
+// import dynamic from 'next/dynamic'
+
+// const P5Wrapper = dynamic(() => import('./p5Wrapper'), { ssr: false })
 
 export default function Home() {
   const [ref, { x, y, width, height, top, right, bottom, left }] = useMeasure()
   const { width: initialWidth, height: initialHeight } = useWindowSize()
+  const [showChild, setShowChild] = useState(false)
+
+  // Wait until after client-side hydration to show
+  useEffect(() => {
+    setShowChild(true)
+  }, [])
   // const [gridSize, setGridSize] = useState(80)
   // TODO: maybe move the layout effect into the parent and pass the ref down?
 
@@ -23,10 +32,10 @@ export default function Home() {
 
   const [grid, setGrid] = useState({
     size: 80,
-    outerWidth: initialWidth,
-    outerHeight: initialHeight,
-    innerWidth: initialWidth,
-    innerHeight: initialHeight,
+    outerWidth: width > 0 ? width : initialWidth,
+    outerHeight: height > 0 ? height : initialHeight,
+    innerWidth: Math.round(initialHeight / 80) * 80,
+    innerHeight: Math.round(initialHeight / 80) * 80,
     cardWidth: initialWidth / 2,
     cardHeight: initialHeight / 2,
     horizontalPadding: 0,
@@ -79,7 +88,8 @@ export default function Home() {
 
   useLayoutEffect(() => {
     fitGrid({ width, height })
-  }, [width, height, fitGrid, grid.size])
+    console.log(width, showChild)
+  }, [width, height, fitGrid, showChild])
 
   return (
     <div className="h-screen grid w-screen overflow-hidden absolute" ref={ref}>
@@ -171,11 +181,13 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <P5Wrapper
-        grid={grid}
-        // className={`absolute top-[${padding.vertical}px] bottom-[-${padding.vertical}px] left-[${padding.horizontal}px] right-[-${padding.horizontal}px] h-full w-full z-0 `}
-        className={`absolute top-0 bottom-0 left-0 right-0 h-full w-full z-0 `}
-      />
+      {showChild && (
+        <P5Wrapper
+          grid={grid}
+          // className={`absolute top-[${padding.vertical}px] bottom-[-${padding.vertical}px] left-[${padding.horizontal}px] right-[-${padding.horizontal}px] h-full w-full z-0 `}
+          className={`absolute top-0 bottom-0 left-0 right-0 h-full w-full z-0 `}
+        />
+      )}
     </div>
   )
 }

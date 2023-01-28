@@ -1,6 +1,10 @@
 'use client'
-import Sketch from 'react-p5'
-import p5Types from 'p5'
+import dynamic from 'next/dynamic'
+
+// Will only import `react-p5` on client-side
+const Sketch = dynamic(() => import('react-p5').then(mod => mod.default), {
+  ssr: false,
+})
 
 interface VectorfieldProps {
   dimensions: Dimensions
@@ -43,7 +47,7 @@ const Vectorfield = ({ grid, mode, wave, color }) => {
     //   .class(
     //     'font-mono text-sm  text-gray-700 absolute md:left-4 md:text-left left-0 text-center  md:mr-0 bottom-4 md:w-auto w-full'
     //   )
-    // console.log('rows * cols', cols * rows, rows, cols)
+    console.log('rows * cols', cols * rows, rows, cols)
     flowfield = new Array(cols * rows)
 
     p5.background(250)
