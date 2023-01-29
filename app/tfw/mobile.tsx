@@ -1,13 +1,20 @@
 'use client'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
+import Cold from '../../public/cold.png'
+import Warm from '../../public/warm.png'
 
 const SunIcon = ({ isActive, setActiveVid }) => {
-  const randomSvgId = `warmGradient${Math.floor(Math.random() * 10) + 1}`
+  const svgID = `warmGradient${2222}`
   return (
     <div
       onClick={() => setActiveVid('warm')}
-      className=" w-10 h-10 rounded-lg bg-black/5 hover:bg-black/10 grid items-center justify-center"
+      className={`z-50  w-10 h-10 rounded-lg  grid items-center justify-center ${
+        isActive
+          ? 'bg-white/80  backdrop-blur-sm'
+          : 'bg-black/5 hover:bg-black/10'
+      }`}
     >
       <motion.svg
         transition={{
@@ -15,34 +22,39 @@ const SunIcon = ({ isActive, setActiveVid }) => {
           type: 'tween',
           repeat: Infinity,
         }}
-        variants={{
-          active: { rotate: 360 },
+        whileHover={{
+          rotate: 360,
+          transition: {
+            duration: 2,
+            type: 'tween',
+            repeat: Infinity,
+          },
         }}
         initial={{ rotate: 0 }}
         animate={isActive ? 'active' : 'initial'}
-        className=" z-50 align-middle stroke-none mix-blend-difference"
+        className=" z-50 align-middle stroke-none "
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
       >
         <path
-          fill={isActive ? `url(#${randomSvgId})` : '#1a1a1a60'}
+          fill={isActive ? `url(#${svgID})` : '#ffffff60'}
           fillRule="evenodd"
           d="M12 0a1 1 0 011 1v2a1 1 0 11-2 0V1a1 1 0 011-1zm0 8a4 4 0 100 8 4 4 0 000-8zm-6 4a6 6 0 1112 0 6 6 0 01-12 0zm7 9a1 1 0 10-2 0v2a1 1 0 102 0v-2zM3.513 3.513a1 1 0 011.414 0l1.42 1.42a1 1 0 01-1.414 1.414l-1.42-1.42a1 1 0 010-1.414zm15.554 14.14a1 1 0 00-1.414 1.414l1.42 1.42a1 1 0 001.414-1.414l-1.42-1.42zM0 12a1 1 0 011-1h2a1 1 0 110 2H1a1 1 0 01-1-1zm21-1a1 1 0 100 2h2a1 1 0 100-2h-2zM6.347 17.653a1 1 0 010 1.414l-1.42 1.42a1 1 0 01-1.414-1.414l1.42-1.42a1 1 0 011.414 0zm14.14-12.726a1 1 0 00-1.414-1.414l-1.42 1.42a1 1 0 001.414 1.414l1.42-1.42z"
           clipRule="evenodd"
         />
         <defs>
           <linearGradient
-            id={randomSvgId}
+            id={svgID}
             x1="12"
             x2="12"
             y1="0"
             y2="24"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#B11515" />
-            <stop offset="1" stopColor="#DBA007" />
+            <stop stopColor="#FF7A00" />
+            <stop offset="1" stopColor="#FFA756" />
           </linearGradient>
         </defs>
       </motion.svg>
@@ -51,62 +63,50 @@ const SunIcon = ({ isActive, setActiveVid }) => {
 }
 
 const CloudIcon = ({ isActive, setActiveVid }) => {
-  const randomSvgId = `coldGradient${Math.floor(Math.random() * 10) + 1}`
+  const svgID = `warmGradient${3333}`
   return (
-    <motion.div
-      // variants={{
-      //   active: { rotate: [0, 0, 270, 270, 0] },
-      //   inactive: {},
-      // }}
-      // transition={{
-      //   duration: 10,
-      //   type: 'tween',
-      //   repeat: Infinity,
-      //   repeatType: 'reverse',
-      // }}
-      animate={isActive ? 'active' : 'initial'}
+    <div
       onClick={() => setActiveVid('cold')}
-      className="z-50  w-10 h-10 rounded-lg bg-black/5 hover:bg-black/10 grid items-center justify-center "
+      className={`z-50  w-10 h-10 rounded-lg  grid items-center justify-center ${
+        isActive
+          ? 'bg-white/80  backdrop-blur-sm'
+          : 'bg-black/5 hover:bg-black/10'
+      }`}
     >
-      <motion.svg
-        variants={{
-          active: { pathLength: 1 },
-        }}
-        initial={{ pathLength: 0 }}
-        animate={isActive ? 'active' : 'initial'}
-        className="z-1 align-middle fill-none stroke-none mix-blend-difference"
+      <svg
+        className="z-1 align-middle fill-none stroke-none"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         fill="none"
         viewBox="0 0 24 24"
       >
-        <motion.g clipPath="url(#clip0)">
-          <motion.path
-            fill={isActive ? `url(#${randomSvgId})` : '#1a1a1a60'}
+        <g clipPath="url(#clip0)">
+          <path
+            fill={isActive ? `url(#${svgID})` : '#ffffff60'}
             fillRule="evenodd"
             d="M8.082 1.047A9 9 0 0117.48 7h.522a6 6 0 012.4 11.496 1 1 0 01-.802-1.832A4 4 0 0017.999 9H16.74a1 1 0 01-.968-.75 7 7 0 10-11.148 7.219 1 1 0 01-1.248 1.562A9 9 0 018.082 1.047zM7 16a1 1 0 011-1h.01a1 1 0 110 2H8a1 1 0 01-1-1zm1 3a1 1 0 100 2h.01a1 1 0 100-2H8zm3-1a1 1 0 011-1h.01a1 1 0 110 2H12a1 1 0 01-1-1zm1 3a1 1 0 100 2h.01a1 1 0 100-2H12zm3-5a1 1 0 011-1h.01a1 1 0 110 2H16a1 1 0 01-1-1zm1 3a1 1 0 100 2h.01a1 1 0 100-2H16z"
             clipRule="evenodd"
           />
-        </motion.g>
+        </g>
         <defs>
           <linearGradient
-            id={randomSvgId}
+            id={svgID}
             x1="11.994"
             x2="11.994"
             y1="1"
             y2="23"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#68D9C4" />
-            <stop offset="1" stopColor="#4B40D1" />
+            <stop stopColor="#1D92FF" />
+            <stop offset="1" stopColor="#2AA5FE" />
           </linearGradient>
           <clipPath id="clip0">
             <path fill="#fff" d="M0 0H24V24H0z" />
           </clipPath>
         </defs>
-      </motion.svg>
-    </motion.div>
+      </svg>
+    </div>
   )
 }
 
@@ -118,7 +118,7 @@ const Toggle = ({ setActiveVid, activeVid }) => (
 )
 
 const Mobile = () => {
-  const [activeVid, setActiveVid] = useState('warm')
+  const [activeImage, setActiveImage] = useState('warm')
 
   return (
     <motion.div
@@ -139,7 +139,7 @@ const Mobile = () => {
       initial={{ y: 50, x: -20, rotate: -8, opacity: 0 }}
       className="grid grid-flow-row gap-10"
     >
-      <Toggle activeVid={activeVid} setActiveVid={setActiveVid} />
+      <Toggle activeVid={activeImage} setActiveVid={setActiveImage} />
       <motion.div
         whileHover={{
           boxShadow:
@@ -148,10 +148,10 @@ const Mobile = () => {
         style={{
           margin: 0,
           boxSizing: 'border-box',
-          position: 'relative',
+
           contain: 'paint',
-          // width: '264px',
-          // height: '534px',
+          width: '264px',
+          height: '534px',
           padding: '12px',
           borderRadius: '48px',
           background: '#F4F4F5',
@@ -175,35 +175,10 @@ const Mobile = () => {
             borderRight: '1px solid transparent',
           }}
         >
-          {activeVid === 'warm' && (
-            <video
-              width="240"
-              // height="490"
-              autoPlay
-              muted
-              loop
-              poster="/warm.png"
-            >
-              <source src="/warm.mp4" type="video/mp4" />
-            </video>
-          )}
-          {activeVid === 'cold' && (
-            <video
-              width="240"
-              // height="490"
-              autoPlay
-              muted
-              loop
-              poster="/cold.png"
-            >
-              <source src="/cold.mp4" type="video/mp4" />
-            </video>
-          )}
-          {/* <img
-            src="/fallback-image-min.jpg"
-            alt="Screenshot of app with forcasts on device"
-            width="240"
-          /> */}
+          <Image
+            alt="A screenshot of The Fucking Weather's interface"
+            src={activeImage === 'cold' ? Cold : Warm}
+          />
         </div>
       </motion.div>
     </motion.div>

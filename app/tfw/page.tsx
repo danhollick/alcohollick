@@ -25,21 +25,20 @@ const Page = () => {
         backgroundImage:
           'radial-gradient(at 44% 0%, hsla(306,100%,70%,1) 0px, transparent 50%),radial-gradient(at 99% 98%, hsla(338,100%,61%,1) 0px, transparent 50%),radial-gradient(at 0% 100%, hsla(343,100%,76%,1) 0px, transparent 50%),radial-gradient(at 54% 98%, hsla(111,92%,50%,0.87) 0px, transparent 50%), url(/noise.svg)',
       }}
-      className=" h-screen grid items-center justify-center"
+      className=" md:h-screen grid items-center justify-center py-12 px-6"
     >
-      <div className="grid grid-cols-[auto,1fr] items-center gap-20">
+      <div className="grid md:grid-cols-[auto,1fr] grid-cols-1 grid-flow-rows items-center md:gap-20 ">
         <Mobile />
         <div className="grid gap-6 mt-20 ">
-          <div>
-            <h2 className="text-xl font-semibold  text-black/40  bg-clip-text bg-gradient-to-r from-orange-400 to-blue-600 mix-blend-difference">
+          <div className="grid max-w-prose">
+            <h2 className="  md:text-xl text-l font-semibold    text-white  bg-clip-text bg-gradient-to-r from-orange-400 to-blue-600 mix-blend-overlay">
               The Fucking Weather.
             </h2>
-            <h1 className="text-6xl leading-tight font-sans font-semibold text-black/50  bg-clip-text bg-gradient-to-r from-orange-400 to-blue-600 mix-blend-difference">
-              A terrible weather app,
-              <br /> for terrible people.
+            <h1 className=" md:text-6xl text-4xl leading-tight font-bold text-white/80  bg-clip-text bg-gradient-to-r from-orange-400 to-blue-600 mix-blend-overlay">
+              A terrible weather app, for terrible people.
             </h1>
           </div>
-          <h3 className="text-xl font-semibold  text-black/40  bg-clip-text bg-gradient-to-r from-orange-400 to-blue-600 mix-blend-difference">
+          <h3 className="md:text-xl text-l font-semibold   text-white/70  bg-clip-text bg-gradient-to-r from-orange-400 to-blue-600 mix-blend-overlay">
             It's honestly awful - I don't know why people like it.
           </h3>
           <motion.div
@@ -49,7 +48,7 @@ const Page = () => {
               transition: { delay: 0.3, duration: 0.3 },
             }}
             initial={{ y: 20, opacity: 0 }}
-            className="grid grid-cols-[auto,auto] justify-start gap-6 mt-8"
+            className="grid grid-cols-[auto,auto] md:justify-start justify-center gap-6 mt-8"
           >
             <a
               target="_blank"
