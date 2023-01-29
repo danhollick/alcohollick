@@ -1,11 +1,14 @@
 export default function Head() {
   return (
     <>
-      <title>Dan Hollick | Home</title>
+      <title>Dan Hollick | Writing</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <meta name="description" content="Design, technically" />
+      <meta
+        property="og:image"
+        content="https://alcohollick.com/api/og?title=Writing.&description=A+collection+of+things+I've+written"
+      />
       <link rel="icon" href="/favicon.ico" />
-      <meta property="og:image" content="https://alcohollick.com/api/og" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"

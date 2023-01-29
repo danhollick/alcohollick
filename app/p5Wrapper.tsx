@@ -18,7 +18,7 @@ const P5Wrapper = ({ className, grid }) => {
 
   return (
     <div className={className}>
-      <div className="absolute bottom-4 md:bottom-2  z-10  justify-center w-full grid grid-flow-col gap-6 auto-cols-auto font-mono text-sm">
+      <div className="absolute bottom-12 md:bottom-2  z-10  justify-center w-full grid grid-flow-col gap-6 auto-cols-auto font-mono text-sm">
         <ToggleGroup.Root
           title="Perlin"
           type="single"
