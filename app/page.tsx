@@ -4,6 +4,7 @@ import P5Wrapper from './p5Wrapper'
 import React, { useLayoutEffect, useEffect, useState, useCallback } from 'react'
 import { useWindowSize, useMeasure } from 'react-use'
 import Link from 'next/link'
+import { AnimatePresence, motion } from 'framer-motion'
 // import dynamic from 'next/dynamic'
 
 // const P5Wrapper = dynamic(() => import('./p5Wrapper'), { ssr: false })
@@ -14,9 +15,7 @@ export default function Home() {
   const [showChild, setShowChild] = useState(false)
 
   // Wait until after client-side hydration to show
-  useEffect(() => {
-    setShowChild(true)
-  }, [])
+
   // const [gridSize, setGridSize] = useState(80)
   // TODO: maybe move the layout effect into the parent and pass the ref down?
 
@@ -86,14 +85,24 @@ export default function Home() {
     })
   }, [])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    if (width > 0) {
+      setShowChild(true)
+    }
+  }, [width, height, fitGrid])
+
+  useEffect(() => {
+    // console.log('before', showChild)
     fitGrid({ width, height })
-    console.log(width, showChild)
+    // console.log('after', showChild)
   }, [width, height, fitGrid, showChild])
 
   return (
     <div className="h-screen grid w-screen overflow-hidden absolute" ref={ref}>
-      <div
+      <motion.div
+        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
         style={{
           width: grid.cardWidth,
           height: grid.cardHeight,
@@ -180,14 +189,22 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-      {showChild && (
-        <P5Wrapper
-          grid={grid}
-          // className={`absolute top-[${padding.vertical}px] bottom-[-${padding.vertical}px] left-[${padding.horizontal}px] right-[-${padding.horizontal}px] h-full w-full z-0 `}
-          className={`absolute top-0 bottom-0 left-0 right-0 h-full w-full z-0 `}
-        />
-      )}
+      </motion.div>
+      <AnimatePresence>
+        {showChild && (
+          <motion.div
+            transition={{ duration: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <P5Wrapper
+              grid={grid}
+              className={`absolute top-0 bottom-0 left-0 right-0 h-full w-full z-0 `}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

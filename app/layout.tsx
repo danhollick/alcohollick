@@ -1,9 +1,6 @@
 import './globals.css'
 import { Inter } from '@next/font/google'
-import { EB_Garamond } from '@next/font/google'
 import localFont from '@next/font/local'
-
-// font-family: 'EB Garamond', serif;
 
 const basis = localFont({
   src: [
@@ -39,6 +36,7 @@ const basis = localFont({
     },
   ],
   variable: '--font-basis-mono',
+  display: 'swap',
 })
 
 const erode = localFont({
@@ -85,11 +83,13 @@ const erode = localFont({
     },
   ],
   variable: '--font-erode',
+  display: 'swap',
 })
 
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
+  display: 'optional',
 })
 
 export default function RootLayout({

@@ -169,10 +169,6 @@ const Mobile = () => {
           style={{
             overflow: 'hidden',
             borderRadius: '36px',
-            // hacks to make video clipping work
-            transform: 'translate3d(0, 0, 0)',
-            borderLeft: '1px solid transparent',
-            borderRight: '1px solid transparent',
           }}
         >
           <Image

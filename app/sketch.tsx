@@ -31,7 +31,7 @@ let to
 
 const Vectorfield = ({ grid, mode, wave, color }) => {
   const setup = (p5, canvasParentRef) => {
-    // console.log('setup', grid.innerWidth, grid.innerHeight)
+    console.log('setup', grid.innerWidth, grid.innerHeight)
     p5.createCanvas(grid.outerWidth, grid.outerHeight)
       .parent(canvasParentRef)
       .class('absolute top-0 bottom-0 left-0 right-0 h-screen w-screen -z-10 ')
