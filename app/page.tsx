@@ -5,29 +5,12 @@ import React, { useLayoutEffect, useEffect, useState, useCallback } from 'react'
 import { useWindowSize, useMeasure } from 'react-use'
 import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
-// import dynamic from 'next/dynamic'
-
-// const P5Wrapper = dynamic(() => import('./p5Wrapper'), { ssr: false })
+import { isSafari } from 'react-device-detect'
 
 export default function Home() {
   const [ref, { x, y, width, height, top, right, bottom, left }] = useMeasure()
   const { width: initialWidth, height: initialHeight } = useWindowSize()
   const [showChild, setShowChild] = useState(false)
-
-  // Wait until after client-side hydration to show
-
-  // const [gridSize, setGridSize] = useState(80)
-  // TODO: maybe move the layout effect into the parent and pass the ref down?
-
-  // const [grid, setGrid] = useState({
-  //   size: 80,
-  //   outerWidth: initialWidth,
-  //   outerHeight: initialHeight,
-  //   innerWidth: initialWidth - ((initialWidth % 80) + 80),
-  //   innerHeight: initialHeight - ((initialHeight % 80) + 80),
-  //   horizontalPadding: (initialWidth % 80) / 2 + 80 / 2,
-  //   verticalPadding: (initialHeight % 80) / 2 + 80 / 2,
-  // })
 
   const [grid, setGrid] = useState({
     size: 80,
@@ -42,6 +25,9 @@ export default function Home() {
   })
 
   const fitGrid = useCallback(({ width, height }) => {
+    console.log('isSafari', isSafari)
+    let outerWidth = isSafari ? Math.min(width, 2000) : width
+    let outerHeight = isSafari ? Math.min(height, 1600) : height
     let scale
 
     switch (true) {
@@ -58,24 +44,26 @@ export default function Home() {
         scale = 80
         break
     }
-    const horizontalPadding = width > 640 ? (width % scale) / 2 + scale : 0
-    const verticalPadding = width > 640 ? (height % scale) / 2 + scale : 0
+    const horizontalPadding =
+      outerWidth > 640 ? (outerWidth % scale) / 2 + scale : 0
+    const verticalPadding =
+      outerWidth > 640 ? (outerHeight % scale) / 2 + scale : 0
     const innerWidth =
-      width > 640
-        ? width - ((width % scale) + scale * 2)
-        : Math.round(width / scale) * scale
+      outerWidth > 640
+        ? outerWidth - ((outerWidth % scale) + scale * 2)
+        : Math.round(outerWidth / scale) * scale
     const innerHeight =
-      width > 640
-        ? height - ((height % scale) + scale * 2)
-        : Math.round(height / scale) * scale
+      outerWidth > 640
+        ? outerHeight - ((outerHeight % scale) + scale * 2)
+        : Math.round(outerHeight / scale) * scale
 
-    const cardWidth = width > 768 ? scale * 10 : scale * 8
-    const cardHeight = width > 768 ? scale * 6 : scale * 11
+    const cardWidth = outerWidth > 768 ? scale * 10 : scale * 8
+    const cardHeight = outerWidth > 768 ? scale * 6 : scale * 11
 
     setGrid({
       size: scale,
-      outerWidth: width,
-      outerHeight: height,
+      outerWidth: outerWidth,
+      outerHeight: outerHeight,
       innerWidth: innerWidth,
       innerHeight: innerHeight,
       cardWidth: cardWidth,
@@ -91,31 +79,52 @@ export default function Home() {
     }
   }, [width, height, fitGrid])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // console.log('before', showChild)
     fitGrid({ width, height })
     // console.log('after', showChild)
   }, [width, height, fitGrid, showChild])
 
   return (
-    <div className="h-screen grid w-screen overflow-hidden absolute" ref={ref}>
+    <div
+      className="h-screen grid w-screen overflow-hidden absolute justify-center"
+      ref={ref}
+    >
       <motion.div
         transition={{ duration: 0.5 }}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
+        // style={{
+        //   width: grid.cardWidth,
+        //   height: grid.cardHeight,
+        //   top:
+        //     grid.verticalPadding +
+        //     Math.floor(grid.innerHeight / 2 / grid.size) * grid.size -
+        //     grid.cardHeight / 2,
+        //   left:
+        //     grid.horizontalPadding +
+        //     Math.floor(grid.innerWidth / 2 / grid.size) * grid.size -
+        //     grid.cardWidth / 2,
+        // }}
         style={{
           width: grid.cardWidth,
           height: grid.cardHeight,
           top:
             grid.verticalPadding +
-            Math.floor(grid.innerHeight / 2 / grid.size) * grid.size -
+            Math.floor(initialHeight / 2 / grid.size) * grid.size -
             grid.cardHeight / 2,
           left:
             grid.horizontalPadding +
-            Math.floor(grid.innerWidth / 2 / grid.size) * grid.size -
+            Math.floor(initialWidth / 2 / grid.size) * grid.size -
             grid.cardWidth / 2,
         }}
-        className={`grid absolute z-10 grid-flow-row bg-[#FAFAFA] md:grid-cols-[auto,1fr] justify-self-center md:py-10 md:pl-10 md:pr-6 p-4	self-center content-center items-center md:gap-8 gap-4 justify-center `}
+        // style={{
+        //   width: grid.cardWidth,
+        //   height: grid.cardHeight,
+        //   top: initialHeight / 2 - grid.cardHeight / 2,
+        //   left: initialWidth / 2 - grid.cardWidth / 2,
+        // }}
+        className="grid absolute z-10 grid-flow-row bg-[#FAFAFA] md:grid-cols-[auto,1fr] md:py-10 md:pl-10 md:pr-6 p-4	self-center content-center items-center md:gap-8 gap-4 justify-center"
       >
         <Profile
           size={
@@ -198,10 +207,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <P5Wrapper
-              grid={grid}
-              className={`absolute top-0 bottom-0 left-0 right-0 h-full w-full z-0 `}
-            />
+            <P5Wrapper grid={grid} />
           </motion.div>
         )}
       </AnimatePresence>

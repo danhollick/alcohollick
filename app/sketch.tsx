@@ -31,10 +31,13 @@ let to
 
 const Vectorfield = ({ grid, mode, wave, color }) => {
   const setup = (p5, canvasParentRef) => {
-    console.log('setup', grid.innerWidth, grid.innerHeight)
     p5.createCanvas(grid.outerWidth, grid.outerHeight)
       .parent(canvasParentRef)
-      .class('absolute top-0 bottom-0 left-0 right-0 h-screen w-screen -z-10 ')
+      // .class(
+      //   'absolute top-0 bottom-0 left-0 right-0 h-screen w-screen -z-10 '
+      // )
+      // .class('h-screen w-screen -z-10 max-w-[1800px] max-h-[1600px]')
+      .class('h-screen w-screen -z-10')
     from = p5.color(180, 180, 180)
     to = p5.color(0, 56, 254)
 
@@ -54,7 +57,6 @@ const Vectorfield = ({ grid, mode, wave, color }) => {
   }
 
   const windowResized = p5 => {
-    console.log('resize')
     p5.resizeCanvas(grid.outerWidth, grid.outerHeight)
 
     rotationSpeed = p5.map(grid.outerWidth, 1800, 2000, 2.4, 1.6, true)
@@ -138,9 +140,9 @@ const Vectorfield = ({ grid, mode, wave, color }) => {
     }
 
     // fr.html(
-    //   `[fps:${rate}] / [count: ${cols * rows}] / [duration: ${p5.round(
-    //     p5.frameCount / 60
-    //   )}]`
+    //   `[fps:${rate}] / [scl: ${scl}] / [count: ${
+    //     cols * rows
+    //   }] / [duration: ${p5.round(p5.frameCount / 60)}]`
     // )
   }
 
